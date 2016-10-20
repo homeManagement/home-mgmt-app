@@ -1,0 +1,30 @@
+{
+  "name": "home-mgmt-app",
+  "version": "1.0.0",
+  "description": "App that helps manage home maintenance and care.",
+  "main": "gulp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/homeManagement/home-mgmt-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/homeManagement/home-mgmt-app/issues"
+  },
+  "homepage": "https://github.com/homeManagement/home-mgmt-app#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.1.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
