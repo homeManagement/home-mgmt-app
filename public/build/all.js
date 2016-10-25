@@ -1,6 +1,32 @@
 'use strict';
 
-angular.module('homeMgmt', ['satellizer']).config(function ($authProvider) {
+angular.module('mgmtApp', ['ui.router', 'satellizer']).config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+  $urlRouterProvider.otherwise('/');
+  $stateProvider.state('properties', {
+    url: "/properties",
+    controller: 'propertiesCtrl',
+    templateUrl: '../src/view/properties.html'
+  }).state('createProperty', {
+    url: "/createProperty",
+    controller: 'createPropertyCtrl',
+    templateUrl: '../src/view/createProperty.html'
+  }).state('mainAlerts', {
+    url: "/mainAlerts",
+    controller: 'mainAlertsCtrl',
+    templateUrl: '../src/view/mainAlerts.html'
+  }).state('userSettings', {
+    url: "/userSettings",
+    controller: 'userSettingsCtrl',
+    templateUrl: '../src/view/userSettings.html'
+  }).state('propertySettings', {
+    url: "/propertySettings",
+    controller: 'propertySettingsCtrl',
+    templateUrl: '../src/view/propertySettings.html'
+  }).state('contact', {
+    url: "/contact",
+    controller: 'contactCtrl',
+    templateUrl: '../src/view/contact.html'
+  });
   $authProvider.loginUrl = '/auth/login';
   $authProvider.signUpUrl = '/auth/signup';
   $authProvider.facebook({
@@ -9,7 +35,7 @@ angular.module('homeMgmt', ['satellizer']).config(function ($authProvider) {
     name: 'facebook',
     url: '/auth/facebook',
     authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-    // redirectUri: window.location.origin + '/',
+    redirectUri: window.location.origin + '/properties',
     requiredUrlParams: ['scope'],
     scope: ['email'],
     scopeDelimiter: ',',
@@ -21,11 +47,11 @@ angular.module('homeMgmt', ['satellizer']).config(function ($authProvider) {
   console.log($window.localStorage.currentUser);
 });
 
-angular.module('homeMgmt').directive('loginDirective', function () {
+angular.module('mgmtApp').directive('loginDirective', function () {
 
   var controller = function controller($scope, $auth) {
     $scope.authenticate = function (provider) {
-      // localStorage.clear();
+      localStorage.clear();
       $auth.authenticate(provider).then(function (response) {
         console.log(response);
       });
@@ -36,8 +62,10 @@ angular.module('homeMgmt').directive('loginDirective', function () {
         $window.localStorage.currentUser = JSON.stringify(response.data.user);
         $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
       }).catch(function (response) {
+        console.log(response);
         $scope.errorMessage = {};
         angular.forEach(response.data.message, function (message, field) {
+          console.log(field);
           $scope.loginForm[field].$setValidity('server', false);
           $scope.errorMessage[field] = response.data.message[field];
         });
@@ -52,4 +80,55 @@ angular.module('homeMgmt').directive('loginDirective', function () {
 
   };
 });
+
+angular.module('mgmtApp').directive('serverError', function () {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function link(scope, element, attrs, ctrl) {
+      element.on('keydown', function () {
+        ctrl.$setValidity('server', true);
+      });
+    }
+  };
+});
+
+angular.module('mgmtApp').directive('signupDirective', function () {
+
+  var controller = function controller($scope, $auth) {
+    $scope.signUp = function () {
+      var user = {
+        firstName: $scope.firstName,
+        lastName: $scope.lastName,
+        email: $scope.email,
+        password: $scope.password
+      };
+      console.log(user);
+      $auth.signup(user).catch(function (response) {
+        console.log(response.data);
+      });
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/signup.html'
+
+  };
+});
+
+angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('propertySettingsCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').service('mainService', function ($http) {});
 //# sourceMappingURL=all.js.map
