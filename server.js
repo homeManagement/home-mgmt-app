@@ -53,12 +53,32 @@ function ensureAuthenticated(req, res, next) {
  */
 function createJWT(user) {
   var payload = {
-    sub: user._id,
+    sub: user.id,
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix()
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
+
+/*
+ |--------------------------------------------------------------------------
+ | Sign Up with Email
+ |--------------------------------------------------------------------------
+ */
+
+app.post('/auth/signup', function(req, res){
+  db.getLocalUser([req.body.email], function(err, user){
+    if(user[0]){
+    return res.status(409).send({message: 'Email is already taken'})
+    }
+    db.createLocalUser([req.body.first_name, req.body.last_name, req.body.email, req.body.password], function(err,success){
+      db.getLocalUser([req.body.email], function(err, existingUser) {
+          var token = createJWT(existingUser);
+          return res.send({ token: token });
+        });
+    });
+  })
+})
 
 /*
  |--------------------------------------------------------------------------
@@ -68,7 +88,7 @@ function createJWT(user) {
 app.post('/auth/login', function(req, res) {
   console.log(req.body);
   db.getLocalUser([req.body.email], function(err, user){
-    console.log('xyxyxyxyxyx',user);
+    // console.log('xyxyxyxyxyx',user);
     if (!user){
       return res.status(401).send({message: 'Invalid email and/or password'});
     }
@@ -119,7 +139,7 @@ app.post('/auth/login', function(req, res) {
        }
        if (req.header('Authorization')) {
          console.log('AUTHORIZATION DDDDD',profile.id)
-         db.getuser([profile.id] , function(err, existingUser) {
+         db.getUser([profile.id] , function(err, existingUser) {
            if (existingUser[0]) {
              return res.status(409).send({ message: 'There is already a Facebook account that belongs to you' });
            }
@@ -144,13 +164,13 @@ app.post('/auth/login', function(req, res) {
        } else {
          console.log('LLLLLLLLŁ',profile)
          // Step 3. Create a new user account or return an existing one.
-         db.getuser([profile.id], function(err, existingUser) {
+         db.getUser([profile.id], function(err, existingUser) {
            if (existingUser[0]) {
              var token = createJWT(existingUser);
              return res.send({ token: token });
            }
-           db.createuser([profile.id, profile.first_name, profile.last_name, profile.email,'https://graph.facebook.com/' + profile.id + '/picture?type=large'], function(err,success){
-             db.getuser([profile.id], function(err, existingUser) {
+           db.createUser([profile.id, profile.first_name, profile.last_name, profile.email,'https://graph.facebook.com/' + profile.id + '/picture?type=large'], function(err,success){
+             db.getUser([profile.id], function(err, existingUser) {
                  var token = createJWT(existingUser);
                  return res.send({ token: token });
                });

@@ -2,7 +2,7 @@ angular.module('mgmtApp').directive('loginDirective', function(){
 
 var controller = function($scope, $auth){
   $scope.authenticate = function(provider) {
-    // localStorage.clear();
+    localStorage.clear();
     $auth.authenticate(provider)
     .then(function(response){
       console.log(response);
@@ -16,8 +16,10 @@ var controller = function($scope, $auth){
            $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
          })
          .catch(function(response) {
+           console.log(response);
            $scope.errorMessage = {};
            angular.forEach(response.data.message, function(message, field) {
+             console.log(field);
              $scope.loginForm[field].$setValidity('server', false);
              $scope.errorMessage[field] = response.data.message[field];
            });

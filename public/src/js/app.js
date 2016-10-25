@@ -42,7 +42,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     name: 'facebook',
     url: '/auth/facebook',
     authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-    // redirectUri: window.location.origin + '/',
+    redirectUri: window.location.origin + '/properties',
     requiredUrlParams: ['scope'],
     scope: ['email'],
     scopeDelimiter: ',',
@@ -53,7 +53,4 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
   })
    .run(function($rootScope, $window, $auth){
       console.log($window.localStorage.currentUser);
-
-
-
 })
