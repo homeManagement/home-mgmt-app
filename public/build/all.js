@@ -47,6 +47,18 @@ angular.module('mgmtApp', ['ui.router', 'satellizer']).config(function ($statePr
   console.log($window.localStorage.currentUser);
 });
 
+angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('propertySettingsCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService) {});
+
 angular.module('mgmtApp').directive('loginDirective', function () {
 
   var controller = function controller($scope, $auth) {
@@ -78,18 +90,6 @@ angular.module('mgmtApp').directive('loginDirective', function () {
 
   };
 });
-
-angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
-
-angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService) {});
-
-angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService) {});
-
-angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, mainService) {});
-
-angular.module('mgmtApp').controller('propertySettingsCtrl', function ($scope, mainService) {});
-
-angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService) {});
 
 angular.module('mgmtApp').service('mainService', function ($http) {});
 //# sourceMappingURL=all.js.map
