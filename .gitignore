@@ -1,3 +1,6 @@
 node_modules
 .DS_Store
 config.json
+all.js
+all.js.map
+main.css
