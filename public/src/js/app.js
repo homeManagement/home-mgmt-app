@@ -18,6 +18,4 @@ angular.module('homeMgmt', ['satellizer'])
   });
   })  .run(function($rootScope, $window, $auth){
       console.log($window.localStorage.currentUser);
-
-
 })
