@@ -88,7 +88,7 @@ app.post('/auth/signup', function(req, res){
 app.post('/auth/login', function(req, res) {
   console.log(req.body);
   db.getLocalUser([req.body.email], function(err, user){
-    console.log('xyxyxyxyxyx',user);
+    // console.log('xyxyxyxyxyx',user);
     if (!user){
       return res.status(401).send({message: 'Invalid email and/or password'});
     }
