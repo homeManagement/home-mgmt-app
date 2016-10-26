@@ -1,3 +1,9 @@
+/*
+--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+--□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡
+--□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡□≡
+--••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+*/
 var express = require('express');
 var bodyParser = require('body-parser');
 var massive = require('massive');
@@ -5,6 +11,7 @@ var cors = require('cors');
 var moment = require('moment');
 var jwt = require('jwt-simple');
 var request = require('request');
+var cronJob = require('cron').CronJob
 var config = require('./config.json');
 var connectionstring = config.connectionString;
 
@@ -19,6 +26,15 @@ var massiveInstance = massive.connectSync({connectionString:connectionstring})
 
 app.set('db', massiveInstance);
 var db = app.get('db');
+
+
+/*
+┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+└┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+AUTHENTICATION
+┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+└┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+*/
 
 /*
  |--------------------------------------------------------------------------
@@ -121,9 +137,7 @@ app.post('/auth/signup', function(req, res){
  |--------------------------------------------------------------------------
  */
 app.post('/auth/login', function(req, res) {
-  console.log(req.body);
   db.getLocalUser([req.body.email], function(err, user){
-    console.log('xyxyxyxyxyx',user[0]);
     if (!user[0]){
       return res.status(401).send({message: 'Invalid email and/or password'});
     }
@@ -132,17 +146,6 @@ app.post('/auth/login', function(req, res) {
     }
     res.send({ token: createJWT(user[0]) });
   })
-  // User.findOne({ email: req.body.email }, '+password', function(err, user) {
-  //   if (!user) {
-  //     return res.status(401).send({ message: 'Invalid email and/or password' });
-  //   }
-  //   user.comparePassword(req.body.password, function(err, isMatch) {
-  //     if (!isMatch) {
-  //       return res.status(401).send({ message: 'Invalid email and/or password' });
-  //     }
-  //     res.send({ token: createJWT(user) });
-  //   });
-  // });
 });
 
 
@@ -215,11 +218,49 @@ app.post('/auth/login', function(req, res) {
      });
    });
  });
+ /*
+ ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+ GRAB DATA
+ ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+ */
 
-/*
- |--------------------------------------------------------------------------
- | Start the Server
- |--------------------------------------------------------------------------
+ /*
+ ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+ CRON JOBS
+ ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+ */
+ var createAlertsPT = new cronJob({
+   cronTime: '0-59 * * * *',
+   onTick: function() {
+      /*
+        1. SQL query to pull property tasks that are due
+            three tables property_maintenance <=> property <=> users
+        2. SQL query that takes step one's info and inserts an alert
+            to create an alert we need:
+              property_id
+              user_id
+
+          DATEDIFF in Postgres: Select Cast('2016-10-26' as Date) - Cast('2016-04-27' as date);
+          basically if pulling from table can just subtract
+      */
+   },
+   start: false,
+   timeZone: 'America/Los_Angeles'
+ });
+ createAlertsPT.start();
+
+
+
+ /*
+ ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
+ START SERVER
+ ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
+ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
 
 app.listen(config.port, function(){
