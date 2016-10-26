@@ -19,6 +19,9 @@ var controller = function($scope, $auth, $state){
       })
       .catch(function(response){
         console.log(response.data);
+        $scope.errorMessage = {};
+        $scope.loginForm["email"].$setValidity('server', false);
+        $scope.errorMessage["email"] = response.data.message;
       });
 
   }
