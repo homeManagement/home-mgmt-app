@@ -22,6 +22,10 @@ var controller = function($scope, $auth, $state){
       });
 
   }
+  $scope.showSignUp = function () {
+      $scope.modalSignUpFunc = !$scope.modalSignUpFunc;
+      console.log('firing')
+    }
 }
 
 
