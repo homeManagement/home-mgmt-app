@@ -1,12 +1,18 @@
 angular.module('mgmtApp').directive('loginDirective', function(){
 
-var controller = function($scope, $auth){
+var controller = function($scope, $window, $location, $rootScope, $auth){
   $scope.authenticate = function(provider) {
-    localStorage.clear();
+    // localStorage.clear();
     $auth.authenticate(provider)
     .then(function(response){
-      console.log(response);
+      console.log(response.data);
+      // $window.localStorage.currentUser = JSON.stringify(response.data.user);
+      // $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+
     })
+    .catch(function(response) {
+      console.log(response.data);
+    });
   };
 
   $scope.emailLogin = function() {
