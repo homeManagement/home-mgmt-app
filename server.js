@@ -26,6 +26,7 @@ var db = app.get('db');
  |--------------------------------------------------------------------------
  */
 function ensureAuthenticated(req, res, next) {
+  console.log('hit ensure authenticated');
   if (!req.header('Authorization')) {
     return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
   }
@@ -59,6 +60,39 @@ function createJWT(user) {
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
+
+
+
+/*
+ |--------------------------------------------------------------------------
+ | GET /api/me
+ |--------------------------------------------------------------------------
+ */
+app.get('/api/me', ensureAuthenticated, function(req, res) {
+  console.log('Hit get /api/me');
+  User.findById(req.user, function(err, user) {
+    res.send(user);
+  });
+});
+
+/*
+ |--------------------------------------------------------------------------
+ | PUT /api/me
+ |--------------------------------------------------------------------------
+ */
+app.put('/api/me', ensureAuthenticated, function(req, res) {
+  console.log('Hit put /api/me');
+  User.findById(req.user, function(err, user) {
+    if (!user) {
+      return res.status(400).send({ message: 'User not found' });
+    }
+    user.displayName = req.body.displayName || user.displayName;
+    user.email = req.body.email || user.email;
+    user.save(function(err) {
+      res.status(200).end();
+    });
+  });
+});
 
 /*
  |--------------------------------------------------------------------------

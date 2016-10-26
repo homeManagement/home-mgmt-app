@@ -4,6 +4,11 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
   $urlRouterProvider.otherwise('/');
   $stateProvider
 
+  .state('home', {
+    url: "/" ,
+    controller:  'homeCtrl',
+    templateUrl: '../src/view/home.html'
+  })
   .state('properties', {
     url: "/properties" ,
     controller:  'propertiesCtrl',
@@ -52,5 +57,6 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
   });
   })
    .run(function($rootScope, $window, $auth){
-      console.log($window.localStorage.currentUser);
+      console.log('$auth.isAuthenticated',$auth.isAuthenticated());
+      console.log('$window.localStorage.currentUser',$window.localStorage.currentUser);
 })
