@@ -1,6 +1,6 @@
 angular.module('mgmtApp').directive('signupDirective', function(){
 
-var controller = function($scope, $auth){
+var controller = function($scope, $auth, $state){
   $scope.signUp = function() {
     var user = {
       firstName: $scope.firstName,
@@ -8,8 +8,14 @@ var controller = function($scope, $auth){
       email: $scope.email,
       password: $scope.password
     };
-    console.log(user);
     $auth.signup(user)
+      .then(function(response){
+        console.log(response.data);
+        $auth.login({ email: $scope.email, password: $scope.password })
+          .then(function(response) {
+            $state.go('properties')
+          })
+      })
       .catch(function(response){
         console.log(response.data);
       });

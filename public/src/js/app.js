@@ -7,37 +7,44 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
   .state('home', {
     url: "/" ,
     controller:  'homeCtrl',
-    templateUrl: '../src/view/home.html'
+    templateUrl: '../src/view/home.html',
+    restricted: false
   })
   .state('properties', {
     url: "/properties" ,
     controller:  'propertiesCtrl',
-    templateUrl: '../src/view/properties.html'
+    templateUrl: '../src/view/properties.html',
+    restricted: true
   })
   .state('createProperty', {
     url: "/createProperty",
     controller: 'createPropertyCtrl',
-    templateUrl: '../src/view/createProperty.html'
+    templateUrl: '../src/view/createProperty.html',
+    restricted: true
   })
   .state('mainAlerts', {
     url: "/mainAlerts",
     controller: 'mainAlertsCtrl',
-    templateUrl: '../src/view/mainAlerts.html'
+    templateUrl: '../src/view/mainAlerts.html',
+    restricted: true
   })
   .state('userSettings', {
     url: "/userSettings",
     controller: 'userSettingsCtrl',
-    templateUrl: '../src/view/userSettings.html'
+    templateUrl: '../src/view/userSettings.html',
+    restricted: true
   })
   .state('propertySettings', {
     url: "/propertySettings",
     controller: 'propertySettingsCtrl',
-    templateUrl: '../src/view/propertySettings.html'
+    templateUrl: '../src/view/propertySettings.html',
+    restricted: true
   })
   .state('contact', {
     url: "/contact",
     controller: 'contactCtrl',
-    templateUrl: '../src/view/contact.html'
+    templateUrl: '../src/view/contact.html',
+    restricted: false
   })
   $authProvider.loginUrl = '/auth/login';
   $authProvider.signUpUrl = '/auth/signup';
@@ -56,7 +63,15 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     popupOptions: { width: 580, height: 400 }
   });
   })
-   .run(function($rootScope, $window, $auth){
-      console.log('$auth.isAuthenticated',$auth.isAuthenticated());
-      console.log('$window.localStorage.currentUser',$window.localStorage.currentUser);
+   .run(function($rootScope, $state, $window, $auth){
+     $rootScope.$on('$stateChangeStart', function(e, to) {
+       console.log('$auth.isAuthenticated',$auth.isAuthenticated());
+       console.log('$window.localStorage',$window.localStorage);
+       if (!to.restricted) return;
+
+       if ($auth.isAuthenticated()) return;
+       else $state.go('home');
+
+
+     });
 })
