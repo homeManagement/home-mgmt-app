@@ -1,10 +1,18 @@
-<div class="signup-container">
+<div class="signup-container" ng-click="show()" ng-show="modalSignUpFunc">
   <div class="">
     <form class="" ng-submit="signUp()">
-      <input ng-model="firstName" type="text" name="name" value="" placeholder="First name">
-      <input ng-model="lastName" type="text" name="name" value="" placeholder="Last name">
-      <input server-error ng-model="email" type="text" name="name" value="" placeholder="email">
-      <input ng-model="password" type="text" name="name" value="" placeholder="password">
+      <div class="">
+        <input ng-model="firstName" type="text" name="name" value="" placeholder="First name">
+      </div>
+      <div class="">
+        <input ng-model="lastName" type="text" name="name" value="" placeholder="Last name">
+      </div>
+      <div class="">
+        <input server-error ng-model="email" type="text" name="name" value="" placeholder="email">
+      </div>
+      <div class="">
+        <input ng-model="password" type="text" name="name" value="" placeholder="password">
+      </div>
       <button type="submit" name="button">Sign up</button>
       <div ng-message="server">{{errorMessage.email}}</div>
     </form>
