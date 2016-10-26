@@ -8,6 +8,7 @@ var controller = function($scope, $auth, $state){
       email: $scope.email,
       password: $scope.password
     };
+    console.log(user);
     $auth.signup(user)
       .then(function(response){
         console.log(response.data);

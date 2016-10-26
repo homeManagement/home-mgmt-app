@@ -105,6 +105,7 @@ app.post('/auth/signup', function(req, res){
     if(user[0]){
     return res.status(409).send({message: 'Email is already taken'})
     }
+    console.log(req.body);
     db.createLocalUser([req.body.first_name, req.body.last_name, req.body.email, req.body.password], function(err,success){
       db.getLocalUser([req.body.email], function(err, existingUser) {
           var token = createJWT(existingUser);
