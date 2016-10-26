@@ -8,12 +8,13 @@
         <input ng-model="lastName" type="text" name="name" value="" placeholder="Last name">
       </div>
       <div class="">
-        <input ng-model="email" type="text" name="name" value="" placeholder="email">
+        <input server-error ng-model="email" type="text" name="name" value="" placeholder="email">
       </div>
       <div class="">
         <input ng-model="password" type="text" name="name" value="" placeholder="password">
       </div>
       <button type="submit" name="button">Sign up</button>
+      <div ng-message="server">{{errorMessage.email}}</div>
     </form>
   </div>
 </div>
