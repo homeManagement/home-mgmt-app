@@ -7,13 +7,14 @@ const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
 
 let paths = {
+  allScss: './public/src/css/**/*.scss',
   scssSource : './public/src/css/main.scss',
   scssDest : './public/build',
   jsSource: './public/src/js/**/*.js',
   jsDest: './public/build'
 }
 gulp.task('watch', function(){
-  gulp.watch(paths.scssSource, ['css']);
+  gulp.watch(paths.allScss, ['css']);
   gulp.watch(paths.jsSource, ['js']);
 });
 

@@ -1,0 +1,21 @@
+.header {
+    position: relative;
+    float: left;
+    height: 10vh;
+    width: 100%;
+    background: $main;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 18vw;
+    height: 10vh;
+    overflow: hidden;
+    background-color: #48bba0;
+    z-index: 200;
+}
