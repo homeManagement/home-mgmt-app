@@ -1,6 +1,6 @@
 angular.module('mgmtApp').directive('logoutDirective', function(){
 
-var controller = function($scope, $auth){
+var controller = function($scope, $auth, $window){
   $scope.logout = function(){
     console.log('logout 1',$window.localStorage)
     $auth.logout();
