@@ -22,7 +22,6 @@ var controller = function($scope, $window, $state, $auth){
            console.log(response);
            $scope.errorMessage = {};
            $scope.loginForm["email"].$setValidity('server', false);
-           console.log('hi ben',$scope.errorMessage["email"])
            $scope.errorMessage["email"] = response.data.message;
          });
      };
