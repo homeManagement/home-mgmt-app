@@ -1,14 +1,12 @@
 angular.module('mgmtApp').directive('loginDirective', function(){
 
-var controller = function($scope, $window, $location, $rootScope, $auth){
+var controller = function($scope, $window, $state, $auth){
   $scope.authenticate = function(provider) {
     // localStorage.clear();
     $auth.authenticate(provider)
     .then(function(response){
       console.log(response.data);
-      // $window.localStorage.currentUser = JSON.stringify(response.data.user);
-      // $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
-
+      $state.go('properties')
     })
     .catch(function(response) {
       console.log(response.data);
@@ -18,17 +16,14 @@ var controller = function($scope, $window, $location, $rootScope, $auth){
   $scope.emailLogin = function() {
        $auth.login({ email: $scope.email, password: $scope.password })
          .then(function(response) {
-           $window.localStorage.currentUser = JSON.stringify(response.data.user);
-           $rootScope.currentUser = JSON.parse($window.localStorage.currentUser);
+           $state.go('properties')
          })
          .catch(function(response) {
            console.log(response);
            $scope.errorMessage = {};
-           angular.forEach(response.data.message, function(message, field) {
-             console.log(field);
-             $scope.loginForm[field].$setValidity('server', false);
-             $scope.errorMessage[field] = response.data.message[field];
-           });
+           $scope.loginForm["email"].$setValidity('server', false);
+           console.log('hi ben',$scope.errorMessage["email"])
+           $scope.errorMessage["email"] = response.data.message;
          });
      };
 }
