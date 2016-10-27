@@ -126,7 +126,7 @@ app.post('/auth/signup', function(req, res){
     console.log(req.body);
     db.createLocalUser([req.body.firstName, req.body.lastName, req.body.email, req.body.password], function(err,success){
       db.getLocalUser([req.body.email], function(err, existingUser) {
-          var token = createJWT(existingUser);
+          var token = createJWT(existingUser[0]);
           return res.send({ token: token });
         });
     });
@@ -206,12 +206,12 @@ app.post('/auth/login', function(req, res) {
          // Step 3. Create a new user account or return an existing one.
          db.getUser([profile.id], function(err, existingUser) {
            if (existingUser[0]) {
-             var token = createJWT(existingUser);
+             var token = createJWT(existingUser[0]);
              return res.send({ token: token });
            }
            db.createUser([profile.id, profile.first_name, profile.last_name, profile.email,'https://graph.facebook.com/' + profile.id + '/picture?type=large'], function(err,success){
              db.getUser([profile.id], function(err, existingUser) {
-                 var token = createJWT(existingUser);
+                 var token = createJWT(existingUser[0]);
                  return res.send({ token: token });
                });
            });
@@ -240,25 +240,20 @@ app.get('/properties/:token', propertyCtrl.getProperties);
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
- var createAlertsPT = new cronJob({
+ var createAlerts = new cronJob({
    cronTime: '0-59 * * * *',
    onTick: function() {
-      /*
-        1. SQL query to pull property tasks that are due
-            three tables property_maintenance <=> property <=> users
-        2. SQL query that takes step one's info and inserts an alert
-            to create an alert we need:
-              property_id
-              user_id
-
-          DATEDIFF in Postgres: Select Cast('2016-10-26' as Date) - Cast('2016-04-27' as date);
-          basically if pulling from table can just subtract
-      */
+      db.getDueTasks(function (err,response){
+        response.map(function(currentValue,index,array){
+          db.createAlert([currentValue.property_id,currentValue.user_id,currentValue.next_date],function(err,success){
+            console.log('ERROR',err,'SUCCESS',success);
+          })
+        })
+      })
    },
-   start: false,
-   timeZone: 'America/Los_Angeles'
+   start: false
  });
- createAlertsPT.start();
+ // createAlerts.start();
 
 
 
