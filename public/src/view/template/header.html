@@ -1,7 +1,25 @@
-<div class='header'>
-  <div class='menu-btn'>
+<section class='header-container'>
+  <div class='menu-btn-box'>
+    <button ng-click="showMenu()" class="menu-btn">menu</button>
   </div>
+  <div class="view-name-box">
+    <div class="view-name">{{viewname}}</div>
+  </div>
+  <div class="logo-box">
+    <img class="logo-img" src="../../src/temp_logo.png"/>
+  </div>
+</section>
+<div class="menu" ng-if="menuShowing">
+  <ul>
+    <li class="show-login" ng-click="showLogin()">login</li></br>
+  <a ui-sref='properties' ng-click="hideMenu()"><li>properties</li></a></br>
+    <li>upcoming</li></br>
+    <li>user settings</li></br>
+    <li>about</li>
 </div>
+
+
+
 
 
 
