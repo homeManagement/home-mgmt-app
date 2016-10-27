@@ -3,15 +3,18 @@
   flex-direction: column;
   align-items: center;
 }
-.newProp {
+.prop {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
   text-align: center;
   margin-bottom: 40px;
-  height: 10vh;
+  height: 20vh;
   width: 80%;
   border: 1px solid red;
   text-decoration: none;
+}
+.newProp{
+  height: 10vh;
 }

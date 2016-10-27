@@ -5,6 +5,7 @@
 --••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 */
 var express = require('express');
+var app = module.exports = express();
 var bodyParser = require('body-parser');
 var massive = require('massive');
 var cors = require('cors');
@@ -14,8 +15,9 @@ var request = require('request');
 var cronJob = require('cron').CronJob
 var config = require('./config.json');
 var connectionstring = config.connectionString;
+var propertyCtrl = require ('./server/controllers/propertyCtrl')
 
-var app = express();
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -225,6 +227,11 @@ app.post('/auth/login', function(req, res) {
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
+ // console.log(propertyCtrl.getProperties);
+app.get('/properties/:token', propertyCtrl.getProperties);
+
+
+
 
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
