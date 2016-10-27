@@ -1,21 +1,93 @@
-.header {
-    position: relative;
-    float: left;
-    height: 10vh;
-    width: 100%;
-    background: $main;
-    top: 0px;
-    left: 0px;
-    z-index: 2;
+a {
+  text-decoration: none;
+  color: black;
 }
+.header-container {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  float: left;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  // z-index: 138;
 
-.menu-btn {
-    position: fixed;
+
+
+
+  .menu-btn-box {
+    //position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: 0px;
     left: 0px;
-    width: 18vw;
-    height: 10vh;
+    width: 18%;
+    height: 100%;
     overflow: hidden;
-    background-color: #48bba0;
-    z-index: 200;
+    background-color: lightgrey;
+
+      .menu-btn {
+        position: relative;
+    font-size: 2.7rem;
+    text-align: center;
+    letter-spacing: 1.4px;
+    font-family: 'Raleway', sans-serif;
+    justify-content: center;
+    align-items: center;
+      }
+    // flex-grow: 1;
+  }
+
+  .view-name-box {
+    //position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64%;
+    height: 100%;
+    background: #C1E6F2;
+    // flex-grow: 3;
+    .view-name {
+      position: relative;
+      font-size: 3.8rem;
+      text-align: center;
+      letter-spacing: 1.4px;
+      font-family: 'Raleway', sans-serif;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+  }
+  .logo-box {
+    //position: absolute;
+    top: 0px;
+    right:0px;
+    width: 18%;
+    height: 100%;
+    overflow: hidden;
+    background: $main;
+    // flex-grow: 1
+      .logo-img {
+
+        max-width: 100%;
+      }
+  }
+}
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: space-around;
+
+  position: absolute;
+  top: 10vh;
+  border: 1px solid blue;
+  font-family: 'Raleway', sans-serif;
+
+  height: 90vh;
+  width: 100%;
+  font-size: 3.8rem;
+
 }
