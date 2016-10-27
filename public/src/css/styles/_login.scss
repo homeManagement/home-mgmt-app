@@ -1,0 +1,19 @@
+.login-container {
+  text-align: center;
+}
+
+.credential {
+  width: 386px;
+  height: 64px;
+  margin: 10px;
+  border: 1px solid grey;
+  font-size: 16px;
+  display: flex;
+}
+
+.input-lg {
+  font-family: $body-font;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 386px;
+}

@@ -1,4 +1,4 @@
-@import 'https://fonts.googleapis.com/css?family=Raleway';
+@import url("https://fonts.googleapis.com/css?family=Raleway");
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.5.1
@@ -2366,7 +2366,8 @@
   animation-name: slideOutUp; }
 
 .main-container {
-  margin-top: 10vh; }
+  margin-top: 10vh;
+  font-family: "Raleway", sans-serif; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -2484,6 +2485,23 @@ a {
   height: 90vh;
   width: 100%;
   font-size: 3.8rem; }
+
+.login-container {
+  text-align: center; }
+
+.credential {
+  width: 386px;
+  height: 64px;
+  margin: 10px;
+  border: 1px solid grey;
+  font-size: 16px;
+  display: flex; }
+
+.input-lg {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  width: 386px; }
 
 .content-properties {
   display: flex;

@@ -46,6 +46,11 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     templateUrl: '../src/view/contact.html',
     restricted: false
   })
+  .state('login', {
+    url: "/login",
+    templateUrl: '../src/view/login.html',
+    restricted: false
+  })
   $authProvider.loginUrl = '/auth/login';
   $authProvider.signUpUrl = '/auth/signup';
   $authProvider.facebook({

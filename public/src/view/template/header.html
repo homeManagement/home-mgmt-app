@@ -10,9 +10,9 @@
   </div>
 </section>
 <div class="menu" ng-if="menuShowing">
-  <ul id="bounceMenu">
-    <li class="show-login" ng-click="showLogin()">login</li></br>
-  <a ui-sref='properties' ng-click="hideMenu()"><li>properties</li></a></br>
+  <ul>
+    <a ui-sref="login" ng-click="hideMenu()"><li>login</li></a></br>
+    <a ui-sref="properties" ng-click="hideMenu()"><li>properties</li></a></br>
     <li>upcoming</li></br>
     <li>user settings</li></br>
     <li>about</li>
@@ -21,11 +21,6 @@
 
 
 
-
-
-<div class="show-login" ng-click="showLogin()">
-  Log In
-</div>
 <!-- <div class="show-signup" ng-click="showSignUp()">
   Sign Up
 </div> -->
@@ -33,8 +28,5 @@
 <logout-directive></logout-directive>
 </div>
 
-
-<!-- LOGIN MODAL -->
-<login-directive></login-directive>
 <!-- SIGN UP MODAL -->
 <signup-directive></signup-directive>
