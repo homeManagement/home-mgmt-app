@@ -16,7 +16,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     templateUrl: '../src/view/properties.html',
     restricted: true
   })
-  .state('createProperty', {
+  .state('create property', {
     url: "/createProperty",
     controller: 'createPropertyCtrl',
     templateUrl: '../src/view/createProperty.html',
