@@ -243,10 +243,24 @@ app.post('/auth/login', function(req, res) {
             to create an alert we need:
               property_id
               user_id
+              due_date
+              create_date
+              url
 
           DATEDIFF in Postgres: Select Cast('2016-10-26' as Date) - Cast('2016-04-27' as date);
           basically if pulling from table can just subtract
+          [ anonymous {
+    user_id: 3,
+    property_id: 1,
+    next_date: 2016-10-27T06:00:00.000Z } ]
       */
+      db.getDueTasksPT(function (err,response){
+        console.log(response);
+
+        response.map(function(currentValue,index,array){
+          db.createAlert([],function(err,success))
+        })
+      })
    },
    start: false,
    timeZone: 'America/Los_Angeles'
