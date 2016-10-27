@@ -1,10 +1,11 @@
-         <div class="container" ng-click="show()" ng-show="modalFunc">
+         <div class="main-container">
             <div class="center-form panel">
               <div class="panel-body">
-                <h4 class="text-center"><i class="ion-log-in"></i> Log in</h4>
                 <form name="loginForm" ng-submit="emailLogin()" novalidate>
                   <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
-                    <input server-error class="form-control input-lg" type="text" name="email" ng-model="email" placeholder="Email" required autofocus>
+                    <div class="credential">
+                      <input server-error class="form-control input-lg" type="text" name="email" ng-model="email" placeholder="Email" required autofocus>
+                    </div>
                     <span class="ion-at form-control-feedback"></span>
                     <div class="help-block" ng-if="loginForm.email.$dirty" ng-messages="loginForm.email.$error">
                       <div ng-message="required">Please enter your email</div>
@@ -12,7 +13,9 @@
                     </div>
                   </div>
                   <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
-                    <input server-error class="form-control input-lg" type="password" name="password" ng-model="password" placeholder="Password" required>
+                    <div class="credential">
+                      <input server-error class="form-control input-lg" type="password" name="password" ng-model="password" placeholder="Password" required>
+                    </div>
                     <span class="ion-key form-control-feedback"></span>
                     <div class="help-block" ng-if="loginForm.password.$dirty" ng-messages="loginForm.password.$error">
                       <div ng-message="required">Please enter your password</div>
@@ -31,9 +34,9 @@
                     <hr>
                   </div>
                 </form>
-                <button class="btn btn-block btn-instagram" ng-click="authenticate('facebook')">
-                  <i class="ion-social-instagram"></i> Sign in with Facebook
-                </button>
+                <div class="fb-signin" ng-click="authenticate('facebook')">
+                   Log in with Facebook
+                </div>
               </div>
             </div>
             <!-- probably want to move somewhere -->
