@@ -1,1 +1,1 @@
-SELECT facebookID from users where facebookID = $1;
+SELECT * from users where facebookID = $1;
