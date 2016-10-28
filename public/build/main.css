@@ -2477,7 +2477,7 @@ a {
   justify-content: center;
   align-items: center;
   align-content: space-around;
-  background-color: rgba(154, 186, 234, 0.9);
+  background-color: rgba(193, 186, 234, 0.9);
   position: absolute;
   top: 10vh;
   border: 1px solid blue;
@@ -2485,6 +2485,20 @@ a {
   height: 90vh;
   width: 100%;
   font-size: 3.8rem; }
+
+.fade.ng-enter {
+  transition: .2s linear all;
+  opacity: 0; }
+
+.fade.ng-enter.ng-enter-active {
+  opacity: 1; }
+
+.fade.ng-leave {
+  transition: .2s linear all;
+  opacity: 1; }
+
+.fade.ng-leave.ng-leave-active {
+  opacity: 0; }
 
 .login-container {
   text-align: center; }

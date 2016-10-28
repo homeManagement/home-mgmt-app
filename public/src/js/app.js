@@ -1,5 +1,5 @@
 
-angular.module('mgmtApp', ['ui.router', 'satellizer'])
+angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
@@ -16,7 +16,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     templateUrl: '../src/view/properties.html',
     restricted: true
   })
-  .state('create property', {
+  .state('createProperty', {
     url: "/createProperty",
     controller: 'createPropertyCtrl',
     templateUrl: '../src/view/createProperty.html',
