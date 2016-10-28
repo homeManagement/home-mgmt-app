@@ -231,11 +231,11 @@ app.post('/auth/login', function(req, res) {
  */
             //////GET PROPERTIES FOR EACH user_id//////////////////////
 app.get('/properties/:token', propertyCtrl.getProperties);
-
-
-
-
 app.post('/properties', propertyCtrl.createProperty);
+
+app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
+
+app.post('/maintenancetasks', propertyCtrl.insertTasks);
 
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
