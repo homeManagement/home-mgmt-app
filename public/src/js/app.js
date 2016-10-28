@@ -1,5 +1,5 @@
 
-angular.module('mgmtApp', ['ui.router', 'satellizer'])
+angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
@@ -22,25 +22,25 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     templateUrl: '../src/view/createProperty.html',
     restricted: true
   })
-  .state('mainAlerts', {
+  .state('upcoming', {
     url: "/mainAlerts",
     controller: 'mainAlertsCtrl',
     templateUrl: '../src/view/mainAlerts.html',
     restricted: true
   })
-  .state('userSettings', {
+  .state('user settings', {
     url: "/userSettings",
     controller: 'userSettingsCtrl',
     templateUrl: '../src/view/userSettings.html',
     restricted: true
   })
-  .state('propertySettings', {
+  .state('property settings', {
     url: "/propertySettings",
     controller: 'propertySettingsCtrl',
     templateUrl: '../src/view/propertySettings.html',
     restricted: true
   })
-  .state('contact', {
+  .state('about', {
     url: "/contact",
     controller: 'contactCtrl',
     templateUrl: '../src/view/contact.html',
