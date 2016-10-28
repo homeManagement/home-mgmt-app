@@ -7,6 +7,7 @@ this.getProperties = function(token){
     method: 'GET',
     url: '/properties/' + token
   }).then(function(res){
+    console.log("res",res);
     return res.data
   })
 }
