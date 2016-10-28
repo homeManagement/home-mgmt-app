@@ -17,7 +17,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     restricted: true
   })
   .state('createProperty', {
-    url: "/createProperty/:userId",
+    url: "/createProperty",
     controller: 'createPropertyCtrl',
     templateUrl: '../src/view/createProperty.html',
     restricted: true

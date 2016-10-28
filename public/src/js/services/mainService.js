@@ -7,7 +7,6 @@ this.getProperties = function(token){
     method: 'GET',
     url: '/properties/' + token
   }).then(function(res){
-    console.log("res",res);
     return res.data;
   })
 }
@@ -21,5 +20,23 @@ this.createProperty = function(property){
   })
 }
 
+this.getDefualtTasks = function(propertyId){
+  return $http({
+    method: 'GET',
+    url: '/defaulttasks/' + propertyId
+  }).then(function(res){
+    return res.data;
+  })
+}
+
+this.insertTasks = function(tasks) {
+  return $http({
+    method: 'POST',
+    url: '/maintenancetasks',
+    data: tasks
+  }).then(function(res){
+    return res;
+  })
+}
 
 })

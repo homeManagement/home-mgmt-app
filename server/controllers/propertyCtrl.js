@@ -16,9 +16,25 @@ module.exports ={
   },
 
   createProperty: function(req, res){
-    db.createProperty([req.body.userId, req.body.name, req.body.zipcode, req.body.typeId], function(err, propertyId){
+    var token = req.body.token;
+    var user = jwt.decode(token, config.TOKEN_SECRET);
+    db.createProperty([user.sub, req.body.name, req.body.zipcode, req.body.typeId], function(err, propertyId){
       res.status(200).json(propertyId);
     })
+  },
+
+  getDefaultTasks: function(req, res){
+    db.getDefaultTasks(function(err,defaulttasks){
+      res.status(200).json(defaulttasks);
+    });
+  },
+
+  insertTasks: function(req, res){
+    req.body.map(function(task){
+      db.insertTasks([task.propertyId,task.day_interval,task.name,task.season,task.outdoor,task.type_id],function(err,success){
+      })
+    })
+    res.sendStatus(201);
   }
 
 
