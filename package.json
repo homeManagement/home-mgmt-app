@@ -33,7 +33,8 @@
     "massive": "^2.5.0",
     "moment": "^2.15.2",
     "request": "^2.75.0",
-    "satellizer": "^0.15.5"
+    "satellizer": "^0.15.5",
+    "twilio": "^2.11.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1"
