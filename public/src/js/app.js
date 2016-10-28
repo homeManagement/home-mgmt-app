@@ -16,7 +16,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     templateUrl: '../src/view/properties.html',
     restricted: true
   })
-  .state('createProperty', {
+  .state('create property', {
     url: "/createProperty",
     controller: 'createPropertyCtrl',
     templateUrl: '../src/view/createProperty.html',
@@ -44,6 +44,11 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     url: "/contact",
     controller: 'contactCtrl',
     templateUrl: '../src/view/contact.html',
+    restricted: false
+  })
+  .state('login', {
+    url: "/login",
+    templateUrl: '../src/view/login.html',
     restricted: false
   })
   $authProvider.loginUrl = '/auth/login';

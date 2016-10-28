@@ -5,6 +5,7 @@
 --••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 */
 var express = require('express');
+var app = module.exports = express();
 var bodyParser = require('body-parser');
 var massive = require('massive');
 var cors = require('cors');
@@ -16,7 +17,7 @@ var config = require('./config.json');
 var twilio = require('twilio')(config.twilioAccountSID,config.twilioAuthToken);
 var connectionstring = config.connectionString;
 
-var app = express();
+
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -27,6 +28,8 @@ var massiveInstance = massive.connectSync({connectionString:connectionstring})
 
 app.set('db', massiveInstance);
 var db = app.get('db');
+var propertyCtrl = require ('./server/controllers/propertyCtrl')
+
 
 
 /*
@@ -226,6 +229,11 @@ app.post('/auth/login', function(req, res) {
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
+            //////GET PROPERTIES FOR EACH user_id//////////////////////
+app.get('/properties/:token', propertyCtrl.getProperties);
+
+
+
 
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐

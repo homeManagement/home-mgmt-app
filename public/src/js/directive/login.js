@@ -32,7 +32,7 @@ var controller = function($scope, $window, $state, $auth){
 return{
   restrict: 'AE',
   controller: controller,
-  templateUrl: '../src/view/template/login.html'
+  templateUrl: '../src/view/template/login_template.html'
 
 }
 
