@@ -15,7 +15,6 @@ var request = require('request');
 var cronJob = require('cron').CronJob
 var config = require('./config.json');
 var connectionstring = config.connectionString;
-var propertyCtrl = require ('./server/controllers/propertyCtrl')
 
 
 
@@ -28,6 +27,8 @@ var massiveInstance = massive.connectSync({connectionString:connectionstring})
 
 app.set('db', massiveInstance);
 var db = app.get('db');
+var propertyCtrl = require ('./server/controllers/propertyCtrl')
+
 
 
 /*
@@ -227,7 +228,7 @@ app.post('/auth/login', function(req, res) {
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
- // console.log(propertyCtrl.getProperties);
+            //////GET PROPERTIES FOR EACH user_id//////////////////////
 app.get('/properties/:token', propertyCtrl.getProperties);
 
 
