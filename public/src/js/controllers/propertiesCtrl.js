@@ -4,8 +4,8 @@ angular.module('mgmtApp')
 $scope.getProperties = function(token){
   mainService.getProperties(token)
   .then(function(res){
-    console.log(res);
     $scope.properties = res;
+    $scope.userId = $scope.properties[0]["user_id"]
   })
 }
 $scope.getProperties($window.localStorage.satellizer_token)

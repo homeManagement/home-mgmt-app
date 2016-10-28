@@ -1,9 +1,9 @@
          <div class="main-container">
-            <div class="center-form panel">
+            <div class="login-container panel">
               <div class="panel-body">
                 <form name="loginForm" ng-submit="emailLogin()" novalidate>
                   <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
-                    <div class="credential">
+                    <div class="credential submit-btn">
                       <input server-error class="form-control input-lg" type="text" name="email" ng-model="email" placeholder="Email" required autofocus>
                     </div>
                     <span class="ion-at form-control-feedback"></span>
@@ -13,7 +13,7 @@
                     </div>
                   </div>
                   <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
-                    <div class="credential">
+                    <div class="credential submit-btn">
                       <input server-error class="form-control input-lg" type="password" name="password" ng-model="password" placeholder="Password" required>
                     </div>
                     <span class="ion-key form-control-feedback"></span>
@@ -22,23 +22,21 @@
                       <div ng-message="server">{{errorMessage.password}}</div>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-block btn-success" ng-disabled="loginForm.$invalid">Log in</button>
+                  <button type="submit" class="submit-btn login-btn" ng-disabled="loginForm.$invalid">Log in</button>
                   <br/>
                   <p class="text-center text-muted">
-                    <div class="show-signup" ng-click="showSignUp()">
-                      <small>Don't have an account yet? <a href="#/signup">Sign up</a></small>
+                    <div class="signup-or-separator">
+                      <h6 class="text">or</h6>
+                      <hr>
+                    </div>
+                    <div class="fb-signin submit-btn" ng-click="authenticate('facebook')">
+                       Log in with Facebook
+                    </div>
+                    <div class="show-signup">
+                      <div class="pull-left">Don't have an account yet?</div> <div class="pull-right" ui-sref="sign up">Sign up</div>
                     </div>
                   </p>
-                  <div class="signup-or-separator">
-                    <h6 class="text">or</h6>
-                    <hr>
-                  </div>
                 </form>
-                <div class="fb-signin" ng-click="authenticate('facebook')">
-                   Log in with Facebook
-                </div>
               </div>
             </div>
-            <!-- probably want to move somewhere -->
-            <logout-directive></logout-directive>
          </div>
