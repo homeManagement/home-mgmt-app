@@ -1,12 +1,12 @@
 
-<section class=" main-container content-properties">
+<section class="main-container content-properties">
 
 
   <div class="prop" ui-sref="mainAlerts" ng-repeat="prop in properties" >
 {{prop.name}} {{prop.zipcode}}
   </div>
 
-  <div class="prop newProp" ui-sref="createProperty">
+  <div class="prop newProp" ui-sref="createProperty({userId: userId })">
       + add new property
     </div>
 
