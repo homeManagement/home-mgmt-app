@@ -14,7 +14,7 @@ angular.module('mgmtApp')
 
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){
-          console.log($state.current.name);
+        //  console.log($state.current.name);
           $scope.viewname = $state.current.name;
        })
 
