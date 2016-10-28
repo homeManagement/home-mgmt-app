@@ -13,7 +13,7 @@ var controller = function($scope, $auth, $window){
 return{
   restrict: 'AE',
   controller: controller,
-  template: '<button type="button" ng-click="logout()">logout</button>'
+  template: '<button class="logout-btn" type="button" ng-click="logout()">logout</button>'
 
 }
 

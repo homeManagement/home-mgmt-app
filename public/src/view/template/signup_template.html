@@ -1,0 +1,22 @@
+<div class="login-container">
+  <div class="">
+    <form class="" ng-submit="signUp()">
+      <div class="credential submit-btn">
+        <input class="input-lg" ng-model="firstName" type="text" name="name" value="" placeholder="First name">
+      </div>
+      <div class="credential submit-btn">
+        <input class="input-lg" ng-model="lastName" type="text" name="name" value="" placeholder="Last name">
+      </div>
+      <div class="credential submit-btn">
+        <input class="input-lg" server-error ng-model="email" type="text" name="name" value="" placeholder="email" ng-messages="loginForm.email.$error">
+      </div>
+      <div class="credential submit-btn">
+        <input class="input-lg" ng-model="password" type="text" name="name" value="" placeholder="password" ng-messages="loginForm.password.$error">
+      </div>
+      <div>
+        <button class="submit-btn login-btn" type="submit" name="button" ng-disabled="loginForm.$invalid">Sign up</button>
+      </div>
+      <div ng-message="server">{{errorMessage.email}}</div>
+    </form>
+  </div>
+</div>

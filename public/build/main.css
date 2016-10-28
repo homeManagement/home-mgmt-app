@@ -2444,7 +2444,7 @@ a {
       font-size: 2.7rem;
       text-align: center;
       letter-spacing: 1.4px;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       justify-content: center;
       align-items: center; }
   .header-container .view-name-box {
@@ -2459,7 +2459,7 @@ a {
       font-size: 3.8rem;
       text-align: center;
       letter-spacing: 1.4px;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       justify-content: center;
       align-items: center; }
   .header-container .logo-box {
@@ -2481,7 +2481,7 @@ a {
   position: absolute;
   top: 10vh;
   border: 1px solid blue;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   height: 90vh;
   width: 100%;
   font-size: 3.8rem; }
@@ -2501,21 +2501,67 @@ a {
   opacity: 0; }
 
 .login-container {
-  text-align: center; }
+  text-align: center;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.panel-body {
+  display: flex;
+  justify-content: center; }
 
 .credential {
-  width: 386px;
-  height: 64px;
-  margin: 10px;
   border: 1px solid grey;
   font-size: 16px;
   display: flex; }
 
 .input-lg {
   font-family: "Raleway", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.7rem;
   text-align: center;
-  width: 386px; }
+  width: 613px; }
+
+.submit-btn {
+  width: 613px;
+  height: 121px;
+  margin: 31px;
+  border: 1px solid grey;
+  font-size: 1.7rem; }
+
+.login-btn {
+  background-color: #C1E6F2;
+  border: 1px solid #C1E6F2; }
+
+.fb-signin {
+  text-align: center;
+  padding: 42px;
+  border-color: #3B5998;
+  background-color: #3B5998;
+  color: #fff; }
+
+.signup-or-separator {
+  height: 29px;
+  margin: 5px 0;
+  text-align: center;
+  background: none; }
+
+.signup-or-separator hr {
+  width: 90%;
+  margin: -16px auto 10px auto;
+  border-top: 1px solid #dce0e0; }
+
+.signup-or-separator .text {
+  display: inline-block;
+  padding: 8px;
+  margin: 0;
+  background-color: #fff; }
+
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
 
 .content-properties {
   display: flex;
