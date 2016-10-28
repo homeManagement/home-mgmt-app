@@ -21,6 +21,7 @@ angular.module('mgmtApp')
           $scope.viewname = $state.current.name;
        })
 
+       $('#bounceMenu').addClass('animated slideInDown');
 
   }
 
