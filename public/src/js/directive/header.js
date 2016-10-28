@@ -6,24 +6,23 @@ angular.module('mgmtApp')
         console.log('firing')
       }
       $scope.menuShowing = false;
-      $scope.showMenu = function() {
+      $scope.toggleMenu = function() {
 
         $scope.menuShowing = !$scope.menuShowing;
         console.log($scope.menuShowing);
       }
 
-      $scope.hideMenu = function() {
-        $scope.menuShowing = false;
-      }
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){
         //  console.log($state.current.name);
           $scope.viewname = $state.current.name;
        })
 
-       $('#bounceMenu').addClass('animated slideInDown');
 
-  }
+     };
+
+
+
 
   return {
     restrict: 'AE',

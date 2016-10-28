@@ -36,7 +36,7 @@ var controller = function($scope, $auth, $state){
 return{
   restrict: 'AE',
   controller: controller,
-  templateUrl: '../src/view/template/signup.html'
+  templateUrl: '../src/view/template/signup_template.html'
 
 }
 
