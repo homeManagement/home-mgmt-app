@@ -46,9 +46,14 @@ angular.module('mgmtApp', ['ui.router', 'satellizer'])
     templateUrl: '../src/view/contact.html',
     restricted: false
   })
-  .state('login', {
+  .state('log in', {
     url: "/login",
     templateUrl: '../src/view/login.html',
+    restricted: false
+  })
+  .state('sign up', {
+    url: "/signup",
+    templateUrl: '../src/view/signup.html',
     restricted: false
   })
   $authProvider.loginUrl = '/auth/login';

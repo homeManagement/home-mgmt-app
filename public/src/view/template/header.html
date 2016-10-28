@@ -11,22 +11,10 @@
 </section>
 <div class="menu" ng-if="menuShowing">
   <ul>
-    <a ui-sref="login" ng-click="hideMenu()"><li>login</li></a></br>
+    <a ui-sref="log in" ng-click="hideMenu()"><li>log in</li></a></br>
     <a ui-sref="properties" ng-click="hideMenu()"><li>properties</li></a></br>
     <li>upcoming</li></br>
     <li>user settings</li></br>
     <li>about</li>
+    <li><logout-directive></logout-directive></li>
 </div>
-
-
-
-
-<!-- <div class="show-signup" ng-click="showSignUp()">
-  Sign Up
-</div> -->
-<div class="logout">
-<logout-directive></logout-directive>
-</div>
-
-<!-- SIGN UP MODAL -->
-<signup-directive></signup-directive>
