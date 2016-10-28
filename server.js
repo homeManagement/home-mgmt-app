@@ -13,6 +13,7 @@ var jwt = require('jwt-simple');
 var request = require('request');
 var cronJob = require('cron').CronJob
 var config = require('./config.json');
+var twilio = require('twilio')(config.twilioAccountSID,config.twilioAuthToken);
 var connectionstring = config.connectionString;
 
 var app = express();
@@ -38,7 +39,7 @@ AUTHENTICATION
 
 /*
  |--------------------------------------------------------------------------
- | Login Required Middleware
+ | Login Required Middleware (not sure when this is used)
  |--------------------------------------------------------------------------
  */
 function ensureAuthenticated(req, res, next) {
@@ -81,7 +82,7 @@ function createJWT(user) {
 
 /*
  |--------------------------------------------------------------------------
- | GET /api/me
+ | GET /api/me  (not sure when this is used)
  |--------------------------------------------------------------------------
  */
 app.get('/api/me', ensureAuthenticated, function(req, res) {
@@ -93,7 +94,7 @@ app.get('/api/me', ensureAuthenticated, function(req, res) {
 
 /*
  |--------------------------------------------------------------------------
- | PUT /api/me
+ | PUT /api/me  (not sure when this is used)
  |--------------------------------------------------------------------------
  */
 app.put('/api/me', ensureAuthenticated, function(req, res) {
@@ -233,12 +234,18 @@ app.post('/auth/login', function(req, res) {
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
+
+ /*
+  |--------------------------------------------------------------------------
+  | Create Alerts due that day (runs at 1am)
+  |--------------------------------------------------------------------------
+  */
  var createAlerts = new cronJob({
-   cronTime: '0-59 * * * *',
+   cronTime: '* 1 * * *',
    onTick: function() {
       db.getDueTasks(function (err,response){
         response.map(function(currentValue,index,array){
-          db.createAlert([currentValue.property_id,currentValue.user_id,currentValue.next_date],function(err,success){
+          db.createAlert([currentValue.property_maintenance_id,currentValue.property_id,currentValue.user_id,currentValue.next_date],function(err,success){
             console.log('ERROR',err,'SUCCESS',success);
           })
         })
@@ -246,8 +253,36 @@ app.post('/auth/login', function(req, res) {
    },
    start: false
  });
- // createAlerts.start();
+ createAlerts.start();
 
+ /*
+  |--------------------------------------------------------------------------
+  | Grabs and sends alerts due that day (currently just text, runs at 9am)
+  |--------------------------------------------------------------------------
+  */
+  var sendAlerts = new cronJob ({
+    cronTime: '* 9 * * *',
+    onTick: function() {
+      db.getAlerts(function(err,response){
+        response.map(function(alert){
+          //twilio
+          var number = '""+1' + alert.phonenumber + '""';
+          console.log(number);
+          twilio.messages.create(
+            {
+              to: number,
+              from: config.twilioNumber,
+              body: 'IT WORKED DO STUFF'
+            },function(err, message){
+            console.log(message);
+          });
+        })
+      })
+    },
+    start: false
+  });
+
+  sendAlerts.start();
 
 
  /*
