@@ -11,9 +11,10 @@
 </section>
 
 
-<div class="menu fade" ng-if="menuShowing">
-  <ul id="menu-items-list">
-    <li class="show-login" ng-click="showLogin()">login</li></br>
+<div class="menu fade" ng-show="menuShowing">
+
+  <ul class="menu-items-list" >
+    <a ui-sref='login' ng-click="toggleMenu()"><li>login</li></br>
     <a ui-sref='properties' ng-click="toggleMenu()"><li>properties</li></a></br>
     <a ui-sref='mainAlerts' ng-click="toggleMenu()"><li>upcoming</li></a></br>
     <a ui-sref='userSettings' ng-click="toggleMenu()"><li>user settings</li></a></br>
@@ -25,9 +26,6 @@
 
 
 
-<!-- <div class="show-signup" ng-click="showSignUp()">
-  Sign Up
-</div> -->
 <div class="logout">
 <logout-directive></logout-directive>
 </div>

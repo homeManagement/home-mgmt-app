@@ -2428,7 +2428,8 @@ a {
   float: left;
   height: 10vh;
   width: 100%;
-  display: flex; }
+  display: flex;
+  z-index: 138; }
   .header-container .menu-btn-box {
     display: flex;
     align-items: center;
@@ -2480,7 +2481,6 @@ a {
   background-color: rgba(193, 186, 234, 0.9);
   position: absolute;
   top: 10vh;
-  border: 1px solid blue;
   font-family: 'Raleway', sans-serif;
   height: 90vh;
   width: 100%;
