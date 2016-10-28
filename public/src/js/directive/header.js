@@ -7,7 +7,17 @@ angular.module('mgmtApp')
       }
       $scope.menuShowing = false;
       $scope.toggleMenu = function() {
-
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        if (!$scope.menuShowing) {
+            $('div.menu').addClass('animated slideInDown').one(animationEnd, function () {
+              $(this).removeClass('animated slideInDown')
+            });
+        }
+        else {
+              $('div.menu').addClass('animated slideOutUp').one(animationEnd, function () {
+                $(this).removeClass('animated slideOutUp')
+            })
+        }
         $scope.menuShowing = !$scope.menuShowing;
         console.log($scope.menuShowing);
       }

@@ -10,7 +10,7 @@ a {
   height: 10vh;
   width: 100%;
   display: flex;
-  // z-index: 138;
+  z-index: 138;
 
 
 
@@ -83,14 +83,15 @@ a {
   background-color: rgba(193,186,234,0.9);
   position: absolute;
   top: 10vh;
-  border: 1px solid blue;
   font-family: $body-font;
+
 
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
 
 }
+
 .fade.ng-enter {
   transition:.2s linear all;
   opacity:0;

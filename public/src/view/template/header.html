@@ -9,9 +9,13 @@
     <img class="logo-img" src="../../src/temp_logo.png"/>
   </div>
 </section>
-<div class="menu fade" ng-if="menuShowing">
-  <ul id="menu-items-list">
-    <a ui-sref="log in" ng-click="toggleMenu()"><li>log in</li></a></br>
+
+
+
+<div class="menu fade" ng-show="menuShowing">
+
+  <ul class="menu-items-list" >
+    <a ui-sref='login' ng-click="toggleMenu()"><li>login</li></br>
     <a ui-sref='properties' ng-click="toggleMenu()"><li>properties</li></a></br>
     <a ui-sref='upcoming' ng-click="toggleMenu()"><li>upcoming</li></a></br>
     <a ui-sref='user settings' ng-click="toggleMenu()"><li>user settings</li></a></br>
