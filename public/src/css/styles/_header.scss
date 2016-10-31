@@ -81,16 +81,15 @@ a {
   align-items: center;
   align-content: space-around;
   background-color: rgba(193,186,234,0.9);
+  background: linear-gradient(rgba(193, 186, 234, .7), rgba(197, 56, 59, .7) );
   position: absolute;
   top: 10vh;
   font-family: $body-font;
-
-
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
-
 }
+
 
 .fade.ng-enter {
   transition:.2s linear all;
