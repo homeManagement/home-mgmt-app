@@ -39,6 +39,7 @@ this.insertTasks = function(tasks) {
   })
 }
 
+
 this.getPropertyTasks = function(propertyId){
   return $http({
     method: 'GET',
@@ -47,4 +48,16 @@ this.getPropertyTasks = function(propertyId){
     return res.data;
   })
 }
+
+this.createCustomTask = function(task) {
+  return $http({
+    method: 'POST',
+    url: '/createCustomTask',
+    data: task
+  }).then(function(res){
+    return res;
+  })
+}
+
+
 })

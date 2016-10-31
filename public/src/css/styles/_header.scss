@@ -10,7 +10,7 @@ a {
   height: 10vh;
   width: 100%;
   display: flex;
-  z-index: 138;
+  z-index: 153;
 
 
 
@@ -81,14 +81,22 @@ a {
   align-items: center;
   align-content: space-around;
   background-color: rgba(193,186,234,0.9);
-  background: linear-gradient(rgba(193, 186, 234, .7), rgba(197, 56, 59, .7) );
+  background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
   position: absolute;
   top: 10vh;
   font-family: $body-font;
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
+  z-index: 138;
 }
+// .menu-squeege {
+//   display: block;
+//   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqJEspe1-y7hJfxdujwMGuYAwFwrpEWAXvOwztLbXJlfzYJPx_sA');
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: center center;
+// }
 
 
 .fade.ng-enter {
