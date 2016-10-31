@@ -7,7 +7,7 @@ var controller = function($scope){
         value3 : true
 }
 
-
+}
 
 return{
   restrict: 'AE',

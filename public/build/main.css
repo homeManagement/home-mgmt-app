@@ -387,8 +387,8 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -413,8 +413,8 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -2429,11 +2429,7 @@ a {
   height: 10vh;
   width: 100%;
   display: flex;
-<<<<<<< HEAD
   z-index: 139; }
-=======
-  z-index: 153; }
->>>>>>> master
   .header-container .menu-btn-box {
     display: flex;
     align-items: center;
@@ -2487,7 +2483,6 @@ a {
   position: absolute;
   top: 10vh;
   font-family: "Raleway", sans-serif;
-  z-index: 138;
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
