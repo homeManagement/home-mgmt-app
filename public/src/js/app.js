@@ -28,13 +28,13 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     templateUrl: '../src/view/mainAlerts.html',
     restricted: true
   })
-  .state('user settings', {
+  .state('userSettings', {
     url: "/userSettings",
     controller: 'userSettingsCtrl',
     templateUrl: '../src/view/userSettings.html',
     restricted: true
   })
-  .state('property settings', {
+  .state('propertySettings', {
     url: "/propertySettings",
     controller: 'propertySettingsCtrl',
     templateUrl: '../src/view/propertySettings.html',
@@ -46,12 +46,12 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     templateUrl: '../src/view/contact.html',
     restricted: false
   })
-  .state('log in', {
+  .state('login', {
     url: "/login",
     templateUrl: '../src/view/login.html',
     restricted: false
   })
-  .state('sign up', {
+  .state('signup', {
     url: "/signup",
     templateUrl: '../src/view/signup.html',
     restricted: false
