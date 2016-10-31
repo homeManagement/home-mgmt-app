@@ -24,12 +24,12 @@ app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
+//DATABASE SETUP//----------------------
 var massiveInstance = massive.connectSync({connectionString:connectionstring})
-
 app.set('db', massiveInstance);
 var db = app.get('db');
 var propertyCtrl = require ('./server/controllers/propertyCtrl')
-
+//////////////////----------------------
 
 
 /*
@@ -229,12 +229,13 @@ app.post('/auth/login', function(req, res) {
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
-            //////GET PROPERTIES FOR EACH user_id//////////////////////
+//////////////////////PROPERTIES//////////////////////
 app.get('/properties/:token', propertyCtrl.getProperties);
 app.post('/properties', propertyCtrl.createProperty);
 
-app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 
+//////////////////////TASKS//////////////////////
+app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
 
  /*

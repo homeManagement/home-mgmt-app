@@ -1,5 +1,5 @@
 angular.module('mgmtApp')
-.controller('createPropertyCtrl', function($scope, mainService, $window){
+.controller('createPropertyCtrl', function($scope, mainService, $window, $state){
 
   $scope.propertyFromVisibility = true;
   $scope.taskSelectionVisibility = false;
@@ -26,7 +26,13 @@ angular.module('mgmtApp')
       return currentValue.selected !== false;
     })
     mainService.insertTasks(selectedTask).then(function(res){
-      // $state.go('')
+      if (res.status === 201) {
+        $state.go('mainAlerts')
+      }
+      else {
+        alert('server error try resubmit')
+      }
+
     })
   }
 })

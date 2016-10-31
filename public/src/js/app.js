@@ -22,7 +22,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     templateUrl: '../src/view/createProperty.html',
     restricted: true
   })
-  .state('upcoming', {
+  .state('mainAlerts', {
     url: "/mainAlerts",
     controller: 'mainAlertsCtrl',
     templateUrl: '../src/view/mainAlerts.html',
