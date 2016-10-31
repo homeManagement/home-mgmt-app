@@ -1,6 +1,6 @@
 <section class="main-container content-properties">
   <div class="">
-
+ <input type="button" ui-sref="propertySettings({propertyId: prop.id})" name="name" value="Property Settings ">
   </div>
   <div class="prop newProp" ng-repeat="task in propertyTasks | orderBy: 'next_date'" >
     <div class="">
@@ -9,7 +9,7 @@
       {{task.notes}}
     </div>
     <div class="">
-      
+
     </div>
 
 </div>
