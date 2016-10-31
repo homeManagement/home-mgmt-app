@@ -40,7 +40,6 @@ this.insertTasks = function(tasks) {
 }
 
 this.getPropertyTasks = function(propertyId){
-  console.log(propertyId);
   return $http({
     method: 'GET',
     url: '/maintenancetasks/' + propertyId

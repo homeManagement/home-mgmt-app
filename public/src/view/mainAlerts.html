@@ -1,5 +1,16 @@
-<section class="main-container">
-<div class="prop" ng-repeat="tasks in propertyTasks" >
-{{tasks.name}}
+<section class="main-container content-properties">
+  <div class="">
+
+  </div>
+  <div class="prop newProp" ng-repeat="task in propertyTasks | orderBy: 'next_date'" >
+    <div class="">
+      {{task.name}} <br>
+      {{task.next_date}}<br>
+      {{task.notes}}
+    </div>
+    <div class="">
+      
+    </div>
+
 </div>
 </section>
