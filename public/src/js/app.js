@@ -27,7 +27,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     controller: 'mainAlertsCtrl',
     templateUrl: '../src/view/mainAlerts.html',
     restricted: true,
-    params: {proptertyId: null}
+    params: {propertyId: null}
   })
   .state('userSettings', {
     url: "/userSettings",

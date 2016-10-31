@@ -35,7 +35,15 @@ module.exports ={
       })
     })
     res.sendStatus(201);
-  }
+  },
+
+  getPropertyTasks: function(req, res){
+    console.log(req.params);
+    db.getPropertyTasks([req.params.propertyId], function(err,propertyTasks){
+      res.status(200).json(propertyTasks);
+      console.log(propertyTasks);
+    });
+  },
 
 
 
