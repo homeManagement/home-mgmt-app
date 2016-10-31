@@ -237,6 +237,8 @@ app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
 
+app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
+
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘

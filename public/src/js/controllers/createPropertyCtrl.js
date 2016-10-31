@@ -14,7 +14,7 @@ angular.module('mgmtApp')
       $scope.propertyFromVisibility = false;
       $scope.taskSelectionVisibility = true;
 
-      mainService.getDefualtTasks($scope.propertyId).then(function(res){
+      mainService.getDefaultTasks($scope.propertyId).then(function(res){
         $scope.tasks = res;
       })
     });

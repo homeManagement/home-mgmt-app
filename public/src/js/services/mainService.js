@@ -20,7 +20,7 @@ this.createProperty = function(property){
   })
 }
 
-this.getDefualtTasks = function(propertyId){
+this.getDefaultTasks = function(propertyId){
   return $http({
     method: 'GET',
     url: '/defaulttasks/' + propertyId
@@ -34,6 +34,15 @@ this.insertTasks = function(tasks) {
     method: 'POST',
     url: '/maintenancetasks',
     data: tasks
+  }).then(function(res){
+    return res;
+  })
+}
+
+this.updatePropertySettings = function(propertyId){
+  return $http({
+    method: 'PUT',
+    url: '/propertySettings/' + propertyId
   }).then(function(res){
     return res;
   })
