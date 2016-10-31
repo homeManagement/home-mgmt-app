@@ -1,8 +1,9 @@
 angular.module('mgmtApp')
-.controller('createPropertyCtrl', function($scope, mainService, $window){
+.controller('createPropertyCtrl', function($scope, mainService, $window, $state){
 
   $scope.propertyFromVisibility = true;
   $scope.taskSelectionVisibility = false;
+  $scope.customTaskVisibility = false;
 
   $scope.property = {
     token: $window.localStorage.satellizer_token
@@ -26,7 +27,14 @@ angular.module('mgmtApp')
       return currentValue.selected !== false;
     })
     mainService.insertTasks(selectedTask).then(function(res){
-      // $state.go('')
+      if (res.status === 201) {
+        console.log($scope.propertyId)
+        $state.go('mainAlerts', {propertyId: $scope.propertyId})
+      }
+      else {
+        alert('server error try resubmit')
+      }
+
     })
   }
 })

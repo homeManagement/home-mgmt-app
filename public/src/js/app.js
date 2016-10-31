@@ -22,11 +22,12 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     templateUrl: '../src/view/createProperty.html',
     restricted: true
   })
-  .state('upcoming', {
-    url: "/mainAlerts",
+  .state('mainAlerts', {
+    url: "/mainAlerts/",
     controller: 'mainAlertsCtrl',
     templateUrl: '../src/view/mainAlerts.html',
-    restricted: true
+    restricted: true,
+    params: {propertyId: null}
   })
   .state('userSettings', {
     url: "/userSettings",
@@ -76,8 +77,8 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
   })
    .run(function($rootScope, $state, $window, $auth){
      $rootScope.$on('$stateChangeStart', function(e, to) {
-       console.log('$auth.isAuthenticated',$auth.isAuthenticated());
-       console.log('$window.localStorage',$window.localStorage);
+      //  console.log('$auth.isAuthenticated',$auth.isAuthenticated());
+      //  console.log('$window.localStorage',$window.localStorage);
        if (!to.restricted) return;
 
        if ($auth.isAuthenticated()) return;

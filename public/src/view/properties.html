@@ -3,7 +3,7 @@
 
 
 
-  <div class="prop" ui-sref="mainAlerts" ng-repeat="prop in properties" >
+  <div class="prop" ui-sref="mainAlerts({propertyId: prop.id})" ng-repeat="prop in properties" >
 {{prop.name}} {{prop.zipcode}}
 
   </div>

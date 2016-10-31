@@ -12,6 +12,10 @@
               ng-model="task.selected">
       </div>
     </div>
+    <div class="" ng-click="customTaskVisibility = !customTaskVisibility">
+      Add Custom Maintenance
+    </div>
+    <create-task ng-show="customTaskVisibility" property-id="propertyId"></create-task>
     <input type="submit" value="Submit">
   </form>
 </section>

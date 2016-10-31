@@ -16,7 +16,7 @@ var cronJob = require('cron').CronJob
 var config = require('./config.json');
 var twilio = require('twilio')(config.twilioAccountSID,config.twilioAuthToken);
 var connectionstring = config.connectionString;
-
+var nodemailer = require('nodemailer');
 
 
 app.use(cors());
@@ -24,12 +24,12 @@ app.use(bodyParser.json());
 
 app.use(express.static('./public'));
 
+//DATABASE SETUP//----------------------
 var massiveInstance = massive.connectSync({connectionString:connectionstring})
-
 app.set('db', massiveInstance);
 var db = app.get('db');
 var propertyCtrl = require ('./server/controllers/propertyCtrl')
-
+//////////////////----------------------
 
 
 /*
@@ -229,13 +229,17 @@ app.post('/auth/login', function(req, res) {
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
  */
-            //////GET PROPERTIES FOR EACH user_id//////////////////////
+//////////////////////PROPERTIES//////////////////////
 app.get('/properties/:token', propertyCtrl.getProperties);
 app.post('/properties', propertyCtrl.createProperty);
 
-app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 
+//////////////////////TASKS//////////////////////
+app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
+app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
+app.post('/createCustomTask', propertyCtrl.insertCustomTask);
+
 
 app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
 
@@ -276,8 +280,9 @@ app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
     cronTime: '* 9 * * *',
     onTick: function() {
       db.getAlerts(function(err,response){
+
         response.map(function(alert){
-          //twilio
+        /////////twilio////////////
           var number = '""+1' + alert.phonenumber + '""';
           console.log(number);
           twilio.messages.create(
@@ -286,8 +291,35 @@ app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
               from: config.twilioNumber,
               body: 'IT WORKED DO STUFF'
             },function(err, message){
-            console.log(message);
+            //console.log(message);
           });
+            /////////// EMAIL////////
+          function email(req, res) {
+            var transporter = nodemailer.createTransport({
+                service: 'Gmail',
+                auth: {
+                    user: 'homemanagement13@gmail.com', // Your email id
+                    pass: 'DevMountain' // Your password
+                }
+            });
+            var text = 'Test Email sent from NODE';
+            var mailOptions = {
+                from: 'homemanagement13@gmail.com', // sender address
+                to: alert.email, // list of receivers
+                subject: 'Email Test', // Subject line
+                text: text,
+                html: '<h1 style="color:blue;margin-left:30px;">This H1 tag is being brought in as HTML</h1>'
+              };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log('error');
+                  }else{
+                    console.log('eMail sent');
+                  };
+            });
+            }
+            email();
         })
       })
     },
