@@ -45,7 +45,6 @@ module.exports ={
   },
 
   insertCustomTask: function(req, res){
-    console.log(req.body)
     db.insertCustomTask([req.body.propertyId,req.body.name,req.body.dayInterval,req.body.season,req.body.notes,req.body.outdoor,req.body.lastDate],function(err,success){
       res.status(200).json(success);
     })
