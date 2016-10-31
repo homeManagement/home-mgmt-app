@@ -3,6 +3,7 @@ angular.module('mgmtApp')
 
   $scope.propertyFromVisibility = true;
   $scope.taskSelectionVisibility = false;
+  $scope.customTaskVisibility = false;
 
   $scope.property = {
     token: $window.localStorage.satellizer_token
@@ -27,7 +28,8 @@ angular.module('mgmtApp')
     })
     mainService.insertTasks(selectedTask).then(function(res){
       if (res.status === 201) {
-        $state.go('mainAlerts')
+        console.log($scope.propertyId)
+        $state.go('mainAlerts', {proptertyId: $scope.propertyId})
       }
       else {
         alert('server error try resubmit')
