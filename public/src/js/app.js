@@ -40,7 +40,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
     controller: 'propertySettingsCtrl',
     templateUrl: '../src/view/propertySettings.html',
     restricted: true,
-    params: 
+    params: {propertyId: null}
   })
   .state('about', {
     url: "/contact",
