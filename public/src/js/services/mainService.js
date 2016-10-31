@@ -39,4 +39,14 @@ this.insertTasks = function(tasks) {
   })
 }
 
+this.createCustomTask = function(task) {
+  return $http({
+    method: 'POST',
+    url: '/createCustomTask',
+    data: task
+  }).then(function(res){
+    return res;
+  })
+}
+
 })

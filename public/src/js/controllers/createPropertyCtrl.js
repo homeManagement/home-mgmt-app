@@ -29,7 +29,7 @@ angular.module('mgmtApp')
     mainService.insertTasks(selectedTask).then(function(res){
       if (res.status === 201) {
         console.log($scope.propertyId)
-        $state.go('mainAlerts', {proptertyId: $scope.propertyId})
+        $state.go('mainAlerts', {propertyId: $scope.propertyId})
       }
       else {
         alert('server error try resubmit')
