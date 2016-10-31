@@ -43,6 +43,10 @@ this.updatePropertySettings = function(propertyId){
   return $http({
     method: 'PUT',
     url: '/propertySettings/' + propertyId
+  }).then(function(res){
+    return res;
+  })
+}
 
 this.getPropertyTasks = function(propertyId){
   return $http({
