@@ -2429,7 +2429,11 @@ a {
   height: 10vh;
   width: 100%;
   display: flex;
+<<<<<<< HEAD
+  z-index: 139; }
+=======
   z-index: 153; }
+>>>>>>> master
   .header-container .menu-btn-box {
     display: flex;
     align-items: center;
@@ -2483,6 +2487,7 @@ a {
   position: absolute;
   top: 10vh;
   font-family: "Raleway", sans-serif;
+  z-index: 138;
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;

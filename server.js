@@ -241,6 +241,8 @@ app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
 app.post('/createCustomTask', propertyCtrl.insertCustomTask);
 
 
+app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
+
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
