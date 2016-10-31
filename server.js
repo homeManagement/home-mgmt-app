@@ -237,7 +237,11 @@ app.post('/properties', propertyCtrl.createProperty);
 //////////////////////TASKS//////////////////////
 app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
+app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
 app.post('/createCustomTask', propertyCtrl.insertCustomTask);
+
+
+app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
 
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
