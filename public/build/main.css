@@ -2429,7 +2429,7 @@ a {
   height: 10vh;
   width: 100%;
   display: flex;
-  z-index: 138; }
+  z-index: 153; }
   .header-container .menu-btn-box {
     display: flex;
     align-items: center;
@@ -2479,13 +2479,14 @@ a {
   align-items: center;
   align-content: space-around;
   background-color: rgba(193, 186, 234, 0.9);
-  background: linear-gradient(rgba(193, 186, 234, 0.7), rgba(197, 56, 59, 0.7));
+  background: linear-gradient(rgba(193, 186, 234, 0.97), rgba(197, 56, 59, 0.97));
   position: absolute;
   top: 10vh;
   font-family: "Raleway", sans-serif;
   height: 90vh;
   width: 100%;
-  font-size: 3.8rem; }
+  font-size: 3.8rem;
+  z-index: 138; }
 
 .fade.ng-enter {
   transition: .2s linear all;
@@ -2564,6 +2565,15 @@ a {
 .pull-right {
   float: right; }
 
+.propertyToggles {
+  display: block;
+  text-align: center;
+  margin-top: 53px;
+  font-family: "Raleway", sans-serif;
+  height: 90vh;
+  width: 100%;
+  font-size: 3.8rem; }
+
 .switch {
   position: relative;
   display: inline-block;
@@ -2612,6 +2622,15 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%; }
+
+.createPropertyInputs {
+  display: block;
+  text-align: center;
+  margin-top: 53px;
+  font-family: "Raleway", sans-serif;
+  height: 90vh;
+  width: 100%;
+  font-size: 3.8rem; }
 
 .content-properties {
   display: flex;
