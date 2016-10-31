@@ -2479,6 +2479,7 @@ a {
   align-items: center;
   align-content: space-around;
   background-color: rgba(193, 186, 234, 0.9);
+  background: linear-gradient(rgba(193, 186, 234, 0.7), rgba(197, 56, 59, 0.7));
   position: absolute;
   top: 10vh;
   font-family: "Raleway", sans-serif;
