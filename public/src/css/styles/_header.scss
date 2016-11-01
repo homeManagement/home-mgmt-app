@@ -78,11 +78,12 @@ a {
 .menu {
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: space-around;
+  // align-items: center;
+  padding-top: 167px;
+  align-content: space-between;
   background-color: rgba(193,186,234,0.9);
   background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
-  position: absolute;
+  position: fixed;
   top: 10vh;
   font-family: $body-font;
   height: 90vh;
@@ -90,6 +91,8 @@ a {
   font-size: 3.8rem;
   z-index: 138;
 }
+
+
 // .menu-squeege {
 //   display: block;
 //   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqJEspe1-y7hJfxdujwMGuYAwFwrpEWAXvOwztLbXJlfzYJPx_sA');
