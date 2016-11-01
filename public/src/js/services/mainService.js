@@ -87,4 +87,13 @@ this.done = function(propertymaintenanceid, alertid){
   })
 }
 
+this.deleteProperty = function(propertyId){
+  return $http({
+    method: 'DELETE',
+    url: '/property/' + propertyId
+  }).then(function(res){
+    return res
+  })
+}
+
 })
