@@ -240,7 +240,7 @@ app.post('/maintenancetasks', propertyCtrl.insertTasks);
 app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
 app.post('/createCustomTask', propertyCtrl.insertCustomTask);
 
-
+//////////////////////PROPERTY SETTINGS//////////////////////
 app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
 
  /*
@@ -257,7 +257,7 @@ app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
   |--------------------------------------------------------------------------
   */
  var createAlerts = new cronJob({
-   cronTime: '* 1 * * *',
+   cronTime: '0 1 * * *',
    onTick: function() {
       db.getDueTasks(function (err,response){
         response.map(function(currentValue,index,array){
