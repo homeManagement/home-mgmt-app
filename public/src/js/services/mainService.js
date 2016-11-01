@@ -39,12 +39,22 @@ this.insertTasks = function(tasks) {
   })
 }
 
-this.updatePropertySettings = function(propertyId){
+this.updatePropertySettings = function(propertyId, property_settings){
   return $http({
     method: 'PUT',
-    url: '/propertySettings/' + propertyId
+    url: '/propertySettings/' + propertyId,
+    data: property_settings
   }).then(function(res){
     return res;
+  })
+}
+
+this.getPropertySettings = function(propertyId){
+  return $http({
+    method: 'GET',
+    url: '/propertySettings/' + propertyId
+  }).then(function(res){
+    return res.data;
   })
 }
 

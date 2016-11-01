@@ -37,7 +37,6 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
   })
   .state('propertySettings', {
     url: "/propertySettings",
-    controller: 'propertySettingsCtrl',
     templateUrl: '../src/view/propertySettings.html',
     restricted: true,
     params: {propertyId: null}

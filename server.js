@@ -242,6 +242,7 @@ app.post('/createCustomTask', propertyCtrl.insertCustomTask);
 
 //////////////////////PROPERTY SETTINGS//////////////////////
 app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
+app.get('/propertySettings/:propertyId', propertyCtrl.getPropertySettings)
 
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
