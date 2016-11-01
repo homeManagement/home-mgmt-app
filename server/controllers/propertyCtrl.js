@@ -57,6 +57,17 @@ module.exports ={
     db.updatePropertySettings([], function(){
       console.log(req.body);
     })
+  },
+  done: function(req, res){
+    db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
+      
+      db.deleteAlert([req.body.alertid], function(err, success){
+        res.status(200).json(success);
+      })
+    })
+
+
+
   }
 
 
