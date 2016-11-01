@@ -1,0 +1,34 @@
+
+#textMessage{
+  height: 60vh;
+  padding-top: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-bottom: 3rem;
+  font-size: 6rem;
+  line-height: 110%;
+
+  h4{
+    font-size: 4rem;
+    padding-top: 1rem;
+    letter-spacing: 2px;
+    line-height: 110%;
+  }
+  h1{
+    font-size: 8rem;
+    letter-spacing: 9px;
+    line-height: 120%;
+  }
+}
+
+.home-banner-image{
+  background-image: url('https://images.unsplash.com/photo-1430285561322-7808604715df?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=b08d6d0b6e980ef47973c6d537b50e5e');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 37vh;
+  width: 100vw;
+}
+
+div.textContent {
+  display:none;
+}

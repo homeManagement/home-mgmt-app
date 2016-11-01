@@ -2429,7 +2429,8 @@ a {
   height: 10vh;
   width: 100%;
   display: flex;
-  z-index: 139; }
+  z-index: 139;
+  border-bottom: 2px solid #dce0e0; }
   .header-container .menu-btn-box {
     display: flex;
     align-items: center;
@@ -2438,8 +2439,7 @@ a {
     left: 0px;
     width: 18%;
     height: 100%;
-    overflow: hidden;
-    background-color: lightgrey; }
+    overflow: hidden; }
     .header-container .menu-btn-box .menu-btn {
       position: relative;
       font-size: 2.7rem;
@@ -2453,8 +2453,7 @@ a {
     align-items: center;
     justify-content: center;
     width: 64%;
-    height: 100%;
-    background: #C1E6F2; }
+    height: 100%; }
     .header-container .view-name-box .view-name {
       position: relative;
       font-size: 3.8rem;
@@ -2469,7 +2468,8 @@ a {
     width: 18%;
     height: 100%;
     overflow: hidden;
-    background: #ABA9BF; }
+    color: #ef585d;
+    font-size: 3.5rem; }
     .header-container .logo-box .logo-img {
       max-width: 100%; }
 
@@ -2478,14 +2478,13 @@ a {
   justify-content: center;
   padding-top: 167px;
   align-content: space-between;
-  background-color: rgba(193, 186, 234, 0.9);
-  background: linear-gradient(rgba(193, 186, 234, 0.97), rgba(197, 56, 59, 0.97));
   position: fixed;
   top: 10vh;
   font-family: "Raleway", sans-serif;
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
+  background-color: white;
   z-index: 138; }
 
 .fade.ng-enter {
@@ -2501,6 +2500,76 @@ a {
 
 .fade.ng-leave.ng-leave-active {
   opacity: 0; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+/* Icon 1 */
+#nav-icon3 {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 50px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer; }
+
+#nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  background: #ef585d;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out; }
+
+/* Icon 3 */
+#nav-icon3 span:nth-child(1) {
+  top: 0px; }
+
+#nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
+  top: 18px; }
+
+#nav-icon3 span:nth-child(4) {
+  top: 36px; }
+
+#nav-icon3.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%; }
+
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
+
+#nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%; }
 
 .login-container {
   text-align: center;
@@ -2529,11 +2598,12 @@ a {
   height: 121px;
   margin: 31px;
   border: 1px solid grey;
-  font-size: 1.7rem; }
+  font-size: 1.7rem;
+  color: white; }
 
 .login-btn {
-  background-color: #C1E6F2;
-  border: 1px solid #C1E6F2; }
+  background-color: #d3531a;
+  border: 1px solid #d3531a; }
 
 .fb-signin {
   text-align: center;
@@ -2631,6 +2701,34 @@ input:checked + .slider:before {
   height: 90vh;
   width: 100%;
   font-size: 3.8rem; }
+
+#textMessage {
+  height: 60vh;
+  padding-top: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-bottom: 3rem;
+  font-size: 6rem;
+  line-height: 110%; }
+  #textMessage h4 {
+    font-size: 4rem;
+    padding-top: 1rem;
+    letter-spacing: 2px;
+    line-height: 110%; }
+  #textMessage h1 {
+    font-size: 8rem;
+    letter-spacing: 9px;
+    line-height: 120%; }
+
+.home-banner-image {
+  background-image: url("https://images.unsplash.com/photo-1430285561322-7808604715df?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=b08d6d0b6e980ef47973c6d537b50e5e");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 37vh;
+  width: 100vw; }
+
+div.textContent {
+  display: none; }
 
 .content-properties {
   display: flex;
