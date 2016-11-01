@@ -10,14 +10,14 @@
       {{task.notes}}
     </div>
     <div class="">
-      {{task.next_date |date: shortDate}}
+      {{task.nextdate |date: shortDate}}
     </div>
     <div class="">
-      {{task.day_interval}}
+      {{task.dayinterval}}
     </div>
     <div class="">
-      <input type="button" name="name" value="DONE">
-      <input type="button" name="name" value="SNOOZE">
+      <input type="button" ng-click="done()" name="name" value="DONE">
+      <input type="button" ng-click="snooze()" name="name" value="SNOOZE">
     </div>
 </div>
 </section>
