@@ -2,6 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 50px;
+  background-image: url('https://newevolutiondesigns.com/images/freebies/white-wallpaper-preview-18.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  
+
 }
 .prop {
   display: flex;
@@ -14,6 +21,7 @@
   width: 80%;
   border: 1px solid red;
   text-decoration: none;
+  background-color: #f9e7e7;
 }
 .newProp{
   height: 10vh;
