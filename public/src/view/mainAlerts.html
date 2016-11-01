@@ -2,7 +2,8 @@
   <div class="">
  <input type="button" ui-sref="propertySettings({propertyId: propertyId})" name="name" value="Property Settings ">
   </div>
-  <div class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'next_date'" >
+
+  <div class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'nextdate'" >
     <div class="">
       {{task.name}}
     </div>
@@ -10,14 +11,16 @@
       {{task.notes}}
     </div>
     <div class="">
-      {{task.next_date |date: shortDate}}
+      {{task.nextdate |date: shortDate}}
     </div>
     <div class="">
-      {{task.day_interval}}
+      {{task.dayinterval}}
     </div>
     <div class="">
-      <input type="button" name="name" value="DONE">
-      <input type="button" name="name" value="SNOOZE">
+      <input type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
+      <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
     </div>
 </div>
+
+
 </section>

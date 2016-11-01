@@ -10,4 +10,11 @@ angular.module('mgmtApp')
   $scope.getPropertyTasks($stateParams.propertyId)
   $scope.propertyId = $stateParams.propertyId;
 
+  $scope.done = function(propertymaintenanceid, alertid){
+    mainService.done(propertymaintenanceid, alertid)
+    .then(function(res){
+      $scope.getPropertyTasks($stateParams.propertyId)
+    })
+  }
+
 })

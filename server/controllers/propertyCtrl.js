@@ -62,6 +62,23 @@ module.exports = {
     db.getPropertySettings([req.params.propertyId], function(err, propertySettings){
       res.status(200).json(propertySettings);
     })
+  },
+  done: function(req, res){
+    if (req.body.alertid){
+      db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
+        db.deleteAlert([req.body.alertid], function(err, success){
+          res.status(200).json(success);
+        })
+      })
+    }
+    else {
+      db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
+        res.status(200).json(success);
+      })
+    }
+
+
+
   }
 
 

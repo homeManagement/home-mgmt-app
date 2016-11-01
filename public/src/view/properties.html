@@ -1,16 +1,24 @@
 
 <section class="main-container content-properties">
 
-
-
-  <div class="prop" ui-sref="mainAlerts({propertyId: prop.id})" ng-repeat="prop in properties" >
-{{prop.name}} {{prop.zipcode}}
-
+  <div class="prop" ng-repeat="prop in properties" ng-swipe-left="propDeleteButtonVisibility = true" ng-swipe-right="propDeleteButtonVisibility = false">
+    <div class="prop-primary-box" ui-sref="mainAlerts({propertyId: prop.id})">
+      {{prop.name}} {{prop.zipcode}}
+    </div>
+    <div class="prop-delete-button" ng-show="propDeleteButtonVisibility" ng-click="propDeleteConfirmVisiblity = !propDeleteConfirmVisiblity; propDeleteButtonVisibility = !propDeleteButtonVisibility">
+      <svg width="60px" height="60px">
+        <line x1="10" y1="10" x2="50" y2="50" stroke="white" stroke-width="10" />
+        <line x1="10" y1="50" x2="50" y2="10" stroke="white" stroke-width="10" />
+      </svg>
+    </div>
+    <div class="prop-delete-confirm-container" ng-show="propDeleteConfirmVisiblity">
+      <input type="button" name="DELETE" value="DELETE" class="delete-confirm prop-delete-confirm-button" ng-click="deleteProperty(prop.id)">
+      <input type="button" name="CANCEL" value="CANCEL" class="delete-cancel prop-delete-confirm-button" ng-click="propDeleteConfirmVisiblity = !propDeleteConfirmVisiblity">
+    </div>
   </div>
-
   <div class="prop newProp" ui-sref="createProperty">
       + add new property
-    </div>
+  </div>
 
 
 

@@ -1,5 +1,5 @@
 
-angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate'])
+angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate', 'ngTouch'])
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider
