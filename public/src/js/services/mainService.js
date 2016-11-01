@@ -76,5 +76,15 @@ this.createCustomTask = function(task) {
     return res;
   })
 }
+this.done = function(propertymaintenanceid, alertid){
+
+  return $http({
+    method: 'PUT',
+    url: '/maintenancetasks/' + propertymaintenanceid,
+    data: {alertid: alertid}
+  }).then(function(res){
+    return res;
+  })
+}
 
 })
