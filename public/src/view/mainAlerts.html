@@ -1,16 +1,23 @@
 <section class="main-container content-properties">
   <div class="">
- <input type="button" ui-sref="propertySettings({propertyId: prop.id})" name="name" value="Property Settings ">
+ <input type="button" ui-sref="propertySettings({propertyId: propertyId})" name="name" value="Property Settings ">
   </div>
-  <div class="prop newProp" ng-repeat="task in propertyTasks | orderBy: 'next_date'" >
+  <div class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'next_date'" >
     <div class="">
-      {{task.name}} <br>
-      {{task.next_date}}<br>
+      {{task.name}}
+    </div>
+    <div class="">
       {{task.notes}}
     </div>
     <div class="">
-
+      {{task.next_date |date: shortDate}}
     </div>
-
+    <div class="">
+      {{task.day_interval}}
+    </div>
+    <div class="">
+      <input type="button" name="name" value="DONE">
+      <input type="button" name="name" value="SNOOZE">
+    </div>
 </div>
 </section>

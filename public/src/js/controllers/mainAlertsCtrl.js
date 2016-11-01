@@ -1,8 +1,5 @@
 angular.module('mgmtApp')
 .controller('mainAlertsCtrl', function($scope, mainService, $stateParams){
-$scope.test = "TEST";
-
-
 
   $scope.getPropertyTasks = function(propertyId){
     mainService.getPropertyTasks(propertyId)
@@ -11,6 +8,6 @@ $scope.test = "TEST";
     })
   }
   $scope.getPropertyTasks($stateParams.propertyId)
-
+  $scope.propertyId = $stateParams.propertyId;
 
 })
