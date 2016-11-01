@@ -19,8 +19,8 @@ module.exports ={
     var token = req.body.token;
     var user = jwt.decode(token, config.TOKEN_SECRET);
     db.createProperty([user.sub, req.body.name, req.body.zipcode, req.body.typeId], function(err, propertyId){
+      console.log(propertyId);
       db.createPropertySettings([propertyId[0]["id"]], function(err,success){
-        console.log(req.body);
         res.status(200).json(propertyId);
       })
     })
