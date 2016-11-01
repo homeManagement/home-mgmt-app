@@ -1,6 +1,7 @@
-angular.module('mgmtApp').directive('propertySettings', function(){
+angular.module('mgmtApp').directive('propertySettings', function($stateParams){
 
 var controller = function($scope){
+  console.log($stateParams);
   $scope.propertyCheckBox = {
         value1 : true,
         value2 : true,
