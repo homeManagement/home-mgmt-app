@@ -11,6 +11,7 @@ a {
   width: 100%;
   display: flex;
   z-index: 139;
+  border-bottom: 2px solid #dce0e0;
 
 
 
@@ -25,7 +26,7 @@ a {
     width: 18%;
     height: 100%;
     overflow: hidden;
-    background-color: lightgrey;
+    // background-color: lightgrey;
 
       .menu-btn {
         position: relative;
@@ -46,7 +47,6 @@ a {
     justify-content: center;
     width: 64%;
     height: 100%;
-    background: $theme;
     // flex-grow: 3;
     .view-name {
       position: relative;
@@ -67,7 +67,9 @@ a {
     width: 18%;
     height: 100%;
     overflow: hidden;
-    background: $main;
+    color: $hamburger-icon;
+    font-size: 3.5rem;
+    // background: $main;
     // flex-grow: 1
       .logo-img {
 
@@ -81,25 +83,17 @@ a {
   // align-items: center;
   padding-top: 167px;
   align-content: space-between;
-  background-color: rgba(193,186,234,0.9);
-  background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
+  // background-color: rgba(193,186,234,0.9);
+  // background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
   position: fixed;
   top: 10vh;
   font-family: $body-font;
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
+  background-color: white;
   z-index: 138;
 }
-
-
-// .menu-squeege {
-//   display: block;
-//   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqJEspe1-y7hJfxdujwMGuYAwFwrpEWAXvOwztLbXJlfzYJPx_sA');
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: center center;
-// }
 
 
 .fade.ng-enter {
@@ -124,3 +118,89 @@ a {
 // .menu-items-list.menu-open-add-active   {
 //   opacity:1;
 // }
+
+
+
+// HAMBURGER MENU ICON ANIMATION
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Icon 1 */
+
+#nav-icon3 {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 50px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 9px;
+  width: 100%;
+  background: $hamburger-icon;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+/* Icon 3 */
+
+#nav-icon3 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) {
+  top: 18px;
+}
+
+#nav-icon3 span:nth-child(4) {
+  top: 36px;
+}
+
+#nav-icon3.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+#nav-icon3.open span:nth-child(2) {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+#nav-icon3.open span:nth-child(3) {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#nav-icon3.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
