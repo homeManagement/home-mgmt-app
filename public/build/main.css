@@ -2798,4 +2798,5 @@ div.textContent {
   font-size: 30px; }
 
 .newProp {
-  height: 10vh; }
+  height: 10vh;
+  border-style: dashed; }
