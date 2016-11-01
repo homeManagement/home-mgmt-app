@@ -59,12 +59,18 @@ module.exports ={
     })
   },
   done: function(req, res){
-    db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
-      
-      db.deleteAlert([req.body.alertid], function(err, success){
+    if (req.body.alertid){
+      db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
+        db.deleteAlert([req.body.alertid], function(err, success){
+          res.status(200).json(success);
+        })
+      })
+    }
+    else {
+      db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
         res.status(200).json(success);
       })
-    })
+    }
 
 
 

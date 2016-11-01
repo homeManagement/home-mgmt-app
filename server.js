@@ -258,7 +258,7 @@ app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
   |--------------------------------------------------------------------------
   */
  var createAlerts = new cronJob({
-   cronTime: '* 1 * * *',
+   cronTime: '* * * * *',
    onTick: function() {
       db.getDueTasks(function (err,response){
         response.map(function(currentValue,index,array){

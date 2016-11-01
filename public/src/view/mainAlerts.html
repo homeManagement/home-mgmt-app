@@ -2,7 +2,8 @@
   <div class="">
  <input type="button" ui-sref="propertySettings({propertyId: propertyId})" name="name" value="Property Settings ">
   </div>
-  <div class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'next_date'" >
+
+  <div class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'nextdate'" >
     <div class="">
       {{task.name}}
     </div>
@@ -20,4 +21,6 @@
       <input type="button" ng-click="snooze()" name="name" value="SNOOZE">
     </div>
 </div>
+
+
 </section>
