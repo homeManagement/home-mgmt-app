@@ -4,7 +4,7 @@ var config = require('../../config.json');
 var db = app.get('db');
 
 
-module.exports ={
+module.exports = {
 
   getProperties: function(req, res){
     var token = req.params.token;
@@ -20,7 +20,6 @@ module.exports ={
     var user = jwt.decode(token, config.TOKEN_SECRET);
     db.createProperty([user.sub, req.body.name, req.body.zipcode, req.body.typeId], function(err, propertyId){
       db.createPropertySettings([propertyId[0]["id"]], function(err,success){
-        console.log(req.body);
         res.status(200).json(propertyId);
       })
     })
@@ -54,8 +53,14 @@ module.exports ={
   },
 
   updatePropertySettings: function(req, res){
-    db.updatePropertySettings([], function(){
-      console.log(req.body);
+    console.log(req.params);
+    db.updatePropertySettings([req.body.text, req.body.email, req.body.weather, req.params.propertyId], function(){
+      res.status(200).json('success');
+    })
+  },
+  getPropertySettings: function(req, res){
+    db.getPropertySettings([req.params.propertyId], function(err, propertySettings){
+      res.status(200).json(propertySettings);
     })
   },
   done: function(req, res){
