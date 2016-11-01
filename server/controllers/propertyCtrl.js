@@ -58,11 +58,13 @@ module.exports = {
       res.status(200).json('success');
     })
   },
+
   getPropertySettings: function(req, res){
     db.getPropertySettings([req.params.propertyId], function(err, propertySettings){
       res.status(200).json(propertySettings);
     })
   },
+
   done: function(req, res){
     if (req.body.alertid){
       db.resetLastDate([req.params.propertymaintenanceid], function(err, success){
@@ -76,10 +78,20 @@ module.exports = {
         res.status(200).json(success);
       })
     }
+  },
 
-
-
+  deleteProperty: function(req,res){
+    db.deletePropertyAlerts([req.params.propertyId],function(err,success){
+      db.deletePropertySettings([req.params.propertyId],function(err,success){
+        db.deletePropertyTasks([req.params.propertyId],function(err,success){
+          db.deleteProperty([req.params.propertyId],function(err,success){
+            res.sendStatus(201);
+          })
+        })
+      })
+    })
   }
+
 
 
 }
