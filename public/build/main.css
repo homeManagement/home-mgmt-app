@@ -2641,7 +2641,6 @@ a {
   text-align: center;
   margin-top: 53px;
   font-family: "Raleway", sans-serif;
-  height: 90vh;
   width: 100%;
   font-size: 3.8rem; }
 
@@ -2730,6 +2729,82 @@ input:checked + .slider:before {
 
 div.textContent {
   display: none; }
+
+.edit-tasks-container {
+  margin-top: 40px; }
+
+.specific-task {
+  width: 80%;
+  margin: auto auto 40px auto; }
+
+.task {
+  border: 1px solid blue;
+  height: 10vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.task-left-info {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid red; }
+
+.task-top-info {
+  width: 100%; }
+
+.task-title {
+  font-size: 3rem; }
+
+.task-bottom-info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; }
+
+.task-date-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  margin-right: 20px; }
+
+.task-date-title {
+  font-size: 1.5rem; }
+
+.task-date-info {
+  font-size: 2.5rem; }
+
+.task-update-form {
+  border: 1px solid green;
+  font-size: 33px; }
+  .task-update-form input {
+    height: 30px;
+    font-size: 29px;
+    margin-bottom: auto auto 10px auto;
+    border: 1px solid black;
+    width: 98%; }
+  .task-update-form select {
+    height: 30px;
+    font-size: 29px;
+    margin-bottom: 10px;
+    border: 1px solid black; }
+  .task-update-form textarea {
+    width: 98%;
+    border: 1px solid black; }
+
+.task-right-info {
+  width: 20%;
+  border: 1px solid yellow;
+  background-color: red; }
+
+.add-new-task-container {
+  width: 80%;
+  height: 10vh;
+  margin: auto auto 40px auto;
+  border: 1px solid blue; }
 
 .content-properties {
   display: flex;

@@ -8,8 +8,14 @@ var controller = function($scope, mainService, $window){
    $scope.propertyId = $stateParams.propertyId
  }
 
+ $scope.editFormVisibility = false;
+
  mainService.getPropertyTasks($scope.propertyId).then(function(res){
-   $scope.tasks = res
+   res.map(function(currentValue){
+     currentValue.nextdate = currentValue.nextdate.substr(0,10);
+     currentValue.lastdate = currentValue.lastdate.substr(0,10);
+   })
+   $scope.tasks = res;
  })
 
 }
