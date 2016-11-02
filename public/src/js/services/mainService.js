@@ -86,6 +86,16 @@ this.done = function(propertymaintenanceid, alertid){
     return res;
   })
 }
+this.snooze = function(alertid) {
+  return $http({
+    method: 'PUT',
+    url: '/alerts/' + alertid
+    // data: {alertid: alertid}
+  }).then(function(res) {
+    return res;
+  })
+
+}
 
 this.deleteProperty = function(propertyId){
   return $http({

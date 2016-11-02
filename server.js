@@ -240,12 +240,16 @@ app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
 app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
 app.post('/createCustomTask', propertyCtrl.insertCustomTask);
-app.put('/maintenancetasks/:propertymaintenanceid', propertyCtrl.done);
+
 
 //////////////////////PROPERTY SETTINGS//////////////////////
 app.put('/propertySettings/:propertyId', propertyCtrl.updatePropertySettings);
-app.get('/propertySettings/:propertyId', propertyCtrl.getPropertySettings)
+app.get('/propertySettings/:propertyId', propertyCtrl.getPropertySettings);
 
+
+//////////////////////ALERT SETTINGS////////////////////////
+app.put('/alerts/:alertid', propertyCtrl.snooze);
+app.put('/maintenancetasks/:propertymaintenanceid', propertyCtrl.done);
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
