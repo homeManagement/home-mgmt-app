@@ -8,10 +8,10 @@
         <input class="input-lg" ng-model="lastName" type="text" name="name" value="" placeholder="Last name">
       </div>
       <div class="credential submit-btn">
-        <input class="input-lg" server-error ng-model="email" type="text" name="name" value="" placeholder="email" ng-messages="loginForm.email.$error">
+        <input class="input-lg" server-error ng-model="email" type="email"  required name="name" value="" placeholder="email" ng-messages="loginForm.email.$error">
       </div>
       <div class="credential submit-btn">
-        <input class="input-lg" ng-model="password" type="text" name="name" value="" placeholder="password" ng-messages="loginForm.password.$error">
+        <input class="input-lg" ng-model="password" type="password" name="name" value="" placeholder="password" ng-messages="loginForm.password.$error">
       </div>
       <div>
         <button class="submit-btn login-btn" type="submit" name="button" ng-disabled="loginForm.$invalid">Sign up</button>
