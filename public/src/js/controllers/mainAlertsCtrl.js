@@ -29,4 +29,6 @@ angular.module('mgmtApp')
       $scope.getPropertyTasks($scope.propertyId)
     })
   }
+  
+
 })

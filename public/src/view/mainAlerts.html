@@ -3,18 +3,19 @@
  <input type="button" ui-sref="propertySettings({propertyId: propertyId})" name="name" value="Property Settings ">
   </div>
 
-  <div class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'nextdate'" >
+
+  <div ng-class="{'redAlert' : task.alertid }"class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'nextdate'" >
     <div class="">
       {{task.name}}
     </div>
     <div class="">
       {{task.notes}}
     </div>
-    <div class="">
-      {{task.nextdate |date: shortDate}}
+    <div ng-if="!task.alertid">
+      NextDate: {{task.nextdate |date: shortDate}}
     </div>
-    <div class="">
-      {{task.duedate |date: shortDate}}
+    <div ng-if="task.alertid">
+      DueDate: {{task.duedate |date: shortDate}}
     </div>
     <div class="">
       {{task.dayinterval}}
