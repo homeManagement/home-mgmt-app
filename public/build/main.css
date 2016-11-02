@@ -2427,7 +2427,8 @@ a {
   width: 100%;
   display: flex;
   z-index: 139;
-  border-bottom: 2px solid #dce0e0; }
+  border-bottom: 2px solid #dce0e0;
+  background-color: white; }
   .header-container .menu-btn-box {
     display: flex;
     align-items: center;
