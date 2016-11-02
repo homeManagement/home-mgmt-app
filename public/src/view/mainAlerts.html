@@ -4,7 +4,7 @@
   </div>
 
 
-  <div ng-class="{'redAlert' : task.alertid }"class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: 'nextdate'" >
+  <div ng-class="{'redAlert' : task.alertid }"class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: ['nextdate', 'duedate']" >
     <div class="">
       {{task.name}}
     </div>
@@ -22,7 +22,9 @@
     </div>
     <div class="">
       <input type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
-      <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+      <div ng-if="task.alertid">
+        <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+      </div>
     </div>
 </div>
 
