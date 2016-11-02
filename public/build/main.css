@@ -2366,8 +2366,9 @@
   animation-name: slideOutUp; }
 
 .main-container {
-  margin-top: 10vh;
-  font-family: "Raleway", sans-serif; }
+  height: 90vh;
+  font-family: "Raleway", sans-serif;
+  overflow-y: auto; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -2422,10 +2423,6 @@ a {
   color: black; }
 
 .header-container {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  float: left;
   height: 10vh;
   width: 100%;
   display: flex;
