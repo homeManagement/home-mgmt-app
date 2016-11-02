@@ -39,7 +39,37 @@ angular.module('mgmtApp')
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){
         //  console.log($state.current.name);
-          $scope.viewname = $state.current.name;
+          switch($state.current.name) {
+              case 'home':
+                  $scope.viewname = '';
+                  break;
+              case 'properties':
+                  $scope.viewname = 'Your Properties';
+                  break;
+              case 'createProperty':
+                  $scope.viewname = 'Property Create';
+                  break;
+              case 'mainAlerts':
+                  $scope.viewname = 'Upcoming Maintenance';
+                  break;
+              case 'userSettings':
+                  $scope.viewname = 'User Settings';
+                  break;
+              case 'propertySettings':
+                  $scope.viewname = 'Property Settings';
+                  break;
+              case 'contact':
+                  $scope.viewname = 'About';
+                  break;
+              case 'login':
+                  $scope.viewname = 'Login';
+                  break;
+              case 'signup':
+                  $scope.viewname = 'Signup';
+                  break;
+              default:
+                  $scope.viewname = ''
+          }
        })
 
 
