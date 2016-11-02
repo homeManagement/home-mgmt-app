@@ -1,6 +1,18 @@
 angular.module('mgmtApp')
 .directive('headerDirective', function() {
   var controller = function($scope, $state, mainService, $rootScope) {
+
+    // menu icon animation
+
+    $(document).ready(function(){
+	$('#nav-icon3').click(function(){
+		$(this).toggleClass('open');
+	});
+});
+
+
+
+    // menu dropdown animationm
     $scope.showLogin = function () {
         $scope.modalFunc = !$scope.modalFunc;
         console.log('firing')
@@ -15,11 +27,13 @@ angular.module('mgmtApp')
         }
         else {
               $('div.menu').addClass('animated slideOutUp').one(animationEnd, function () {
+                $(this).prev().find('#nav-icon3').removeClass('open')
                 $(this).removeClass('animated slideOutUp')
+
             })
         }
         $scope.menuShowing = !$scope.menuShowing;
-        console.log($scope.menuShowing);
+        // console.log($scope.menuShowing);
       }
 
 

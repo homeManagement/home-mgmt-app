@@ -232,6 +232,7 @@ app.post('/auth/login', function(req, res) {
 //////////////////////PROPERTIES//////////////////////
 app.get('/properties/:token', propertyCtrl.getProperties);
 app.post('/properties', propertyCtrl.createProperty);
+app.delete('/property/:propertyId', propertyCtrl.deleteProperty)
 
 
 //////////////////////TASKS//////////////////////

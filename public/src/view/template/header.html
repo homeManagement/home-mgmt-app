@@ -1,19 +1,29 @@
 <section class='header-container'>
   <div class='menu-btn-box'>
-    <button ng-click="toggleMenu()" class="menu-btn">menu</button>
+    <button ng-click="toggleMenu()" class="menu-btn">
+      <div class="" id="nav-icon3">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </buton>
   </div>
   <div class="view-name-box">
     <div class="view-name">{{viewname}}</div>
   </div>
-  <div class="logo-box">
-    <img class="logo-img" src="../../src/temp_logo.png"/>
+  <div ui-sref="home" class="logo-box">
+    <br>
+    <!-- hஇme -->
+    ᚻᛰᛖᛊ
+    <!-- h卍me -->
   </div>
 </section>
 
 
 
-<div class="menu fade" ng-show="menuShowing">
 
+<div class="menu fade" ng-show="menuShowing">
   <ul class="menu-items-list" >
     <a ui-sref='login' ng-click="toggleMenu()"><li>login</li></br>
     <a ui-sref='properties' ng-click="toggleMenu()"><li>properties</li></a></br>
