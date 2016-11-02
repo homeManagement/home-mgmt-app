@@ -80,6 +80,14 @@ module.exports = {
     }
   },
 
+  snooze: function(req, res) {
+    console.log(req.params.alertid);
+    db.snoozeAlert([req.params.alertid], function(err, success) {
+      res.status(200).json(success);
+    })
+  },
+
+
   deleteProperty: function(req,res){
     db.deletePropertyAlerts([req.params.propertyId],function(err,success){
       db.deletePropertySettings([req.params.propertyId],function(err,success){
@@ -89,6 +97,7 @@ module.exports = {
           })
         })
       })
+
     })
   }
 
