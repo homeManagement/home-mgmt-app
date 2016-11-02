@@ -76,10 +76,14 @@ module.exports = {
         res.status(200).json(success);
       })
     }
-
-
-
+  },
+  snooze: function(req, res) {
+    console.log(req.params.alertid);
+    db.snoozeAlert([req.params.alertid], function(err, success) {
+      res.status(200).json(success);
+    })
   }
+
 
 
 }
