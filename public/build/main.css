@@ -2801,3 +2801,6 @@ div.textContent {
 .newProp {
   height: 10vh;
   border-style: dashed; }
+
+.redAlert {
+  background-color: yellow; }
