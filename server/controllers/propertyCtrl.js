@@ -87,7 +87,6 @@ module.exports = {
     })
   },
 
-
   deleteProperty: function(req,res){
     db.deletePropertyAlerts([req.params.propertyId],function(err,success){
       db.deletePropertySettings([req.params.propertyId],function(err,success){
@@ -99,6 +98,25 @@ module.exports = {
       })
 
     })
+  },
+
+  getUserById: function(req, res){
+    var token = req.params.token;
+    var user = jwt.decode(token, config.TOKEN_SECRET);
+
+    db.getUserById([user.sub], function(err, users){
+
+      res.status(200).json(users);
+
+    })
+  },
+
+  updateFirstName: function(req,res){
+    console.log("body",req.body);
+    db.updateFirstName([req.params.id, req.body.newFirstName], function(err, success){
+        res.status(200).json(success);
+    })
+
   }
 
 

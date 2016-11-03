@@ -1,0 +1,24 @@
+<section class="main-container">
+  <div class="">
+    <img ng-src="{{user.photo}}" alt="" />
+    <div class="">
+      {{user.firstname}} <input ng-click="firstNameEdit = !firstNameEdit" type="button" name="name" value="EDIT">
+      <input ng-show="firstNameEdit" ng-model="newFirstName" type="text" name="name" value="">
+      <input ng-show="firstNameEdit" ng-click="updateFirstName(newFirstName)" type="button" name="name" value="SUBMIT">
+      </div>
+    <div class="">
+      {{user.last_name}} <input ng-click="x" type="button" name="name" value="EDIT">
+    </div>
+    <div class="">
+      {{user.phone_number}} <input ng-click="x" type="button" name="name" value="EDIT">
+    </div>
+    <div class="">
+      {{user.password}}
+    </div>
+
+
+
+
+
+  </div>
+</section>

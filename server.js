@@ -253,6 +253,11 @@ app.get('/propertySettings/:propertyId', propertyCtrl.getPropertySettings);
 //////////////////////ALERT SETTINGS////////////////////////
 app.put('/alerts/:alertid', propertyCtrl.snooze);
 app.put('/maintenancetasks/:propertymaintenanceid', propertyCtrl.done);
+
+////////////////////////Users////////////////////////////////////
+app.get('/users/:token', propertyCtrl.getUserById);
+app.put('/users/firstName/:id', propertyCtrl.updateFirstName);
+
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
