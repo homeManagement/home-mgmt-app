@@ -87,7 +87,6 @@ module.exports = {
     })
   },
 
-
   deleteProperty: function(req,res){
     db.deletePropertyAlerts([req.params.propertyId],function(err,success){
       db.deletePropertySettings([req.params.propertyId],function(err,success){
@@ -110,7 +109,38 @@ module.exports = {
     db.deleteTask([req.params.propertymaintenanceid],function(err,success){
       res.sendStatus(202);
     })
+  },
+
+  getUserById: function(req, res){
+    var token = req.params.token;
+    var user = jwt.decode(token, config.TOKEN_SECRET);
+    db.getUserById([user.sub], function(err, users){
+      res.status(200).json(users);
+    })
+  },
+
+  updateFirstName: function(req,res){
+    db.updateFirstName([req.params.id, req.body.newFirstName], function(err, success){
+        res.status(200).json(success);
+    })
+  },
+  updateLastName: function(req,res){
+    db.updateLastName([req.params.id, req.body.newLastName], function(err, success){
+        res.status(200).json(success);
+    })
+  },
+
+  updatePhone: function(req,res){
+    db.updatePhone([req.params.id, req.body.newPhone], function(err, success){
+      res.status(200).json(success);
+    })
+  },
+  updatePassword: function(req,res){
+    db.updatePassword([req.params.id, req.body.newPassword], function(err, success){
+      res.status(200).json(success);
+    })
   }
+
 
 
 

@@ -93,9 +93,7 @@ angular.module('mgmtApp')
     }).then(function(res) {
       return res;
     })
-
   }
-
   this.deleteProperty = function(propertyId){
     return $http({
       method: 'DELETE',
@@ -104,7 +102,23 @@ angular.module('mgmtApp')
       return res
     })
   }
-
+  this.getUserById = function(token){
+    return $http({
+      method: 'GET',
+      url: '/users/' + token
+    }).then(function(res){
+      return res.data;
+    })
+  }
+  this.updateFirstName = function(id, newFirstName){
+    return $http({
+      method: 'PUT',
+      url: '/users/firstName/'+ id,
+      data: {newFirstName: newFirstName}
+    }).then(function(res){
+      return res;
+    })
+  }
   this.editTask = function(propertymaintenanceid, task){
     return $http({
       method: 'PUT',
@@ -114,7 +128,33 @@ angular.module('mgmtApp')
       return res;
     })
   }
-
+  this.updateLastName = function(id, newLastName){
+    return $http({
+      method: 'PUT',
+      url: '/users/lastName/'+ id,
+      data: {newLastName: newLastName}
+    }).then(function(res){
+      return res;
+    })
+  }
+  this.updatePhone = function(id, newPhone){
+    return $http({
+      method: 'PUT',
+      url: '/users/phone/'+ id,
+      data: {newPhone: newPhone}
+    }).then(function(res){
+      return res;
+    })
+  }
+  this.updatePassword = function(id, newPassword){
+    return $http({
+      method: 'PUT',
+      url: '/users/password/'+ id,
+      data: {newPassword: newPassword}
+    }).then(function(res){
+      return res;
+    })
+  }
   this.deleteTask = function(propertymaintenanceid) {
     return $http({
       method: 'DELETE',
