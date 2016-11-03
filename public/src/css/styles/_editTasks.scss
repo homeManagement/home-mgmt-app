@@ -1,16 +1,14 @@
-$taskBarHeight: 5vh;
-
 .edit-tasks-container {
   margin-top: 40px;
 }
 .specific-task {
   width: 80%;
   margin: auto auto 40px auto;
+  position: relative;
 }
 
 .task {
   border: 1px solid blue;
-  height: 10vh;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -84,10 +82,23 @@ $taskBarHeight: 5vh;
   background-color: red;
 }
 
+.specific-task-overlay {
+  width: 100%;
+  background-color: rgba(0,0,0,.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.specific-task-overlay-button {
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+}
 
 .add-new-task-container {
   width: 80%;
-  height: 10vh;
   margin: auto auto 40px auto;
   border: 1px solid blue;
 }

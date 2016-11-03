@@ -240,6 +240,8 @@ app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
 app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
 app.post('/createCustomTask', propertyCtrl.insertCustomTask);
+app.put('/tasksettings/:propertymaintenanceid', propertyCtrl.editTask)
+app.delete('/maintenancetask/:propertymaintenanceid', propertyCtrl.deleteTask)
 
 
 //////////////////////PROPERTY SETTINGS//////////////////////
