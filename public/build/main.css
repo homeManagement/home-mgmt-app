@@ -387,8 +387,8 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -413,8 +413,8 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -2735,11 +2735,11 @@ div.textContent {
 
 .specific-task {
   width: 80%;
-  margin: auto auto 40px auto; }
+  margin: auto auto 40px auto;
+  position: relative; }
 
 .task {
   border: 1px solid blue;
-  height: 10vh;
   padding: 10px;
   display: flex;
   flex-direction: row;
@@ -2800,9 +2800,21 @@ div.textContent {
   border: 1px solid yellow;
   background-color: red; }
 
+.specific-task-overlay {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; }
+
+.specific-task-overlay-button {
+  color: white;
+  font-size: 40px;
+  cursor: pointer; }
+
 .add-new-task-container {
   width: 80%;
-  height: 10vh;
   margin: auto auto 40px auto;
   border: 1px solid blue; }
 

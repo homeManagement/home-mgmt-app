@@ -1,0 +1,28 @@
+<form class="task-update-form" name="taskUpdateForm">
+  Maintenance Name:<br>
+  <input type="text" ng-model="editTaskObj.maintName"><br>
+  Last Run Date:<br>
+  <input type="date" ng-model="editTaskObj.lastDate"><br>
+  Next Run Date:<br>
+  <input type="date" ng-model="editTaskObj.nextDate"><br>
+  Interval:<br>
+  <select ng-model="editTaskObj.season">
+    <option value="Monthly">Monthly</option>
+    <option value="Quarterly">Quarterly</option>
+    <option value="Biannually">Biannually</option>
+    <option value="Annually">Annually</option>
+    <option value="Custom">Custom</option>
+  </select><br>
+  <span class="custom-interval"  ng-show="editTaskObj.season === 'Custom'">
+    Days inbetween:<br>
+    <input type="number" ng-model="editTaskObj.dayInterval">
+  </span>
+  Outdoor:<br>
+  <input type="checkbox" ng-model="editTaskObj.outdoor"><br>
+  Notes:<br>
+  <textarea ng-model="editTaskObj.notes" rows="20"></textarea><br>
+  Deactivate:<br>
+  <input type="checkbox" ng-model="editTaskObj.inactive"><br>
+  <input type="button" value="Update" ng-click="editTask(editTaskObj)">
+  <input type="button" value="Delete" ng-click="taskOverlayVisibility = !taskOverlayVisibility; editFormVisibility = !editFormVisibility">
+</form>
