@@ -1,14 +1,23 @@
+.login-container-container{
+  background-position: center center;
+  background-image: url('../../../build/assets/grey_sky_house.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .login-container {
   text-align: center;
   height: 90vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .panel-body{
   display: flex;
   justify-content: center;
+  padding-bottom: 386px;
 }
 
 .credential {
@@ -57,20 +66,35 @@
 .signup-or-separator hr {
   width: 90%;
   margin: -16px auto 10px auto;
-  border-top: 1px solid #dce0e0;
+  // border-top: 1px solid #dce0e0;
 }
 
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
   margin: 0;
-  background-color: #fff;
+  // background-color: #fff;
+}
+
+.show-signup{
+  margin: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .pull-left{
-  float: left;
+
 }
 
 .pull-right{
-  float: right;
+  background: rgba(255, 255, 255, 0);
+  border: 1px solid #EF585D;
+  border-radius: 28px;
+  height: 31px;
+  width: 91px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EF585D;
+
 }
