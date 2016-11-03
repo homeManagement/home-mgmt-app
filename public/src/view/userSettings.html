@@ -1,19 +1,26 @@
 <section class="main-container">
   <div class="">
     <img ng-src="{{user.photo}}" alt="" />
+    <img ng-if="!user.photo" src="https://lh3.googleusercontent.com/--KpygdWrSHs/Vpdq-UD5C0I/AAAAAAAAAuw/evoVPd2Isxw/w506-h750/AWESOME%2BFACEBOOK%2BPROFILE%2BPICTURES1.jpg" alt="" />
     <div class="">
-      {{user.firstname}} <input ng-click="firstNameEdit = !firstNameEdit" type="button" name="name" value="EDIT">
-      <input ng-show="firstNameEdit" ng-model="newFirstName" type="text" name="name" value="">
+      First:{{user.firstname}} <input ng-click="firstNameEdit = !firstNameEdit" type="button" name="name" value="EDIT">
+      <input ng-show="firstNameEdit" ng-model="newFirstName" type="text" Required name="name" value="">
       <input ng-show="firstNameEdit" ng-click="updateFirstName(newFirstName)" type="button" name="name" value="SUBMIT">
       </div>
     <div class="">
-      {{user.last_name}} <input ng-click="x" type="button" name="name" value="EDIT">
+      Last:{{user.last_name}}  <input ng-click="lastNameEdit = !lastNameEdit" type="button" name="name" value="EDIT">
+      <input ng-show="lastNameEdit" ng-model="newLastName" type="text" Required name="name" value="">
+      <input ng-show="lastNameEdit" ng-click="updateLastName(newLastName)" type="button" name="name" value="SUBMIT">
     </div>
     <div class="">
-      {{user.phone_number}} <input ng-click="x" type="button" name="name" value="EDIT">
+      Phone:{{user.phone_number}}  <input ng-click="phoneEdit = !phoneEdit" type="button" name="name" value="EDIT">
+      <input ng-show="phoneEdit" ng-model="newPhone" type="tel" ng-keyup="phoneNumberStyle($event)" name="name" value="">
+      <input ng-show="phoneEdit" ng-click="updatePhone(newPhone)" type="button" name="name" value="SUBMIT">
     </div>
-    <div class="">
-      {{user.password}}
+    <div ng-if="user.password" class="">
+      Password:{{user.password}} <input ng-click="passwordEdit = !passwordEdit" type="button" name="name" value="EDIT">
+      <input ng-show="passwordEdit" ng-model="newPassword" type="password"  name="name" value="">
+      <input ng-show="passwordEdit" ng-click="updatePassword(newPassword); passwordEdit = !passwordEdit" type="button" name="name" value="SUBMIT">
     </div>
 
 

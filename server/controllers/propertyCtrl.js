@@ -103,21 +103,33 @@ module.exports = {
   getUserById: function(req, res){
     var token = req.params.token;
     var user = jwt.decode(token, config.TOKEN_SECRET);
-
     db.getUserById([user.sub], function(err, users){
-
       res.status(200).json(users);
-
     })
   },
 
   updateFirstName: function(req,res){
-    console.log("body",req.body);
     db.updateFirstName([req.params.id, req.body.newFirstName], function(err, success){
         res.status(200).json(success);
     })
+  },
+  updateLastName: function(req,res){
+    db.updateLastName([req.params.id, req.body.newLastName], function(err, success){
+        res.status(200).json(success);
+    })
+  },
 
+  updatePhone: function(req,res){
+    db.updatePhone([req.params.id, req.body.newPhone], function(err, success){
+      res.status(200).json(success);
+    })
+  },
+  updatePassword: function(req,res){
+    db.updatePassword([req.params.id, req.body.newPassword], function(err, success){
+      res.status(200).json(success);
+    })
   }
+
 
 
 

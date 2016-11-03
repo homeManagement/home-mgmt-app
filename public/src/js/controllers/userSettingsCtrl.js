@@ -17,6 +17,51 @@ angular.module('mgmtApp')
      $scope.newFirstName = "";
     })
   }
+  $scope.updateLastName = function(newLastName){
+    mainService.updateLastName($scope.user.id, newLastName)
+    .then(function (res){
+     $scope.user.last_name = newLastName;
+     $scope.lastNameEdit = false;
+     $scope.newLastName = "";
+    })
+  }
+/////////////////////edit phone number to (xXx)xXX-XXXX/////////////
+  $scope.phoneNumberStyle = function(e){
+
+     if ($scope.newPhone.length === 1) {
+       $scope.newPhone = '(' + $scope.newPhone
+     }
+     if (!Number.isInteger(Number(e.key))) {
+       $scope.newPhone = $scope.newPhone.split('').splice(0,$scope.newPhone.length - 1).join('')
+     }
+     if ($scope.newPhone.length === 4) {
+       $scope.newPhone = $scope.newPhone + ')'
+     }
+     if ($scope.newPhone.length === 8) {
+       $scope.newPhone = $scope.newPhone + '-'
+     }
+     if ($scope.newPhone.length === 14) {
+       $scope.newPhone = $scope.newPhone.split('').splice(0,$scope.newPhone.length - 1).join('')
+     }
+   }
+
+  $scope.updatePhone = function(newPhone){
+      newPhone = newPhone.replace(/\D/g,'');
+    mainService.updatePhone($scope.user.id, newPhone)
+    .then(function (res){
+     $scope.user.phone_number = newPhone;
+     $scope.phoneEdit = false;
+     $scope.newPhone = "";
+    })
+  }
+
+  $scope.updatePassword = function(newPassword){
+    mainService.updatePassword($scope.user.id, newPassword)
+    .then(function (res){
+     $scope.user.password = newPassword;
+     $scope.newPassword = "";
+    })
+  }
 
 
 })

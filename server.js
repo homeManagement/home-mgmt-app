@@ -125,6 +125,7 @@ app.post('/auth/signup', function(req, res){
     if(user[0]){
     return res.status(409).send({message: 'Email is already taken'})
     }
+    ///////////////////////parses not intergers ///////////////
     req.body.phone = req.body.phone.replace(/\D/g,'');
 
     db.createLocalUser([req.body.firstName, req.body.lastName, req.body.email, req.body.password, req.body.phone], function(err,success){
@@ -257,6 +258,9 @@ app.put('/maintenancetasks/:propertymaintenanceid', propertyCtrl.done);
 ////////////////////////Users////////////////////////////////////
 app.get('/users/:token', propertyCtrl.getUserById);
 app.put('/users/firstName/:id', propertyCtrl.updateFirstName);
+app.put('/users/lastName/:id', propertyCtrl.updateLastName);
+app.put('/users/phone/:id', propertyCtrl.updatePhone);
+app.put('/users/password/:id', propertyCtrl.updatePassword);
 
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
