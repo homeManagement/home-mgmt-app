@@ -9,7 +9,7 @@ p.season as season,
 p.outdoor as outdoor,
 p.notes as notes,
 --p.one_time as oneTime,
---p.inactive as inactive,
+p.inactive as inactive,
 a.ID as alertid,
 a.due_date as duedate,
 a.create_date as createdate

@@ -271,8 +271,8 @@ cronTime: '* 1 * * *',
 
    onTick: function() {
       db.getDueTasks(function (err,response){
-        response.map(function(currentValue,index,array){
-          db.createAlert([currentValue.property_maintenance_id,currentValue.property_id,currentValue.user_id,currentValue.next_date],function(err,success){
+        response.map(function(alert,index,array){
+          db.createAlert([alert.property_maintenance_id,alert.property_id,alert.user_id,alert.next_date,alert.receive_text,alert.receive_email],function(err,success){
             console.log('ERROR',err,'SUCCESS',success);
           })
         })
@@ -294,17 +294,20 @@ cronTime: '* 1 * * *',
 
         response.map(function(alert){
         /////////twilio////////////
+        if (alert.sendtext) {
           var number = '""+1' + alert.phonenumber + '""';
-          console.log(number);
           twilio.messages.create(
             {
               to: number,
               from: config.twilioNumber,
-              body: 'IT WORKED DO STUFF'
+              body: 'A reminder to ' + alert.name
             },function(err, message){
             //console.log(message);
           });
-            /////////// EMAIL////////
+        }
+
+        /////////// EMAIL////////
+        if (alert.sendemail) {
           function email(req, res) {
             var transporter = nodemailer.createTransport({
                 service: 'Gmail',
@@ -317,9 +320,9 @@ cronTime: '* 1 * * *',
             var mailOptions = {
                 from: 'homemanagement13@gmail.com', // sender address
                 to: alert.email, // list of receivers
-                subject: 'Email Test', // Subject line
+                subject: 'Home Maintenance Reminder', // Subject line
                 text: text,
-                html: '<h1 style="color:blue;margin-left:30px;">This H1 tag is being brought in as HTML</h1>'
+                html: '<h1 style="color:blue;margin-left:30px;">' + alert.name + '</h1>'
               };
 
             transporter.sendMail(mailOptions, function(error, info){
@@ -331,6 +334,8 @@ cronTime: '* 1 * * *',
             });
             }
             email();
+        }
+
         })
       })
     },

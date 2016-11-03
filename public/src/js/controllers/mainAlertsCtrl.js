@@ -11,7 +11,9 @@ angular.module('mgmtApp')
   $scope.getPropertyTasks = function(propertyId){
     mainService.getPropertyTasks(propertyId)
     .then(function(res){
-      $scope.propertyTasks = res;
+      $scope.propertyTasks = res.filter(function(currentValue){
+        return currentValue.inactive === false;
+      });
     })
   }
 
@@ -29,6 +31,6 @@ angular.module('mgmtApp')
       $scope.getPropertyTasks($scope.propertyId)
     })
   }
-  
+
 
 })
