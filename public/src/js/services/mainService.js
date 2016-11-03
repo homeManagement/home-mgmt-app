@@ -77,7 +77,6 @@ angular.module('mgmtApp')
     })
   }
   this.done = function(propertymaintenanceid, alertid){
-
     return $http({
       method: 'PUT',
       url: '/maintenancetasks/' + propertymaintenanceid,
@@ -94,7 +93,6 @@ angular.module('mgmtApp')
     }).then(function(res) {
       return res;
     })
-
   }
   this.deleteProperty = function(propertyId){
     return $http({
@@ -117,6 +115,15 @@ angular.module('mgmtApp')
       method: 'PUT',
       url: '/users/firstName/'+ id,
       data: {newFirstName: newFirstName}
+    }).then(function(res){
+      return res;
+    })
+  }
+  this.editTask = function(propertymaintenanceid, task){
+    return $http({
+      method: 'PUT',
+      url: '/tasksettings/' + propertymaintenanceid,
+      data: task
     }).then(function(res){
       return res;
     })
@@ -144,6 +151,14 @@ angular.module('mgmtApp')
       method: 'PUT',
       url: '/users/password/'+ id,
       data: {newPassword: newPassword}
+    }).then(function(res){
+      return res;
+    })
+  }
+  this.deleteTask = function(propertymaintenanceid) {
+    return $http({
+      method: 'DELETE',
+      url: '/maintenancetask/'+propertymaintenanceid
     }).then(function(res){
       return res;
     })

@@ -92,11 +92,22 @@ module.exports = {
       db.deletePropertySettings([req.params.propertyId],function(err,success){
         db.deletePropertyTasks([req.params.propertyId],function(err,success){
           db.deleteProperty([req.params.propertyId],function(err,success){
-            res.sendStatus(201);
+            res.sendStatus(202);
           })
         })
       })
+    })
+  },
 
+  editTask: function(req, res){
+    db.editTask([req.params.propertymaintenanceid, req.body.maintName, req.body.nextDate, req.body.lastDate, req.body.season, req.body.dayInterval, req.body.outdoor, req.body.notes, req.body.inactive], function(err, success){
+      res.status(200).json(success);
+    })
+  },
+
+  deleteTask: function(req,res){
+    db.deleteTask([req.params.propertymaintenanceid],function(err,success){
+      res.sendStatus(202);
     })
   },
 
