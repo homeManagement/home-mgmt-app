@@ -41,7 +41,7 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate', 'ngTouch'])
     restricted: true,
     params: {propertyId: null}
   })
-  .state('about', {
+  .state('contact', {
     url: "/contact",
     controller: 'contactCtrl',
     templateUrl: '../src/view/contact.html',

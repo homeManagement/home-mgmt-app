@@ -1,4 +1,4 @@
-angular.module('mgmtApp').directive('createTask', function(mainService){
+angular.module('mgmtApp').directive('createTask', function(mainService,$window){
 
 var controller = function(scope, element){
   scope.task = {
@@ -6,7 +6,12 @@ var controller = function(scope, element){
   }
 
   scope.createTask = function(propertyId,task) {
-    task.propertyId = propertyId
+    if(!propertyId){
+      task.propertyId = $window.localStorage.propertyId;
+    }
+    else {
+      task.propertyId = propertyId
+    }
 
     switch (task.season) {
       case 'Monthly':

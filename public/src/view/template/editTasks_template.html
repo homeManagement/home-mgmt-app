@@ -1,0 +1,97 @@
+<div class="edit-tasks-container">
+  <div class="specific-task" ng-repeat="task in tasks">
+    <div class="task">
+      <div class="task-left-info">
+        <div class="task-top-info">
+          <div class="task-title">
+            {{task.name}}
+          </div>
+        </div>
+        <div class="task-bottom-info">
+          <div class="task-last-date task-date-holder">
+            <div class="task-date-title">
+              Last Run:
+            </div>
+            <div class="task-date-info">
+              {{task.lastdate}}
+            </div>
+          </div>
+          <div class="task-next-date task-date-holder">
+            <div class="task-date-title">
+              Next Alert:
+            </div>
+            <div class="task-date-info">
+              {{task.nextdate}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="task-right-info" ng-click="editFormVisibility = !editFormVisibility">
+
+      </div>
+
+
+    </div>
+    <form class="task-update-form" name="taskUpdateForm" ng-show="editFormVisibility">
+      Maintenance Name:<br>
+      <input type="text" ng-model="task.name"><br>
+      Start Date:<br>
+      <input type="date" ng-model="task.lastDate"><br>
+      Interval:<br>
+      <select ng-model="task.season">
+        <option value="Monthly">Monthly</option>
+        <option value="Quarterly">Quarterly</option>
+        <option value="Biannually">Biannually</option>
+        <option value="Annually">Annually</option>
+        <option value="Custom">Custom</option>
+      </select><br>
+      <span class="custom-interval"  ng-show="task.season === 'Custom'">
+        Days inbetween:<br>
+        <input type="number" ng-model="task.dayInterval">
+      </span>
+      Outdoor:<br>
+      <input type="checkbox" ng-model="task.outdoor"><br>
+      Notes:<br>
+      <textarea ng-model="task.notes" rows="20"></textarea><br>
+      <input type="button" value="add" ng-click="editTask(propertyId,task)">
+    </form>
+  </div>
+  <div class="add-new-task-container">
+    <form class="create-task-form" name="customTaskForm">
+      Maintenance Name:
+      <input type="text" ng-model="task.name">
+      Start Date:
+      <input type="date" ng-model="task.lastDate">
+      Interval:
+      <select ng-model="task.season">
+        <option value="Monthly">Monthly</option>
+        <option value="Quarterly">Quarterly</option>
+        <option value="Biannually">Biannually</option>
+        <option value="Annually">Annually</option>
+        <option value="Custom">Custom</option>
+      </select>
+      <span class="custom-interval"  ng-show="task.season === 'Custom'">
+        Days inbetween:
+        <input type="number" ng-model="task.dayInterval">
+      </span>
+      Outdoor:
+      <input type="checkbox" ng-model="task.outdoor">
+      Notes:
+      <textarea ng-model="task.notes" rows="8" cols="40"></textarea>
+      <input type="button" value="add" ng-click="createTask(propertyId,task)">
+    </form>
+  </div>
+</div>
+<!-- propertymaintenanceid":168
+,"propertyid":90
+,"name":"Fertilize lawn "
+,"typeid":1
+,"dayinterval":365
+,"nextdate":"2017-03-15T06:00:00.000Z"
+,"lastdate":"2016-11-01T06:00:00.000Z"
+,"season":"Spring"
+,"outdoor":true
+,"notes":null
+,"alertid":null
+,"duedate":null
+,"createdate":null} -->
