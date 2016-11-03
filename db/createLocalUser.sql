@@ -1,2 +1,2 @@
-INSERT INTO users (first_name, last_name, email, password)
-SELECT $1, $2, $3, $4;
+INSERT INTO users (first_name, last_name, email, password, phone_number)
+SELECT $1, $2, $3, $4, $5;
