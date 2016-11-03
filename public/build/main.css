@@ -2425,7 +2425,6 @@ a {
   position: fixed;
   top: 0px;
   left: 0px;
-  float: left;
   height: 10vh;
   width: 100%;
   display: flex;
@@ -2572,6 +2571,12 @@ a {
   width: 0%;
   left: 50%; }
 
+.login-container-container {
+  background-position: center center;
+  background-image: url("../../../build/assets/grey_sky_house.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
 .login-container {
   text-align: center;
   height: 90vh;
@@ -2581,7 +2586,8 @@ a {
 
 .panel-body {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  padding-bottom: 386px; }
 
 .credential {
   border: 1px solid grey;
@@ -2621,20 +2627,28 @@ a {
 
 .signup-or-separator hr {
   width: 90%;
-  margin: -16px auto 10px auto;
-  border-top: 1px solid #dce0e0; }
+  margin: -16px auto 10px auto; }
 
 .signup-or-separator .text {
   display: inline-block;
   padding: 8px;
-  margin: 0;
-  background-color: #fff; }
+  margin: 0; }
 
-.pull-left {
-  float: left; }
+.show-signup {
+  margin: 30px;
+  display: flex;
+  justify-content: space-between; }
 
 .pull-right {
-  float: right; }
+  background: rgba(255, 255, 255, 0);
+  border: 1px solid #EF585D;
+  border-radius: 28px;
+  height: 31px;
+  width: 91px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #EF585D; }
 
 .propertyToggles {
   display: block;
@@ -2837,7 +2851,7 @@ div.textContent {
   width: 80%;
   border: 1px solid red;
   text-decoration: none;
-  background-color: #f9e7e7;
+  background-color: #bfd7ea;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -2890,4 +2904,4 @@ div.textContent {
   border-style: dashed; }
 
 .redAlert {
-  background-color: yellow; }
+  background-color: #ff5a5f; }

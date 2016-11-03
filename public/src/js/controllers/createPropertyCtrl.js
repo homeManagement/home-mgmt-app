@@ -6,7 +6,8 @@ angular.module('mgmtApp')
   $scope.customTaskVisibility = false;
 
   $scope.property = {
-    token: $window.localStorage.satellizer_token
+    token: $window.localStorage.satellizer_token,
+    typeId: 1
   };
 
   $scope.send = function(property){
