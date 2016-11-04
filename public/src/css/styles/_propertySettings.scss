@@ -1,18 +1,24 @@
+.setting-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .propertyToggles {
   display: block;
   text-align: center;
   margin-top: 53px;
   font-family: $body-font;
   width: 100%;
-  font-size: 59px;
+  font-size: $fontSize5;
   padding-top: 28px;
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 166px;
-  height: 97px;
+  width: 164px;
+  height: 96px;
 }
 
 .switch input {display:none;}
@@ -34,9 +40,9 @@
   content: "";
   height: 84px;
   width: 84px;
-  left: 2px;
+  left: 6px;
   right: 2px;
-  bottom: 7px;
+  bottom: 6px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -51,14 +57,14 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(72px);
-  -ms-transform: translateX(72px);
-  transform: translateX(72px);
+  -webkit-transform: translateX(68px);
+  -ms-transform: translateX(68px);
+  transform: translateX(68px);
 }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px;
+  border-radius: 45px;
 }
 
 .slider.round:before {
