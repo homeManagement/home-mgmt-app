@@ -2369,6 +2369,9 @@
   margin-top: 10vh;
   font-family: "Raleway", sans-serif; }
 
+body {
+  background-color: #D3D2D3; }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -2609,8 +2612,8 @@ a {
   color: white; }
 
 .login-btn {
-  background-color: #d3531a;
-  border: 1px solid #d3531a; }
+  background-color: #DA4146;
+  border: 1px solid #DA4146; }
 
 .fb-signin {
   text-align: center;
@@ -2639,16 +2642,22 @@ a {
   display: flex;
   justify-content: space-between; }
 
+.pull-left {
+  font-size: 21px; }
+
 .pull-right {
   background: rgba(255, 255, 255, 0);
   border: 1px solid #EF585D;
   border-radius: 28px;
-  height: 31px;
+  height: 36px;
   width: 91px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #EF585D; }
+
+h6.text {
+  font-size: 21px; }
 
 .propertyToggles {
   display: block;
@@ -2656,13 +2665,14 @@ a {
   margin-top: 53px;
   font-family: "Raleway", sans-serif;
   width: 100%;
-  font-size: 3.8rem; }
+  font-size: 59px;
+  padding-top: 28px; }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px; }
+  width: 166px;
+  height: 97px; }
 
 .switch input {
   display: none; }
@@ -2681,24 +2691,25 @@ a {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 84px;
+  width: 84px;
+  left: 2px;
+  right: 2px;
+  bottom: 7px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s; }
 
 input:checked + .slider {
-  background-color: #2196F3; }
+  background-color: #ef585d; }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3; }
+  box-shadow: 0 0 1px #ef585d; }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px); }
+  -webkit-transform: translateX(72px);
+  -ms-transform: translateX(72px);
+  transform: translateX(72px); }
 
 /* Rounded sliders */
 .slider.round {
@@ -2706,6 +2717,14 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%; }
+
+.switch-container-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 2px solid #dce0e0;
+  margin-top: 15px;
+  padding: 30px; }
 
 .createPropertyInputs {
   display: block;
@@ -2715,6 +2734,9 @@ input:checked + .slider:before {
   height: 90vh;
   width: 100%;
   font-size: 3.8rem; }
+
+.text-banner-container {
+  background-color: #fff; }
 
 #textMessage {
   height: 60vh;
@@ -2825,8 +2847,6 @@ div.textContent {
   flex-direction: column;
   align-items: center;
   padding-top: 50px;
-  background-image: url("https://newevolutiondesigns.com/images/freebies/white-wallpaper-preview-18.jpg");
-  background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
 
