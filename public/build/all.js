@@ -475,7 +475,7 @@ angular.module('mgmtApp').directive('headerDirective', function () {
       //  console.log($state.current.name);
       switch ($state.current.name) {
         case 'home':
-          $scope.viewname = '';
+          $scope.viewname = 'Home Management';
           break;
         case 'properties':
           $scope.viewname = 'Your Properties';
