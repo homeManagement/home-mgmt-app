@@ -43,8 +43,8 @@
 }
 
 .login-btn{
-  background-color: $theme;
-  border: 1px solid $theme;
+  background-color: #DA4146;
+  border: 1px solid #DA4146;
 }
 
 .fb-signin{
@@ -83,18 +83,22 @@
 }
 
 .pull-left{
-
+  font-size: 21px;
 }
 
 .pull-right{
   background: rgba(255, 255, 255, 0);
   border: 1px solid #EF585D;
   border-radius: 28px;
-  height: 31px;
+  height: 36px;
   width: 91px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #EF585D;
 
+}
+
+h6.text{
+  font-size: 21px;
 }

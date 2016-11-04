@@ -2,8 +2,9 @@
   margin-top: 10vh;
   font-family: $body-font;
   background-color: lightgrey;
-  
+
 }
+
 
 
 // $boxHeight1:
@@ -17,3 +18,7 @@
 // $fontSize3:
 // $fontSize4:
 // $fontSize5:
+
+body {
+  background-color: $background;
+}
