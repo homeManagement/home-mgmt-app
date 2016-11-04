@@ -27,6 +27,7 @@
   -webkit-animation-duration: .75s;
   animation-duration: .75s; }
 
+
 @-webkit-keyframes bounce {
   from, 20%, 53%, 80%, to {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -2189,6 +2190,7 @@
   -webkit-animation-name: zoomOutUp;
   animation-name: zoomOutUp; }
 
+
 @-webkit-keyframes slideInDown {
   from {
     -webkit-transform: translate3d(0, -100%, 0);
@@ -2369,8 +2371,12 @@
   margin-top: 10vh;
   font-family: "Raleway", sans-serif; }
 
+button, input[type="button"], input[type="submit"] {
+  text-decoration: none;
+  border: none; }
+
 body {
-  background-color: #D3D2D3; }
+  background-color: #d3d2d3; }
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -2450,7 +2456,10 @@ a {
       letter-spacing: 1.4px;
       font-family: "Raleway", sans-serif;
       justify-content: center;
-      align-items: center; }
+      align-items: center;
+      background-color: white; }
+  .header-container .menu-btn:focus {
+    outline: none; }
   .header-container .view-name-box {
     display: flex;
     align-items: center;
@@ -2574,6 +2583,12 @@ a {
   width: 0%;
   left: 50%; }
 
+.logout-btn {
+  font-family: "Raleway", sans-serif;
+  background: white;
+  font-size: 3.8rem;
+  padding-top: 55px; }
+
 .login-container-container {
   background-position: center center;
   background-image: url("../../../build/assets/grey_sky_house.jpeg");
@@ -2659,6 +2674,11 @@ a {
 h6.text {
   font-size: 21px; }
 
+.setting-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
 .propertyToggles {
   display: block;
   text-align: center;
@@ -2671,8 +2691,8 @@ h6.text {
 .switch {
   position: relative;
   display: inline-block;
-  width: 166px;
-  height: 97px; }
+  width: 164px;
+  height: 96px; }
 
 .switch input {
   display: none; }
@@ -2693,9 +2713,9 @@ h6.text {
   content: "";
   height: 84px;
   width: 84px;
-  left: 2px;
+  left: 6px;
   right: 2px;
-  bottom: 7px;
+  bottom: 6px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s; }
@@ -2707,13 +2727,13 @@ input:focus + .slider {
   box-shadow: 0 0 1px #ef585d; }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(72px);
-  -ms-transform: translateX(72px);
-  transform: translateX(72px); }
+  -webkit-transform: translateX(68px);
+  -ms-transform: translateX(68px);
+  transform: translateX(68px); }
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 34px; }
+  border-radius: 45px; }
 
 .slider.round:before {
   border-radius: 50%; }
@@ -2767,35 +2787,38 @@ div.textContent {
   display: none; }
 
 .edit-tasks-container {
-  margin-top: 40px; }
+  margin-top: 80px; }
 
 .specific-task {
-  width: 80%;
+  width: 100%;
   margin: auto auto 40px auto;
   position: relative; }
 
 .task {
-  border: 1px solid blue;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; }
-
-.task-left-info {
-  width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid red; }
+  justify-content: flex-start; }
 
 .task-top-info {
-  width: 100%; }
+  width: 100%;
+  padding: 30px;
+  margin-bottom: 5px;
+  background: white; }
 
 .task-title {
-  font-size: 3rem; }
+  font-size: 59px; }
 
 .task-bottom-info {
   width: 100%;
+  padding: 30px;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 5px; }
+
+.task-left-info {
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start; }
@@ -2805,40 +2828,96 @@ div.textContent {
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
-  margin-right: 20px; }
+  margin-right: 90px; }
 
 .task-date-title {
-  font-size: 1.5rem; }
+  font-size: 32px; }
 
 .task-date-info {
-  font-size: 2.5rem; }
-
-.task-update-form {
-  border: 1px solid green;
-  font-size: 33px; }
-  .task-update-form input {
-    height: 30px;
-    font-size: 29px;
-    margin-bottom: auto auto 10px auto;
-    border: 1px solid black;
-    width: 98%; }
-  .task-update-form select {
-    height: 30px;
-    font-size: 29px;
-    margin-bottom: 10px;
-    border: 1px solid black; }
-  .task-update-form textarea {
-    width: 98%;
-    border: 1px solid black; }
+  font-size: 45px; }
 
 .task-right-info {
   width: 20%;
-  border: 1px solid yellow;
-  background-color: red; }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.task-update-form {
+  position: relative;
+  background: white;
+  font-size: 45px;
+  padding: 30px; }
+  .task-update-form textarea {
+    width: 98%;
+    font-size: 20px;
+    border: 1px solid black;
+    overflow-y: auto;
+    height: 400px; }
+
+.task-update-form input:focus {
+  outline-color: white; }
+
+.task-update-form textarea:focus {
+  outline-color: #ef585d; }
+
+.edit-task-form-input {
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 95%;
+  margin: 10px auto 10px auto; }
+
+.edit-task-form-select-input {
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 25%;
+  margin: 10px auto 10px auto; }
+
+.edit-task-form-number-input {
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 25%;
+  margin: 10px auto 10px auto; }
+
+.edit-task-form-checkboxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px; }
+
+.edit-task-form-checkbox-input {
+  height: 50px;
+  width: 95%;
+  margin: 10px auto 40px auto; }
+
+.edit-task-form-delete-button {
+  height: 70px;
+  width: 25%;
+  background: red;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  position: absolute;
+  bottom: 30px;
+  right: 30px; }
+
+.edit-task-form-submit-button {
+  height: 70px;
+  width: 25%;
+  background: #2D8CFF;
+  color: white;
+  font-size: 32px;
+  text-align: center; }
 
 .specific-task-overlay {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #ef585d;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -2850,9 +2929,19 @@ div.textContent {
   cursor: pointer; }
 
 .add-new-task-container {
-  width: 80%;
-  margin: auto auto 40px auto;
-  border: 1px solid blue; }
+  width: 100%;
+  margin: auto auto 40px auto; }
+
+.add-new-task-toggler {
+  width: 100%;
+  background: white;
+  font-size: 59px;
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 5px; }
+
+.customTaskForm-textarea {
+  margin-bottom: 40px; }
 
 .content-properties {
   display: flex;
@@ -2929,7 +3018,7 @@ div.textContent {
   float: right; }
 
 .left-bracket {
-  color: #D3D2D3; }
+  color: #d3d2d3; }
 
 .extra-margin {
   margin-top: 12vh; }

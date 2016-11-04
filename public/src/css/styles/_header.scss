@@ -30,15 +30,20 @@ a {
 
       .menu-btn {
         position: relative;
-    font-size: 2.7rem;
-    text-align: center;
-    letter-spacing: 1.4px;
-    font-family: $body-font;
-    justify-content: center;
-    align-items: center;
+        font-size: 2.7rem;
+        text-align: center;
+        letter-spacing: 1.4px;
+        font-family: $body-font;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(255,255,255,1);
       }
     // flex-grow: 1;
   }
+
+.menu-btn:focus {
+  outline: none;
+}
 
   .view-name-box {
     //position: absolute;
@@ -94,7 +99,6 @@ a {
   background-color: rgba(255,255,255,1);
   z-index: 138;
 }
-
 
 .fade.ng-enter {
   transition:.2s linear all;
@@ -203,4 +207,11 @@ a {
   top: 18px;
   width: 0%;
   left: 50%;
+}
+
+.logout-btn {
+  font-family: $body-font;
+  background: white;
+  font-size: 3.8rem;
+  padding-top: 55px;
 }
