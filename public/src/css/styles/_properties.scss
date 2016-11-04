@@ -1,5 +1,5 @@
-$propBoxHeight: 15vh;
-$propBoxWidth: 80%;
+$propBoxHeight: 10vh;
+$propBoxWidth: 100%;
 
 .content-properties{
   display: flex;
@@ -18,9 +18,8 @@ $propBoxWidth: 80%;
   margin-bottom: 40px;
   height: $propBoxHeight;
   width: $propBoxWidth;
-  border: 1px solid red;
   text-decoration: none;
-  background-color: #bfd7ea;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,6 +34,9 @@ $propBoxWidth: 80%;
   align-items: center;
   justify-content: center;
   z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 39px;
 }
 
 .prop-delete-button {
@@ -75,4 +77,12 @@ $propBoxWidth: 80%;
 .newProp{
   height: 10vh;
   border-style: dashed;
+}
+
+.float-right {
+  float: right;
+}
+
+.left-bracket {
+  color: $background;
 }
