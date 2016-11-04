@@ -13,6 +13,9 @@
       <div class="credential submit-btn">
         <input class="input-lg" ng-model="password" type="password" name="name" value="" placeholder="password" ng-messages="loginForm.password.$error">
       </div>
+      <div class="credential submit-btn">
+        <input class="input-lg" ng-model="phone" type="tel"  required ng-keyup="phoneNumberStyle($event)"  placeholder="(XXX)XXX-XXXX" >
+      </div>
       <div>
         <button class="submit-btn login-btn" type="submit" name="button" ng-disabled="loginForm.$invalid">Sign up</button>
       </div>

@@ -125,9 +125,13 @@ app.post('/auth/signup', function(req, res){
     if(user[0]){
     return res.status(409).send({message: 'Email is already taken'})
     }
-    console.log(req.body);
-    db.createLocalUser([req.body.firstName, req.body.lastName, req.body.email, req.body.password], function(err,success){
+    ///////////////////////parses not intergers ///////////////
+    req.body.phone = req.body.phone.replace(/\D/g,'');
+
+    db.createLocalUser([req.body.firstName, req.body.lastName, req.body.email, req.body.password, req.body.phone], function(err,success){
+      console.log(err);
       db.getLocalUser([req.body.email], function(err, existingUser) {
+        console.log(existingUser);
           var token = createJWT(existingUser[0]);
           return res.send({ token: token });
         });
@@ -240,6 +244,8 @@ app.get('/defaulttasks/:propertyId', propertyCtrl.getDefaultTasks);
 app.post('/maintenancetasks', propertyCtrl.insertTasks);
 app.get('/maintenancetasks/:propertyId', propertyCtrl.getPropertyTasks)
 app.post('/createCustomTask', propertyCtrl.insertCustomTask);
+app.put('/tasksettings/:propertymaintenanceid', propertyCtrl.editTask)
+app.delete('/maintenancetask/:propertymaintenanceid', propertyCtrl.deleteTask)
 
 
 //////////////////////PROPERTY SETTINGS//////////////////////
@@ -250,6 +256,14 @@ app.get('/propertySettings/:propertyId', propertyCtrl.getPropertySettings);
 //////////////////////ALERT SETTINGS////////////////////////
 app.put('/alerts/:alertid', propertyCtrl.snooze);
 app.put('/maintenancetasks/:propertymaintenanceid', propertyCtrl.done);
+
+////////////////////////Users////////////////////////////////////
+app.get('/users/:token', propertyCtrl.getUserById);
+app.put('/users/firstName/:id', propertyCtrl.updateFirstName);
+app.put('/users/lastName/:id', propertyCtrl.updateLastName);
+app.put('/users/phone/:id', propertyCtrl.updatePhone);
+app.put('/users/password/:id', propertyCtrl.updatePassword);
+
  /*
  ┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐─┌┐
  └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘ └┘
@@ -269,8 +283,8 @@ cronTime: '* 1 * * *',
 
    onTick: function() {
       db.getDueTasks(function (err,response){
-        response.map(function(currentValue,index,array){
-          db.createAlert([currentValue.property_maintenance_id,currentValue.property_id,currentValue.user_id,currentValue.next_date],function(err,success){
+        response.map(function(alert,index,array){
+          db.createAlert([alert.property_maintenance_id,alert.property_id,alert.user_id,alert.next_date,alert.receive_text,alert.receive_email],function(err,success){
             console.log('ERROR',err,'SUCCESS',success);
           })
         })
@@ -292,17 +306,20 @@ cronTime: '* 1 * * *',
 
         response.map(function(alert){
         /////////twilio////////////
+        if (alert.sendtext) {
           var number = '""+1' + alert.phonenumber + '""';
-          console.log(number);
           twilio.messages.create(
             {
               to: number,
               from: config.twilioNumber,
-              body: 'IT WORKED DO STUFF'
+              body: 'A reminder to ' + alert.name
             },function(err, message){
             //console.log(message);
           });
-            /////////// EMAIL////////
+        }
+
+        /////////// EMAIL////////
+        if (alert.sendemail) {
           function email(req, res) {
             var transporter = nodemailer.createTransport({
                 service: 'Gmail',
@@ -315,9 +332,9 @@ cronTime: '* 1 * * *',
             var mailOptions = {
                 from: 'homemanagement13@gmail.com', // sender address
                 to: alert.email, // list of receivers
-                subject: 'Email Test', // Subject line
+                subject: 'Home Maintenance Reminder', // Subject line
                 text: text,
-                html: '<h1 style="color:blue;margin-left:30px;">This H1 tag is being brought in as HTML</h1>'
+                html: '<h1 style="color:blue;margin-left:30px;">' + alert.name + '</h1>'
               };
 
             transporter.sendMail(mailOptions, function(error, info){
@@ -329,6 +346,8 @@ cronTime: '* 1 * * *',
             });
             }
             email();
+        }
+
         })
       })
     },
