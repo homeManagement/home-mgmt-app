@@ -205,7 +205,8 @@
 
 .main-container {
   margin-top: 10vh;
-  font-family: "Raleway", sans-serif; }
+  font-family: "Raleway", sans-serif;
+  background-color: lightgrey; }
 
 button, input[type="button"], input[type="submit"] {
   text-decoration: none;
@@ -317,7 +318,10 @@ a {
     height: 100%;
     overflow: hidden;
     color: #ef585d;
-    font-size: 3.5rem; }
+    font-size: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
     .header-container .logo-box .logo-img {
       max-width: 100%; }
 
@@ -584,12 +588,43 @@ input:checked + .slider:before {
 
 .createPropertyInputs {
   display: block;
-  text-align: center;
-  margin-top: 53px;
+  text-align: left;
   font-family: "Raleway", sans-serif;
-  height: 90vh;
   width: 100%;
-  font-size: 3.8rem; }
+  margin-top: 20vh; }
+
+.createPropertyInputs-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 59px;
+  padding: 30px;
+  background: white;
+  margin-bottom: 5px; }
+
+.createPropertyInputs-input {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  font-size: 32px; }
+  .createPropertyInputs-input input {
+    height: 50px;
+    font-size: 32px;
+    color: white;
+    background: #ef585d;
+    width: 95%; }
+
+.createPropertyInputs-submit {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  text-align: right; }
+
+.createPropertyInputs-submit input {
+  height: 70px;
+  width: 25%;
+  background: #2D8CFF;
+  color: white;
+  font-size: 32px;
+  text-align: center; }
 
 .text-banner-container {
   background-color: #fff; }
@@ -896,7 +931,14 @@ div.task-container {
 .prop-delete-confirm-button {
   cursor: pointer;
   color: white;
-  font-size: 30px; }
+  font-size: 32px;
+  padding: 30px; }
+
+.delete-confirm {
+  background-color: red; }
+
+.delete-cancel {
+  background-color: #2D8CFF; }
 
 .newProp {
   height: 10vh;
@@ -908,5 +950,144 @@ div.task-container {
 .left-bracket {
   color: #d3d2d3; }
 
+.user-settings-container {
+  height: 100%; }
+
+.userPic-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  margin-bottom: 80px; }
+
+.userPic {
+  height: 350px;
+  width: 350px; }
+
+.user-settings-edit-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 2px solid #dce0e0;
+  margin-top: 15px;
+  padding: 30px;
+  font-size: 59px;
+  height: 9vh; }
+
+.edit-arrow {
+  display: flex;
+  align-self: center;
+  text-decoration: none;
+  font-size: 38px; }
+
+.edit-dropdown {
+  display: block;
+  background-color: #fff;
+  border: 2px solid #dce0e0;
+  font-size: 38px;
+  height: 9vh; }
+
+.submit-button {
+  display: inline-block;
+  font-size: 38px; }
+
+.edit-input {
+  display: inline-block;
+  width: 80%;
+  font-size: 59px;
+  height: 98%; }
+
+.edit-box {
+  margin-bottom: 80px; }
+
+.extra-margin {
+  margin-top: 12vh; }
+
+.property-linkbox {
+  width: 100%;
+  background-color: white;
+  margin-bottom: 2vh;
+  font-size: 59px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 75px;
+  padding: 30px 75px 30px 30px; }
+
+.img-size {
+  max-width: 5vh; }
+
 .redAlert {
   background-color: #ff5a5f; }
+
+.alerts-container {
+  margin-top: 80px; }
+
+.alert-specific-task {
+  width: 100%;
+  margin: auto auto 40px auto;
+  position: relative; }
+
+.alert-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+
+.alert-top {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px; }
+
+.alerts-task-title {
+  font-size: 59px;
+  display: flex;
+  justify-content: space-between; }
+
+.alert-bottom {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 5px; }
+
+.alert-left-name {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 45px; }
+
+.alert-right-arrow {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.notes-popUp {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 32px; }
+
+.alert-notes {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  font-size: 32px; }
+
+.done-checkbox {
+  height: 60px;
+  width: 60px; }
+
+.checkbox-wrap {
+  padding-right: 60px; }
