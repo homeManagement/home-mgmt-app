@@ -2,7 +2,6 @@
   margin-top: 12vh;
 }
 .property-linkbox {
-  height: $boxHeight1;
   width: 100%;
   background-color: white;
   margin-bottom: 2vh;
@@ -12,6 +11,7 @@
   align-items: center;
   padding-left: 30px;
   padding-right: 75px;
+  padding: 30px 75px 30px 30px;
 }
 .img-size{
   max-width: 5vh;
