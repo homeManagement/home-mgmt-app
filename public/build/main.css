@@ -387,8 +387,8 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -413,8 +413,8 @@
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -2867,11 +2867,10 @@ div.textContent {
   font-size: 3rem;
   text-align: center;
   margin-bottom: 40px;
-  height: 15vh;
-  width: 80%;
-  border: 1px solid red;
+  height: 10vh;
+  width: 100%;
   text-decoration: none;
-  background-color: #bfd7ea;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -2880,12 +2879,15 @@ div.textContent {
   position: absolute;
   top: 0;
   left: 0;
-  height: 15vh;
+  height: 10vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1; }
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  padding: 39px; }
 
 .prop-delete-button {
   position: absolute;
@@ -2893,7 +2895,7 @@ div.textContent {
   top: 0;
   cursor: pointer;
   background-color: red;
-  height: 15vh;
+  height: 10vh;
   width: 15%;
   display: flex;
   flex-direction: column;
@@ -2905,7 +2907,7 @@ div.textContent {
   position: absolute;
   top: 0;
   left: 0;
-  height: 15vh;
+  height: 10vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   display: flex;
@@ -2922,6 +2924,12 @@ div.textContent {
 .newProp {
   height: 10vh;
   border-style: dashed; }
+
+.float-right {
+  float: right; }
+
+.left-bracket {
+  color: #D3D2D3; }
 
 .redAlert {
   background-color: #ff5a5f; }
