@@ -167,8 +167,16 @@
 
 .add-new-task-container {
   width: 100%;
-  background: rgba(255,255,255,1);
   margin: auto auto 40px auto;
+}
+
+.add-new-task-toggler {
+  width: 100%;
+  background: rgba(255,255,255,1);
+  font-size: $fontSize5;
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 5px;
 }
 
 .customTaskForm-textarea {
