@@ -1,28 +1,62 @@
 <section class="main-container">
-  <div class="userPic">
-    <img ng-src="{{user.photo}}" alt="" />
-    <img ng-if="!user.photo" src="https://lh3.googleusercontent.com/--KpygdWrSHs/Vpdq-UD5C0I/AAAAAAAAAuw/evoVPd2Isxw/w506-h750/AWESOME%2BFACEBOOK%2BPROFILE%2BPICTURES1.jpg" alt="" />
-    <div class="">
-      First:{{user.firstname}} <input ng-click="firstNameEdit = !firstNameEdit" type="button" name="name" value="EDIT">
-      <input ng-show="firstNameEdit" ng-model="newFirstName" type="text" Required name="name" value="">
-      <input ng-show="firstNameEdit" ng-click="updateFirstName(newFirstName)" type="button" name="name" value="SUBMIT">
-      </div>
-    <div class="">
-      Last:{{user.last_name}}  <input ng-click="lastNameEdit = !lastNameEdit" type="button" name="name" value="EDIT">
-      <input ng-show="lastNameEdit" ng-model="newLastName" type="text" Required name="name" value="">
-      <input ng-show="lastNameEdit" ng-click="updateLastName(newLastName)" type="button" name="name" value="SUBMIT">
-    </div>
-    <div class="">
-      Phone:{{user.phone_number}}  <input ng-click="phoneEdit = !phoneEdit" type="button" name="name" value="EDIT">
-      <input ng-show="phoneEdit" ng-model="newPhone" type="tel" ng-keyup="phoneNumberStyle($event)" name="name" value="">
-      <input ng-show="phoneEdit" ng-click="updatePhone(newPhone)" type="button" name="name" value="SUBMIT">
-    </div>
-    <div ng-if="user.password" class="">
-      Password:{{user.password}} <input ng-click="passwordEdit = !passwordEdit" type="button" name="name" value="EDIT">
-      <input ng-show="passwordEdit" ng-model="newPassword" type="password"  name="name" value="">
-      <input ng-show="passwordEdit" ng-click="updatePassword(newPassword); passwordEdit = !passwordEdit" type="button" name="name" value="SUBMIT">
+  <div class="user-settings-container">
+
+    <div class="userPic-container">
+      <img class="userPic" ng-if="user.photo" ng-src="{{user.photo}}" alt="" />
+      <img class="userPic" ng-if="!user.photo" src="http://www.clker.com/cliparts/j/u/p/E/j/x/weed-md.png" alt="" />
     </div>
 
+    <div class="edit-box">
+      <div class="user-settings-edit-container">
+        First Name: {{user.firstname}}
+          <svg class="edit-arrow" ng-click="firstNameEdit = !firstNameEdit" type="button" name="name" value=""height="30" width="60">
+            <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+          </svg>
+      </div>
+      <div class="edit-dropdown" ng-show="firstNameEdit">
+        <input class="edit-input" ng-model="newFirstName" type="text" Required name="name" placeholder="new first name"value="">
+        <input class="submit-button" ng-click="updateFirstName(newFirstName)" type="button" name="name" value="SUBMIT">
+      </div>
+    </div>
+
+    <div class="edit-box">
+      <div class="user-settings-edit-container">
+        Last Name:  {{user.last_name}}
+          <svg class="edit-arrow" ng-click="lastNameEdit = !lastNameEdit" type="button" name="name" value=""height="30" width="60">
+            <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+          </svg>
+        </div>
+        <div class="edit-dropdown" ng-show="lastNameEdit">
+          <input  class="edit-input" ng-model="newLastName" type="text" Required name="name" placeholder="new last name" value="">
+          <input class="submit-button"  ng-click="updateLastName(newLastName)" type="button" name="name" value="SUBMIT">
+      </div>
+    </div>
+
+    <div class="edit-box">
+    <div class="user-settings-edit-container">
+      Telephone: {{user.phone_number}}
+      <svg class="edit-arrow" ng-click="phoneEdit = !phoneEdit" type="button" name="name" value=""height="30" width="60">
+        <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+      </svg>
+    </div>
+      <div class="edit-dropdown" ng-show="phoneEdit">
+        <input  class="edit-input" ng-model="newPhone" type="tel" ng-keyup="phoneNumberStyle($event)" placeholder="new phone #"name="name" value="">
+        <input class="submit-button"  ng-click="updatePhone(newPhone)" type="button" name="name" value="SUBMIT">
+    </div>
+  </div>
+
+  <div ng-if="user.password" class="edit-box">
+  <div class="user-settings-edit-container">
+    Password: {{user.password}}
+    <svg class="edit-arrow" ng-click="passwordEdit = !passwordEdit" type="button" name="name" value=""height="30" width="60">
+      <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+    </svg>
+  </div>
+    <div class="edit-dropdown" ng-show="passwordEdit">
+      <input  class="edit-input" ng-model="newPassword" type="password" placeholder="new password" name="name" value="">
+      <input class="submit-button"  ng-click="updatePassword(newPassword)" type="button" name="name" value="SUBMIT">
+  </div>
+</div>
 
 
 
