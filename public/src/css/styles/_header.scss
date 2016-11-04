@@ -73,7 +73,10 @@ a {
     height: 100%;
     overflow: hidden;
     color: $hamburger-icon;
-    font-size: 3.5rem;
+    font-size: $fontSize5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     // background: $main;
     // flex-grow: 1
       .logo-img {
