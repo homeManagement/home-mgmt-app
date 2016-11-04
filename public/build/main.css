@@ -779,6 +779,58 @@ div.textContent {
 .customTaskForm-textarea {
   margin-bottom: 40px; }
 
+div.task-container {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 45px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px; }
+
+.select-text-banner {
+  font-size: 45px;
+  font-style: italic;
+  margin: 42px;
+  padding-top: 20px; }
+
+.task-selection-container {
+  background-color: #fff;
+  margin-top: 10vh;
+  font-family: "Raleway", sans-serif; }
+
+.task-selection-checkbox {
+  width: 60px;
+  height: 60px; }
+
+.custom-task-btn {
+  background: white;
+  font-size: 32px;
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 28%;
+  height: 90px;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px; }
+
+.selectTaskInputs-submit input {
+  height: 70px;
+  width: 20%;
+  background: #2D8CFF;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  padding-top: 0px; }
+
+.selectTaskInputs-submit {
+  padding-top: 17px; }
+
+.task-btn-container {
+  padding: 60px; }
+
 .content-properties {
   display: flex;
   flex-direction: column;

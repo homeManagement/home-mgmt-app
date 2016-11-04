@@ -244,6 +244,455 @@ angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainS
   };
 });
 
+angular.module('mgmtApp').directive('createTask', function (mainService, $window) {
+
+  var controller = function controller(scope, element) {
+    scope.task = {
+      season: 'Monthly'
+    };
+
+    scope.createTask = function (propertyId, task) {
+      if (!propertyId) {
+        task.propertyId = $window.localStorage.propertyId;
+      } else {
+        task.propertyId = propertyId;
+      }
+
+      switch (task.season) {
+        case 'Monthly':
+          task.dayInterval = 30;
+          break;
+        case 'Quarterly':
+          task.dayInterval = 90;
+          break;
+        case 'Biannually':
+          task.dayInterval = 182;
+          break;
+        case 'Annually':
+          task.dayInterval = 365;
+          break;
+        default:
+          task.dayInterval = task.dayInterval;
+      }
+
+      mainService.createCustomTask(task).then(function (res) {
+
+        element.after('<div class="custom-task"><span>' + scope.task.name + '</span><span>' + scope.task.lastDate + '</span><span>' + scope.task.season + '</span><span>' + scope.task.dayInterval + '</span><span>' + scope.task.outdoor + '</span><span>' + scope.task.notes + '</span></div>');
+
+        scope.task = {
+          name: null,
+          season: null,
+          lastDate: null,
+          dayInterval: null,
+          outdoor: false,
+          notes: null
+        };
+      });
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    scope: {
+      propertyId: '='
+    },
+    templateUrl: '../src/view/template/createTask_template.html',
+    link: controller
+
+  };
+});
+
+angular.module('mgmtApp').directive('editTasks', function ($stateParams) {
+
+  var controller = function controller($scope, mainService, $window) {
+    if (!$stateParams.propertyId) {
+      $scope.propertyId = $window.localStorage.propertyId;
+    } else {
+      $scope.propertyId = $stateParams.propertyId;
+    }
+
+    $scope.editFormVisibility = false;
+    $scope.taskOverlayVisibility = false;
+
+    mainService.getPropertyTasks($scope.propertyId).then(function (res) {
+      res.map(function (currentValue) {
+        currentValue.nextdate = currentValue.nextdate.substr(0, 10);
+        currentValue.lastdate = currentValue.lastdate.substr(0, 10);
+      });
+      $scope.tasks = res;
+    });
+
+    $scope.deleteTask = function (propertymaintenanceid) {
+      mainService.deleteTask(propertymaintenanceid).then(function (res) {
+        $scope.tasks = $scope.tasks.filter(function (currentValue) {
+          return currentValue.propertymaintenanceid !== propertymaintenanceid;
+        });
+      });
+    };
+
+    $scope.createTask = function (propertyId, task) {
+      if (!propertyId) {
+        task.propertyId = $window.localStorage.propertyId;
+      } else {
+        task.propertyId = propertyId;
+      }
+
+      switch (task.season) {
+        case 'Monthly':
+          task.dayInterval = 30;
+          break;
+        case 'Quarterly':
+          task.dayInterval = 90;
+          break;
+        case 'Biannually':
+          task.dayInterval = 182;
+          break;
+        case 'Annually':
+          task.dayInterval = 365;
+          break;
+        default:
+          task.dayInterval = task.dayInterval;
+      }
+
+      mainService.createCustomTask(task).then(function (res) {
+        var newTask = res.data[0];
+        newTask["dayinterval"] = newTask["day_interval"];
+        newTask["nextdate"] = newTask["next_date"].substr(0, 10);
+        newTask["lastdate"] = newTask["last_date"].substr(0, 10);
+        delete newTask["next_date"];
+        delete newTask["last_date"];
+
+        $scope.tasks.push(newTask);
+
+        $scope.newTask = {
+          name: null,
+          season: null,
+          lastDate: null,
+          dayInterval: null,
+          outdoor: false,
+          notes: null
+        };
+      });
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/editTasks_template.html'
+
+  };
+});
+
+angular.module('mgmtApp').directive('editTasksForm', function (mainService) {
+
+  var link = function link(scope) {
+    scope.editTaskObj = {};
+    scope.editTaskObj.maintName = scope.task.name;
+
+    scope.editTask = function (task) {
+      if (!task) {
+        task = {};
+      }
+      // task["maintName"] = scope.task.name;
+      task["inactive"] = scope.task.inactive;
+      task["outdoor"] = scope.task.outdoor;
+      task["season"] = scope.task.season;
+      task["dayInterval"] = scope.task.dayInterval;
+      task["notes"] = scope.task.notes;
+      mainService.editTask(scope.task.propertymaintenanceid, task).then(function (res) {
+        if (res) {
+          scope.task.name = res.data[0]["name"];
+
+          scope.task.lastdate = res.data[0]["last_date"].substr(0, 10);
+
+          scope.task.nextdate = res.data[0]["next_date"].substr(0, 10);
+
+          if (!scope.editTaskObj) {
+            scope.editTaskObj = {};
+          }
+
+          scope.editTaskObj.maintName = '';
+          scope.editTaskObj.lastDate = '';
+          scope.editTaskObj.nextDate = '';
+          scope.editTaskObj.season = '';
+          scope.editTaskObj.dayInterval = '';
+          scope.editTaskObj.outdoor = '';
+          scope.editTaskObj.notes = '';
+          scope.editTaskObj.inactive = '';
+        }
+      });
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    scope: {
+      task: '=',
+      taskOverlayVisibility: '=',
+      editFormVisibility: '='
+    },
+    templateUrl: '../src/view/template/editTasksForm_template.html',
+    link: link
+
+  };
+});
+
+angular.module('mgmtApp').directive('headerDirective', function () {
+  var controller = function controller($scope, $state, mainService, $rootScope) {
+
+    // menu icon animation
+
+    $(document).ready(function () {
+      $('#nav-icon3').click(function () {
+        $(this).toggleClass('open');
+      });
+    });
+
+    // menu dropdown animationm
+    $scope.showLogin = function () {
+      $scope.modalFunc = !$scope.modalFunc;
+      console.log('firing');
+    };
+    $scope.menuShowing = false;
+    $scope.toggleMenu = function () {
+      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      if (!$scope.menuShowing) {
+        $('div.menu').addClass('animated slideInDown').one(animationEnd, function () {
+          $(this).removeClass('animated slideInDown');
+        });
+      } else {
+        $('div.menu').addClass('animated slideOutUp').one(animationEnd, function () {
+          $(this).prev().find('#nav-icon3').removeClass('open');
+          $(this).removeClass('animated slideOutUp');
+        });
+      }
+      $scope.menuShowing = !$scope.menuShowing;
+      // console.log($scope.menuShowing);
+    };
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
+      //  console.log($state.current.name);
+      switch ($state.current.name) {
+        case 'home':
+          $scope.viewname = '';
+          break;
+        case 'properties':
+          $scope.viewname = 'Your Properties';
+          break;
+        case 'createProperty':
+          $scope.viewname = 'Property Create';
+          break;
+        case 'mainAlerts':
+          $scope.viewname = 'Upcoming Maintenance';
+          break;
+        case 'userSettings':
+          $scope.viewname = 'User Settings';
+          break;
+        case 'propertySettings':
+          $scope.viewname = 'Property Settings';
+          break;
+        case 'contact':
+          $scope.viewname = 'About';
+          break;
+        case 'login':
+          $scope.viewname = 'Login';
+          break;
+        case 'signup':
+          $scope.viewname = 'Signup';
+          break;
+        default:
+          $scope.viewname = '';
+      }
+    });
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/header.html'
+  };
+});
+
+angular.module('mgmtApp').directive('loginDirective', function () {
+
+  var controller = function controller($scope, $window, $state, $auth) {
+    $scope.authenticate = function (provider) {
+      // localStorage.clear();
+      $auth.authenticate(provider).then(function (response) {
+        console.log(response.data);
+        $state.go('properties');
+      }).catch(function (response) {
+        console.log(response.data);
+      });
+    };
+
+    $scope.emailLogin = function () {
+      $auth.login({ email: $scope.email, password: $scope.password }).then(function (response) {
+        $state.go('properties');
+      }).catch(function (response) {
+        console.log(response);
+        $scope.errorMessage = {};
+        $scope.loginForm["email"].$setValidity('server', false);
+        $scope.errorMessage["email"] = response.data.message;
+      });
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/login_template.html'
+
+  };
+});
+
+angular.module('mgmtApp').directive('logoutDirective', function () {
+
+  var controller = function controller($scope, $auth, $window, $state) {
+    $scope.logout = function () {
+      $auth.logout();
+      $state.go('home');
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    template: '<button class="logout-btn" type="button" ng-click="logout()">logout</button>'
+
+  };
+});
+
+angular.module('mgmtApp').directive('propertyForm', function () {
+
+  var controller = function controller($scope) {};
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/propertyForm_template.html'
+
+  };
+});
+
+angular.module('mgmtApp').directive('propertySettings', function ($stateParams) {
+
+  var controller = function controller($scope, mainService, $window) {
+    if (!$stateParams.propertyId) {
+      $scope.propertyId = $window.localStorage.propertyId;
+    } else {
+      $scope.propertyId = $stateParams.propertyId;
+    }
+    mainService.getPropertySettings($scope.propertyId).then(function (res) {
+      $scope.propertyCheckBox = {
+        value1: res[0]['receive_text'],
+        value2: res[0]['receive_email'],
+        value3: res[0]['receive_weather']
+      };
+    });
+
+    console.log($scope.propertyId);
+    $scope.update = function () {
+      $scope.property_settings = {
+        text: $scope.propertyCheckBox.value1,
+        email: $scope.propertyCheckBox.value2,
+        weather: $scope.propertyCheckBox.value3
+      };
+      mainService.updatePropertySettings($scope.propertyId, $scope.property_settings).then(function (res) {});
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/propertySettings_template.html'
+
+  };
+});
+
+angular.module('mgmtApp').directive('serverError', function () {
+  return {
+    restrict: 'A',
+    require: 'ngModel',
+    link: function link(scope, element, attrs, ctrl) {
+      element.on('keydown', function () {
+        ctrl.$setValidity('server', true);
+      });
+    }
+  };
+});
+
+angular.module('mgmtApp').directive('signupDirective', function () {
+
+  var controller = function controller($scope, $auth, $state) {
+    $scope.phoneNumberStyle = function (e) {
+
+      if ($scope.phone.length === 1) {
+        $scope.phone = '(' + $scope.phone;
+      }
+      if (!Number.isInteger(Number(e.key))) {
+        $scope.phone = $scope.phone.split('').splice(0, $scope.phone.length - 1).join('');
+      }
+      if ($scope.phone.length === 4) {
+        $scope.phone = $scope.phone + ')';
+      }
+      if ($scope.phone.length === 8) {
+        $scope.phone = $scope.phone + '-';
+      }
+      if ($scope.phone.length === 14) {
+        $scope.phone = $scope.phone.split('').splice(0, $scope.phone.length - 1).join('');
+      }
+    };
+
+    $scope.signUp = function () {
+      var user = {
+        firstName: $scope.firstName,
+        lastName: $scope.lastName,
+        email: $scope.email,
+        password: $scope.password,
+        phone: $scope.phone
+      };
+
+      console.log(user);
+      $auth.signup(user).then(function (response) {
+        //console.log(response.data);
+        $auth.login({ email: $scope.email, password: $scope.password }).then(function (response) {
+          $state.go('properties');
+        });
+      }).catch(function (response) {
+        //console.log(response.data);
+        $scope.errorMessage = {};
+        $scope.loginForm["email"].$setValidity('server', false);
+        $scope.errorMessage["email"] = response.data.message;
+      });
+    };
+    $scope.showSignUp = function () {
+      $scope.modalSignUpFunc = !$scope.modalSignUpFunc;
+      console.log('firing');
+    };
+  };
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/signup_template.html'
+
+  };
+});
+
+angular.module('mgmtApp').directive('taskSelection', function () {
+
+  var controller = function controller($scope) {};
+
+  return {
+    restrict: 'AE',
+    controller: controller,
+    templateUrl: '../src/view/template/taskSelection_template.html'
+
+  };
+});
+
 angular.module('mgmtApp').service('mainService', function ($http) {
 
   //////////////////////////
@@ -407,450 +856,6 @@ angular.module('mgmtApp').service('mainService', function ($http) {
     }).then(function (res) {
       return res;
     });
-  };
-});
-
-angular.module('mgmtApp').directive('createTask', function (mainService, $window) {
-
-  var controller = function controller(scope, element) {
-    scope.task = {
-      season: 'Monthly'
-    };
-
-    scope.createTask = function (propertyId, task) {
-      if (!propertyId) {
-        task.propertyId = $window.localStorage.propertyId;
-      } else {
-        task.propertyId = propertyId;
-      }
-
-      switch (task.season) {
-        case 'Monthly':
-          task.dayInterval = 30;
-          break;
-        case 'Quarterly':
-          task.dayInterval = 90;
-          break;
-        case 'Biannually':
-          task.dayInterval = 182;
-          break;
-        case 'Annually':
-          task.dayInterval = 365;
-          break;
-        default:
-          task.dayInterval = task.dayInterval;
-      }
-
-      mainService.createCustomTask(task).then(function (res) {
-
-        element.after('<div class="custom-task"><span>' + scope.task.name + '</span><span>' + scope.task.lastDate + '</span><span>' + scope.task.season + '</span><span>' + scope.task.dayInterval + '</span><span>' + scope.task.outdoor + '</span><span>' + scope.task.notes + '</span></div>');
-
-        scope.task = {
-          name: null,
-          season: null,
-          lastDate: null,
-          dayInterval: null,
-          outdoor: false,
-          notes: null
-        };
-      });
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    scope: {
-      propertyId: '='
-    },
-    templateUrl: '../src/view/template/createTask_template.html',
-    link: controller
-
-  };
-});
-
-angular.module('mgmtApp').directive('editTasks', function ($stateParams) {
-
-  var controller = function controller($scope, mainService, $window) {
-    if (!$stateParams.propertyId) {
-      $scope.propertyId = $window.localStorage.propertyId;
-    } else {
-      $scope.propertyId = $stateParams.propertyId;
-    }
-
-    $scope.editFormVisibility = false;
-    $scope.taskOverlayVisibility = false;
-
-    mainService.getPropertyTasks($scope.propertyId).then(function (res) {
-      res.map(function (currentValue) {
-        currentValue.nextdate = currentValue.nextdate.substr(0, 10);
-        currentValue.lastdate = currentValue.lastdate.substr(0, 10);
-      });
-      $scope.tasks = res;
-    });
-
-    $scope.deleteTask = function (propertymaintenanceid) {
-      mainService.deleteTask(propertymaintenanceid).then(function (res) {
-        $scope.tasks = $scope.tasks.filter(function (currentValue) {
-          return currentValue.propertymaintenanceid !== propertymaintenanceid;
-        });
-      });
-    };
-
-    $scope.createTask = function (propertyId, task) {
-      if (!propertyId) {
-        task.propertyId = $window.localStorage.propertyId;
-      } else {
-        task.propertyId = propertyId;
-      }
-
-      switch (task.season) {
-        case 'Monthly':
-          task.dayInterval = 30;
-          break;
-        case 'Quarterly':
-          task.dayInterval = 90;
-          break;
-        case 'Biannually':
-          task.dayInterval = 182;
-          break;
-        case 'Annually':
-          task.dayInterval = 365;
-          break;
-        default:
-          task.dayInterval = task.dayInterval;
-      }
-
-      mainService.createCustomTask(task).then(function (res) {
-        var newTask = res.data[0];
-        newTask["dayinterval"] = newTask["day_interval"];
-        newTask["nextdate"] = newTask["next_date"].substr(0, 10);
-        newTask["lastdate"] = newTask["last_date"].substr(0, 10);
-        delete newTask["next_date"];
-        delete newTask["last_date"];
-
-        $scope.tasks.push(newTask);
-
-        $scope.newTask = {
-          name: null,
-          season: null,
-          lastDate: null,
-          dayInterval: null,
-          outdoor: false,
-          notes: null
-        };
-      });
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/editTasks_template.html'
-
-  };
-});
-
-angular.module('mgmtApp').directive('editTasksForm', function (mainService) {
-
-  var link = function link(scope) {
-
-    scope.editTask = function (task) {
-      if (!task) {
-        task = {};
-      }
-      task["inactive"] = scope.task.inactive;
-      task["outdoor"] = scope.task.outdoor;
-      task["season"] = scope.task.season;
-      mainService.editTask(scope.task.propertymaintenanceid, task).then(function (res) {
-        if (res) {
-          scope.task.name = res.data[0]["name"];
-
-          scope.task.lastdate = res.data[0]["last_date"].substr(0, 10);
-
-          scope.task.nextdate = res.data[0]["next_date"].substr(0, 10);
-
-          if (!scope.editTaskObj) {
-            scope.editTaskObj = {};
-          }
-
-          scope.editTaskObj.maintName = '';
-          scope.editTaskObj.lastDate = '';
-          scope.editTaskObj.nextDate = '';
-          scope.editTaskObj.season = '';
-          scope.editTaskObj.dayInterval = '';
-          scope.editTaskObj.outdoor = '';
-          scope.editTaskObj.notes = '';
-          scope.editTaskObj.inactive = '';
-        }
-      });
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    scope: {
-      task: '=',
-      taskOverlayVisibility: '=',
-      editFormVisibility: '='
-    },
-    templateUrl: '../src/view/template/editTasksForm_template.html',
-    link: link
-
-  };
-});
-
-angular.module('mgmtApp').directive('headerDirective', function () {
-  var controller = function controller($scope, $state, mainService, $rootScope) {
-
-    // menu icon animation
-
-    $(document).ready(function () {
-      $('#nav-icon3').click(function () {
-        $(this).toggleClass('open');
-      });
-    });
-
-    // menu dropdown animationm
-    $scope.showLogin = function () {
-      $scope.modalFunc = !$scope.modalFunc;
-      console.log('firing');
-    };
-    $scope.menuShowing = false;
-    $scope.toggleMenu = function () {
-      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      if (!$scope.menuShowing) {
-        $('div.menu').addClass('animated slideInDown').one(animationEnd, function () {
-          $(this).removeClass('animated slideInDown');
-        });
-      } else {
-        $('div.menu').addClass('animated slideOutUp').one(animationEnd, function () {
-          $(this).prev().find('#nav-icon3').removeClass('open');
-          $(this).removeClass('animated slideOutUp');
-        });
-      }
-      $scope.menuShowing = !$scope.menuShowing;
-      // console.log($scope.menuShowing);
-    };
-
-    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
-      //  console.log($state.current.name);
-      switch ($state.current.name) {
-        case 'home':
-          $scope.viewname = '';
-          break;
-        case 'properties':
-          $scope.viewname = 'Your Properties';
-          break;
-        case 'createProperty':
-          $scope.viewname = 'Property Create';
-          break;
-        case 'mainAlerts':
-          $scope.viewname = 'Upcoming Maintenance';
-          break;
-        case 'userSettings':
-          $scope.viewname = 'User Settings';
-          break;
-        case 'propertySettings':
-          $scope.viewname = 'Property Settings';
-          break;
-        case 'contact':
-          $scope.viewname = 'About';
-          break;
-        case 'login':
-          $scope.viewname = 'Login';
-          break;
-        case 'signup':
-          $scope.viewname = 'Signup';
-          break;
-        default:
-          $scope.viewname = '';
-      }
-    });
-  };
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/header.html'
-  };
-});
-
-angular.module('mgmtApp').directive('loginDirective', function () {
-
-  var controller = function controller($scope, $window, $state, $auth) {
-    $scope.authenticate = function (provider) {
-      // localStorage.clear();
-      $auth.authenticate(provider).then(function (response) {
-        console.log(response.data);
-        $state.go('properties');
-      }).catch(function (response) {
-        console.log(response.data);
-      });
-    };
-
-    $scope.emailLogin = function () {
-      $auth.login({ email: $scope.email, password: $scope.password }).then(function (response) {
-        $state.go('properties');
-      }).catch(function (response) {
-        console.log(response);
-        $scope.errorMessage = {};
-        $scope.loginForm["email"].$setValidity('server', false);
-        $scope.errorMessage["email"] = response.data.message;
-      });
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/login_template.html'
-
-  };
-});
-
-angular.module('mgmtApp').directive('logoutDirective', function () {
-
-  var controller = function controller($scope, $auth, $window, $state) {
-    $scope.logout = function () {
-      $auth.logout();
-      $state.go('home');
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    template: '<button style="font-size: 3.5rem;" class="logout-btn" type="button" ng-click="logout()">logout</button>'
-
-  };
-});
-
-angular.module('mgmtApp').directive('propertyForm', function () {
-
-  var controller = function controller($scope) {};
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/propertyForm_template.html'
-
-  };
-});
-
-angular.module('mgmtApp').directive('propertySettings', function ($stateParams) {
-
-  var controller = function controller($scope, mainService, $window) {
-    if (!$stateParams.propertyId) {
-      $scope.propertyId = $window.localStorage.propertyId;
-    } else {
-      $scope.propertyId = $stateParams.propertyId;
-    }
-    mainService.getPropertySettings($scope.propertyId).then(function (res) {
-      $scope.propertyCheckBox = {
-        value1: res[0]['receive_text'],
-        value2: res[0]['receive_email'],
-        value3: res[0]['receive_weather']
-      };
-    });
-
-    console.log($scope.propertyId);
-    $scope.update = function () {
-      $scope.property_settings = {
-        text: $scope.propertyCheckBox.value1,
-        email: $scope.propertyCheckBox.value2,
-        weather: $scope.propertyCheckBox.value3
-      };
-      mainService.updatePropertySettings($scope.propertyId, $scope.property_settings).then(function (res) {});
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/propertySettings_template.html'
-
-  };
-});
-
-angular.module('mgmtApp').directive('serverError', function () {
-  return {
-    restrict: 'A',
-    require: 'ngModel',
-    link: function link(scope, element, attrs, ctrl) {
-      element.on('keydown', function () {
-        ctrl.$setValidity('server', true);
-      });
-    }
-  };
-});
-
-angular.module('mgmtApp').directive('signupDirective', function () {
-
-  var controller = function controller($scope, $auth, $state) {
-    $scope.phoneNumberStyle = function (e) {
-
-      if ($scope.phone.length === 1) {
-        $scope.phone = '(' + $scope.phone;
-      }
-      if (!Number.isInteger(Number(e.key))) {
-        $scope.phone = $scope.phone.split('').splice(0, $scope.phone.length - 1).join('');
-      }
-      if ($scope.phone.length === 4) {
-        $scope.phone = $scope.phone + ')';
-      }
-      if ($scope.phone.length === 8) {
-        $scope.phone = $scope.phone + '-';
-      }
-      if ($scope.phone.length === 14) {
-        $scope.phone = $scope.phone.split('').splice(0, $scope.phone.length - 1).join('');
-      }
-    };
-
-    $scope.signUp = function () {
-      var user = {
-        firstName: $scope.firstName,
-        lastName: $scope.lastName,
-        email: $scope.email,
-        password: $scope.password,
-        phone: $scope.phone
-      };
-
-      console.log(user);
-      $auth.signup(user).then(function (response) {
-        //console.log(response.data);
-        $auth.login({ email: $scope.email, password: $scope.password }).then(function (response) {
-          $state.go('properties');
-        });
-      }).catch(function (response) {
-        //console.log(response.data);
-        $scope.errorMessage = {};
-        $scope.loginForm["email"].$setValidity('server', false);
-        $scope.errorMessage["email"] = response.data.message;
-      });
-    };
-    $scope.showSignUp = function () {
-      $scope.modalSignUpFunc = !$scope.modalSignUpFunc;
-      console.log('firing');
-    };
-  };
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/signup_template.html'
-
-  };
-});
-
-angular.module('mgmtApp').directive('taskSelection', function () {
-
-  var controller = function controller($scope) {};
-
-  return {
-    restrict: 'AE',
-    controller: controller,
-    templateUrl: '../src/view/template/taskSelection_template.html'
-
   };
 });
 //# sourceMappingURL=all.js.map
