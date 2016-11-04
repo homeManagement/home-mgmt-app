@@ -1,32 +1,37 @@
 <div class="property-settings-container">
-  <h2>Property Settings</h2>
-
-<div class="propertyToggles">
-  text<div class="">
-    <label class="switch">
-     <input ng-click="update()" ng-model="propertyCheckBox.value1" type="checkbox" checked>
-     <div class="slider round"></div>
-   </label>
-  </div>
-
-  <br><br>
-
-
-
-  email<div class="">
-    <label class="switch">
-     <input ng-click="update()" ng-model="propertyCheckBox.value2" type="checkbox" checked>
-     <div class="slider round"></div>
-    </label>
-  </div>
-
-  <br><br>
-
-
-  weather<div class="">
-    <label class="switch">
-     <input ng-click="update()" ng-model="propertyCheckBox.value3" type="checkbox" checked>
-     <div class="slider round"></div>
-   </label>
+  <div class="propertyToggles">
+    <div class="switch-container-container">
+      <div class="setting-description">
+        <span>Text Notification</span>
+      </div>
+      <div class="switch-container">
+        <label class="switch">
+         <input ng-click="update()" ng-model="propertyCheckBox.value1" type="checkbox" checked>
+         <div class="slider round"></div>
+       </label>
+      </div>
+    </div>
+    <div class="switch-container-container">
+      <div class="setting-description">
+        <span>Email Notification</span>
+      </div>
+      <div class="switch-container">
+        <label class="switch">
+         <input ng-click="update()" ng-model="propertyCheckBox.value2" type="checkbox" checked>
+         <div class="slider round"></div>
+       </label>
+      </div>
+    </div>
+    <div class="switch-container-container">
+      <div class="setting-description">
+        <span>Weather</span>
+      </div>
+      <div class="switch-container">
+        <label class="switch">
+         <input ng-click="update()" ng-model="propertyCheckBox.value3" type="checkbox" checked>
+         <div class="slider round"></div>
+       </label>
+      </div>
+    </div>
   </div>
 </div>
