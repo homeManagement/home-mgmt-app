@@ -1,38 +1,42 @@
 .edit-tasks-container {
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .specific-task {
-  width: 80%;
+  width: 100%;
   margin: auto auto 40px auto;
   position: relative;
 }
 
 .task {
-  border: 1px solid blue;
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.task-left-info {
-  width: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid red;
+  justify-content: flex-start;
 }
 
 .task-top-info {
   width: 100%;
+  padding: 30px;
+  margin-bottom: 5px;
+  background: rgba(255,255,255,1);
 }
 
 .task-title {
-  font-size: 3rem;
+  font-size: $fontSize5;
 }
+
 
 .task-bottom-info {
   width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  margin-bottom: 5px;
+}
+
+.task-left-info {
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content:flex-start;
@@ -43,48 +47,112 @@
   flex-direction: column;
   justify-content:flex-start;
   text-align: left;
-  margin-right: 20px;
+  margin-right: 90px;
 }
 
 .task-date-title {
-  font-size: 1.5rem;
+  font-size: $fontSize3;
 }
 .task-date-info {
-  font-size: 2.5rem;
-}
-
-.task-update-form {
-  border: 1px solid green;
-  font-size: 33px;
-
-  input {
-    height: 30px;
-    font-size: 29px;
-    margin-bottom: auto auto 10px auto;
-    border: 1px solid rgba(0,0,0,1);
-    width: 98%;
-  }
-  select {
-    height: 30px;
-    font-size: 29px;
-    margin-bottom: 10px;
-    border: 1px solid rgba(0,0,0,1);
-  }
-  textarea {
-    width: 98%;
-    border: 1px solid rgba(0,0,0,1);
-  }
+  font-size: $fontSize4;
 }
 
 .task-right-info {
   width: 20%;
-  border: 1px solid yellow;
-  background-color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.task-update-form {
+  position: relative;
+  background: rgba(255,255,255,1);
+  font-size: $fontSize4;
+  padding: 30px;
+
+  textarea {
+    width: 98%;
+    font-size: $fontSize2;
+    border: 1px solid rgba(0,0,0,1);
+    overflow-y: auto;
+    height: $fontSize2*20;
+  }
+}
+.task-update-form input:focus {
+  outline-color: white;
+}
+.task-update-form textarea:focus {
+  outline-color: $redBackground;
+}
+
+.edit-task-form-input {
+  height: $boxHeight2;
+  font-size: $fontSize3;
+  color: white;
+  background: $redBackground;
+  width: 95%;
+  margin:10px auto 10px auto;
+}
+
+
+.edit-task-form-select-input {
+  height: $boxHeight2;
+  font-size: $fontSize3;
+  color: white;
+  background: $redBackground;
+  width: 25%;
+  margin:10px auto 10px auto;
+}
+
+.edit-task-form-number-input {
+  height: $boxHeight2;
+  font-size: $fontSize3;
+  color: white;
+  background: $redBackground;
+  width: 25%;
+  margin:10px auto 10px auto;
+}
+
+.edit-task-form-checkboxes{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.edit-task-form-checkbox-input {
+  height: $boxHeight2;
+  width: 95%;
+  margin:10px auto 40px auto;
+}
+
+.edit-task-form-delete-button {
+  height: $boxHeight3;
+  width: 25%;
+  background: red;
+  color: white;
+  font-size: $fontSize3;
+  text-align: center;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.edit-task-form-submit-button {
+  height: $boxHeight3;
+  width: 25%;
+  background: #2D8CFF;
+  color: white;
+  font-size: $fontSize3;
+  text-align: center;
 }
 
 .specific-task-overlay {
   width: 100%;
-  background-color: rgba(0,0,0,.8);
+  background-color: $redBackground;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -98,7 +166,11 @@
 }
 
 .add-new-task-container {
-  width: 80%;
+  width: 100%;
+  background: rgba(255,255,255,1);
   margin: auto auto 40px auto;
-  border: 1px solid blue;
+}
+
+.customTaskForm-textarea {
+  margin-bottom: 40px;
 }

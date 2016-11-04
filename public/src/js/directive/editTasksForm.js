@@ -1,14 +1,19 @@
 angular.module('mgmtApp').directive('editTasksForm', function(mainService){
 
 var link = function(scope){
+  scope.editTaskObj = {};
+  scope.editTaskObj.maintName = scope.task.name;
 
   scope.editTask = function(task){
     if (!task) {
       task = {};
     }
+    // task["maintName"] = scope.task.name;
     task["inactive"] = scope.task.inactive;
     task["outdoor"] = scope.task.outdoor;
     task["season"] = scope.task.season;
+    task["dayInterval"] = scope.task.dayInterval;
+    task["notes"] = scope.task.notes;
     mainService.editTask(scope.task.propertymaintenanceid, task).then(function(res){
       if (res) {
         scope.task.name = res.data[0]["name"]

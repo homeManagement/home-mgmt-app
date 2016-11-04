@@ -2,8 +2,24 @@
   margin-top: 10vh;
   font-family: $body-font;
 }
+button, input[type="button"], input[type="submit"] {
+  text-decoration: none;
+  border: none;
+}
 
 
 body {
   background-color: $background;
 }
+
+$boxHeight1: 30px;
+$boxHeight2: 50px;
+$boxHeight3: 70px;
+// $boxHeight4:
+// $boxHeight5:
+//
+// $fontSize1:
+$fontSize2: 20px;
+$fontSize3: 32px;
+$fontSize4: 45px;
+$fontSize5: 59px;
