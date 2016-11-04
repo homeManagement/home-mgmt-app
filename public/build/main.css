@@ -2482,7 +2482,10 @@ a {
     height: 100%;
     overflow: hidden;
     color: #ef585d;
-    font-size: 3.5rem; }
+    font-size: 59px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
     .header-container .logo-box .logo-img {
       max-width: 100%; }
 
@@ -2749,12 +2752,43 @@ input:checked + .slider:before {
 
 .createPropertyInputs {
   display: block;
-  text-align: center;
-  margin-top: 53px;
+  text-align: left;
   font-family: "Raleway", sans-serif;
-  height: 90vh;
   width: 100%;
-  font-size: 3.8rem; }
+  margin-top: 20vh; }
+
+.createPropertyInputs-title {
+  font-family: "Raleway", sans-serif;
+  font-size: 59px;
+  padding: 30px;
+  background: white;
+  margin-bottom: 5px; }
+
+.createPropertyInputs-input {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  font-size: 32px; }
+  .createPropertyInputs-input input {
+    height: 50px;
+    font-size: 32px;
+    color: white;
+    background: #ef585d;
+    width: 95%; }
+
+.createPropertyInputs-submit {
+  width: 100%;
+  padding: 30px;
+  background: white;
+  text-align: right; }
+
+.createPropertyInputs-submit input {
+  height: 70px;
+  width: 25%;
+  background: #2D8CFF;
+  color: white;
+  font-size: 32px;
+  text-align: center; }
 
 .text-banner-container {
   background-color: #fff; }
@@ -3009,7 +3043,14 @@ div.textContent {
 .prop-delete-confirm-button {
   cursor: pointer;
   color: white;
-  font-size: 30px; }
+  font-size: 32px;
+  padding: 30px; }
+
+.delete-confirm {
+  background-color: red; }
+
+.delete-cancel {
+  background-color: #2D8CFF; }
 
 .newProp {
   height: 10vh;

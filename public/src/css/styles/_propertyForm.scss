@@ -1,9 +1,49 @@
+.createPropertyInputs-container {
+
+}
+
 .createPropertyInputs {
   display: block;
-  text-align: center;
-  margin-top: 53px;
+  text-align: left;
   font-family: $body-font;
-  height: 90vh;
   width: 100%;
-  font-size: 3.8rem;
+  margin-top: 20vh;
+}
+
+.createPropertyInputs-title {
+  font-family: $body-font;
+  font-size: $fontSize5;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  margin-bottom: 5px;
+}
+.createPropertyInputs-input {
+  width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  font-size: $fontSize3;
+
+  input {
+    height: $boxHeight2;
+    font-size: $fontSize3;
+    color: white;
+    background: $redBackground;
+    width: 95%;
+  }
+}
+
+.createPropertyInputs-submit {
+  width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  text-align: right;
+}
+
+.createPropertyInputs-submit input{
+  height: $boxHeight3;
+  width: 25%;
+  background: #2D8CFF;
+  color: white;
+  font-size: $fontSize3;
+  text-align: center;
 }
