@@ -1,3 +1,101 @@
+.extra-margin{
+  margin-top: 12vh;
+}
+.property-linkbox {
+  height: $boxHeight1;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 2vh;
+  font-size: $fontSize5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 75px;
+}
+.img-size{
+  max-width: 5vh;
+}
 .redAlert {
   background-color: #ff5a5f;
+}
+
+.alerts-container {
+  margin-top: 80px;
+}
+.alert-specific-task {
+  width: 100%;
+  margin: auto auto 40px auto;
+  position: relative;
+}
+
+.alert-task {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.alert-top {
+  width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;;
+  margin-bottom: 5px;
+}
+
+.alerts-task-title {
+  font-size: $fontSize5;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.alert-bottom {
+  width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  margin-bottom: 5px;
+}
+
+.alert-left-name {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  font-size: $fontSize4;
+}
+.alert-right-arrow {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.notes-popUp{
+  width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: $fontSize3;
+
+}
+.alert-notes{
+  width: 100%;
+  padding: 30px;
+  background: rgba(255,255,255,1);
+    font-size: $fontSize3;
+}
+.done-checkbox{
+  height: 60px;
+  width: 60px;
+}
+.checkbox-wrap{
+  padding-right: 60px;
 }

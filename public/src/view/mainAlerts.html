@@ -1,32 +1,59 @@
-<section class="main-container content-properties">
-  <div class="">
- <input type="button" ui-sref="propertySettings({propertyId: propertyId})" name="name" value="Property Settings ">
+<section class="main-container extra-margin">
+  <div class="property-linkbox" ui-sref="propertySettings({propertyId: propertyId})">
+   Property Settings
+   <img class="img-size"src="./src/img/cog.png" alt="" />
   </div>
 
 
-  <div ng-class="{'redAlert' : task.alertid }"class="prop newProp" ng-repeat="task in propertyTasks  | orderBy: ['nextdate', 'duedate']" >
-    <div class="">
-      {{task.name}}
-    </div>
-    <div class="">
-      {{task.notes}}
-    </div>
-    <div ng-if="!task.alertid">
-      NextDate: {{task.nextdate |date: shortDate}}
-    </div>
-    <div ng-if="task.alertid">
-      DueDate: {{task.duedate |date: shortDate}}
-    </div>
-    <div class="">
-      {{task.dayinterval}}
-    </div>
-    <div class="">
-      <input type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
-      <div ng-if="task.alertid">
-        <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+  <div class="alerts-container">
+    <div ng-class="{'redAlert' : task.alertid }" class="alert-specific-task" ng-repeat="task in propertyTasks  | orderBy: ['nextdate', 'duedate']">
+      <div class="alert-task">
+        <div class="alert-top">
+          <div class="alerts-task-title">
+            <div ng-if="!task.alertid">
+            {{task.nextdate |date: shortDate}}
+            </div>
+            <div ng-if="task.alertid">
+            {{task.duedate |date: shortDate}}
+            </div>
+            </div>
+            <div class="checkbox-wrap">
+              <input class="done-checkbox"type="checkbox" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
+            <div ng-if="task.alertid">
+              <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+            </div>
+            </div>
+
+        </div>
+        <div class="alert-bottom">
+          <div class="alert-left-name">
+            <div class="task-last-date task-date-holder">
+              {{task.name}}
+            </div>
+          </div>
+          <div class="alert-right-arrow" ng-click="notesVisibility = !notesVisibility">
+            <svg height="30" width="60">
+              <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+            </svg>
+          </div>
+        </div>
+        <div class="" ng-show="notesVisibility">
+          <div class="notes-popUp">
+            <div class="">
+              Notes:
+            </div>
+          <div class="">
+            Interval {{task.dayinterval}}
+          </div>
+        </div>
+        <div class="alert-notes">
+          {{task.notes}}
+        </div>
+        </div>
       </div>
     </div>
-</div>
+  </div>
+
 
 
 </section>
