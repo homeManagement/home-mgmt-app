@@ -2928,8 +2928,15 @@ div.textContent {
 
 .add-new-task-container {
   width: 100%;
-  background: white;
   margin: auto auto 40px auto; }
+
+.add-new-task-toggler {
+  width: 100%;
+  background: white;
+  font-size: 59px;
+  text-align: center;
+  padding: 30px;
+  margin-bottom: 5px; }
 
 .customTaskForm-textarea {
   margin-bottom: 40px; }
@@ -3009,7 +3016,7 @@ div.textContent {
   float: right; }
 
 .left-bracket {
-  color: #D3D2D3; }
+  color: #d3d2d3; }
 
 .redAlert {
   background-color: #ff5a5f; }
