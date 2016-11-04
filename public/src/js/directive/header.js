@@ -37,11 +37,12 @@ angular.module('mgmtApp')
       }
 
 
+
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){
         //  console.log($state.current.name);
           switch($state.current.name) {
               case 'home':
-                  $scope.viewname = '';
+                  $scope.viewname = 'Home Management';
                   break;
               case 'properties':
                   $scope.viewname = 'Your Properties';
