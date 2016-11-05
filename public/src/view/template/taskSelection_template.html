@@ -1,21 +1,30 @@
-<section class="main-container">
+<section class="main-container task-selection-container">
+  <div class="select-text-banner">
+    <h1>Select the tasks you needed to be done or create your own custom tasks!</h1>
+  </div>
   <form name="taskSelection" class="" ng-submit="createTasks(tasks)">
     <div class="" ng-repeat="task in tasks">
       <!-- {"id":1,"name":"Gease door and windows hinges.","type_id":1,"day_interval":365,"last_date":null,"season":"Spring","outdoor":false} -->
       <div class="task-container">
+        <input type="checkbox"
+               name="name"
+               value={{task.id}}
+               ng-model="task.selected"
+               class="task-selection-checkbox"
+               style="width: 60px; height:60px;">
         <div class="task-name">
           {{task.name}}
         </div>
-        <input type="checkbox"
-              name="name"
-              value={{task.id}}
-              ng-model="task.selected">
       </div>
     </div>
-    <div class="" ng-click="customTaskVisibility = !customTaskVisibility">
-      Add Custom Maintenance
-    </div>
-    <create-task ng-show="customTaskVisibility" property-id="propertyId"></create-task>
+<div class="task-btn-container">
+  <div class="custom-task-btn" ng-click="customTaskVisibility = !customTaskVisibility">
+    Add Custom Maintenance
+  </div>
+  <create-task ng-show="customTaskVisibility" property-id="propertyId"></create-task>
+  <div class="selectTaskInputs-submit">
     <input type="submit" value="Submit">
+  </div>
+</div>
   </form>
 </section>

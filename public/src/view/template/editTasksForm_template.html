@@ -1,28 +1,37 @@
 <form class="task-update-form" name="taskUpdateForm">
   Maintenance Name:<br>
-  <input type="text" ng-model="editTaskObj.maintName"><br>
+  <input type="text" ng-model="editTaskObj.maintName" class="edit-task-form-input"><br>
   Last Run Date:<br>
-  <input type="date" ng-model="editTaskObj.lastDate"><br>
+  <input type="date" ng-model="editTaskObj.lastDate" class="edit-task-form-input"><br>
   Next Run Date:<br>
-  <input type="date" ng-model="editTaskObj.nextDate"><br>
+  <input type="date" ng-model="editTaskObj.nextDate" class="edit-task-form-input"><br>
   Interval:<br>
-  <select ng-model="task.season">
+  <select ng-model="task.season" class="edit-task-form-select-input">
     <option value="Monthly">Monthly</option>
     <option value="Quarterly">Quarterly</option>
     <option value="Biannually">Biannually</option>
     <option value="Annually">Annually</option>
     <option value="Custom">Custom</option>
   </select><br>
-  <span class="custom-interval"  ng-show="editTaskObj.season === 'Custom'">
+  <span class="custom-interval"  ng-show="task.season === 'Custom'">
     Days inbetween:<br>
-    <input type="number" ng-model="editTaskObj.dayInterval">
+    <input type="number" ng-model="task.dayInterval" class="edit-task-form-number-input">
   </span>
-  Outdoor:<br>
-  <input type="checkbox" ng-model="task.outdoor"><br>
+  <br>
   Notes:<br>
-  <textarea ng-model="editTaskObj.notes" rows="20"></textarea><br>
-  Deactivate:<br>
-  <input type="checkbox" ng-model="task.inactive"><br>
-  <input type="button" value="Update" ng-click="editTask(editTaskObj); editFormVisibility = !editFormVisibility">
-  <input type="button" value="Delete" ng-click="taskOverlayVisibility = !taskOverlayVisibility; editFormVisibility = !editFormVisibility">
+  <textarea ng-model="task.notes" rows="20"></textarea><br>
+  <div class="edit-task-form-checkboxes">
+    <div class="checkbox-buddies">
+      Outdoor:<br>
+      <input type="checkbox" ng-model="task.outdoor" class="edit-task-form-checkbox-input"><br>
+    </div>
+    <div class="checkbox-buddies">
+      Deactivate:<br>
+      <input type="checkbox" ng-model="task.inactive" class="edit-task-form-checkbox-input"><br>
+    </div>
+  </div>
+
+
+  <input type="button" value="Update" ng-click="editTask(editTaskObj); editFormVisibility = !editFormVisibility" class="edit-task-form-submit-button">
+  <input type="button" value="Delete" ng-click="taskOverlayVisibility = !taskOverlayVisibility; editFormVisibility = !editFormVisibility"  class="edit-task-form-delete-button">
 </form>

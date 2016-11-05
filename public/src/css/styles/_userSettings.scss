@@ -1,0 +1,55 @@
+
+.user-settings-container {
+  height: 100%;
+
+}
+.userPic-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  margin-bottom: 80px;
+}
+.userPic {
+  height: 350px;
+  width: 350px;
+}
+
+.user-settings-edit-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 2px solid #dce0e0;
+  margin-top: 15px;
+  padding: 30px;
+  font-size: 59px;
+  height: 9vh;
+}
+.edit-arrow {
+  display: flex;
+  align-self: center;
+  text-decoration: none;
+  font-size: 38px;
+}
+.edit-dropdown {
+  display: block;
+  background-color: #fff;
+  border: 2px solid #dce0e0;
+  font-size: 38px;
+  height: 9vh;
+
+}
+.submit-button {
+display: inline-block;
+font-size: 38px;
+// background: #2D8CFF ;
+//  color: white;
+}
+.edit-input {
+  display: inline-block;
+  width: 80%;
+  font-size: 59px;
+  height:98%;
+}
+.edit-box {
+  margin-bottom: 80px;
+}

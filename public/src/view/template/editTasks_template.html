@@ -1,13 +1,13 @@
 <div class="edit-tasks-container">
   <div class="specific-task" ng-repeat="task in tasks">
     <div class="task">
-      <div class="task-left-info">
-        <div class="task-top-info">
-          <div class="task-title">
-            {{task.name}}
-          </div>
+      <div class="task-top-info">
+        <div class="task-title">
+          {{task.name}}
         </div>
-        <div class="task-bottom-info">
+      </div>
+      <div class="task-bottom-info">
+        <div class="task-left-info">
           <div class="task-last-date task-date-holder">
             <div class="task-date-title">
               Last Run:
@@ -25,10 +25,15 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="task-right-info" ng-click="editFormVisibility = !editFormVisibility">
+        <div class="task-right-info" ng-click="editFormVisibility = !editFormVisibility">
+          <svg height="30" width="60">
+            <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+          </svg>
+        </div>
       </div>
     </div>
+
+
     <div class="specific-task-overlay" ng-show="taskOverlayVisibility">
       <div class="specific-task-overlay-button delete-task-button" ng-click="deleteTask(task.propertymaintenanceid)">
         DELETE
@@ -37,16 +42,23 @@
         CANCEL
       </div>
     </div>
+
     <edit-tasks-form ng-show="editFormVisibility" task="task" task-overlay-visibility="taskOverlayVisibility" edit-form-visibility="editFormVisibility"></edit-tasks-form>
+
   </div>
+
+
   <div class="add-new-task-container">
-    <form class="create-task-form" name="customTaskForm">
+    <div class="add-new-task-toggler" ng-click="addFormVisibility = !addFormVisibility">
+      + Add New Reminder
+    </div>
+    <form class="task-update-form" name="customTaskForm" ng-show="addFormVisibility">
       Maintenance Name:<br>
-      <input type="text" ng-model="newTask.name"><br>
+      <input type="text" ng-model="newTask.name" class="edit-task-form-input"><br>
       Start Date:<br>
-      <input type="date" ng-model="newTask.lastDate"><br>
+      <input type="date" ng-model="newTask.lastDate" class="edit-task-form-input"><br>
       Interval:<br>
-      <select ng-model="newTask.season">
+      <select ng-model="newTask.season" class="edit-task-form-select-input">
         <option value="Monthly">Monthly</option>
         <option value="Quarterly">Quarterly</option>
         <option value="Biannually">Biannually</option>
@@ -55,13 +67,13 @@
       </select><br>
       <span class="custom-interval"  ng-show="newTask.season === 'Custom'">
         Days inbetween:<br>
-        <input type="number" ng-model="newTask.dayInterval">
+        <input type="number" ng-model="newTask.dayInterval" class="edit-task-form-number-input">
       </span><br>
       Outdoor:<br>
-      <input type="checkbox" ng-model="newTask.outdoor"><br>
+      <input type="checkbox" ng-model="newTask.outdoor"class="edit-task-form-checkbox-input "><br>
       Notes:<br>
-      <textarea ng-model="newTask.notes" rows="8" cols="40"></textarea><br>
-      <input type="button" value="add" ng-click="createTask(propertyId,newTask)">
+      <textarea ng-model="newTask.notes" rows="8" class="customTaskForm-textarea"></textarea><br>
+      <input type="button" value="add" ng-click="createTask(propertyId,newTask)" class="edit-task-form-submit-button">
     </form>
   </div>
 </div>

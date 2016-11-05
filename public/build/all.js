@@ -387,14 +387,19 @@ angular.module('mgmtApp').directive('editTasks', function ($stateParams) {
 angular.module('mgmtApp').directive('editTasksForm', function (mainService) {
 
   var link = function link(scope) {
+    scope.editTaskObj = {};
+    scope.editTaskObj.maintName = scope.task.name;
 
     scope.editTask = function (task) {
       if (!task) {
         task = {};
       }
+      // task["maintName"] = scope.task.name;
       task["inactive"] = scope.task.inactive;
       task["outdoor"] = scope.task.outdoor;
       task["season"] = scope.task.season;
+      task["dayInterval"] = scope.task.dayInterval;
+      task["notes"] = scope.task.notes;
       mainService.editTask(scope.task.propertymaintenanceid, task).then(function (res) {
         if (res) {
           scope.task.name = res.data[0]["name"];
@@ -470,7 +475,7 @@ angular.module('mgmtApp').directive('headerDirective', function () {
       //  console.log($state.current.name);
       switch ($state.current.name) {
         case 'home':
-          $scope.viewname = '';
+          $scope.viewname = 'Home Management';
           break;
         case 'properties':
           $scope.viewname = 'Your Properties';
@@ -554,7 +559,7 @@ angular.module('mgmtApp').directive('logoutDirective', function () {
   return {
     restrict: 'AE',
     controller: controller,
-    template: '<button style="font-size: 3.5rem;" class="logout-btn" type="button" ng-click="logout()">logout</button>'
+    template: '<button class="logout-btn" type="button" ng-click="logout()">logout</button>'
 
   };
 });
