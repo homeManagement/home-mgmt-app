@@ -46,7 +46,7 @@ AUTHENTICATION
  |--------------------------------------------------------------------------
  */
 function ensureAuthenticated(req, res, next) {
-  console.log('hit ensure authenticated');
+  ////console.log('hit ensure authenticated');
   if (!req.header('Authorization')) {
     return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
   }
@@ -89,7 +89,7 @@ function createJWT(user) {
  |--------------------------------------------------------------------------
  */
 app.get('/api/me', ensureAuthenticated, function(req, res) {
-  console.log('Hit get /api/me');
+  //console.log('Hit get /api/me');
   User.findById(req.user, function(err, user) {
     res.send(user);
   });
@@ -101,7 +101,7 @@ app.get('/api/me', ensureAuthenticated, function(req, res) {
  |--------------------------------------------------------------------------
  */
 app.put('/api/me', ensureAuthenticated, function(req, res) {
-  console.log('Hit put /api/me');
+  //console.log('Hit put /api/me');
   User.findById(req.user, function(err, user) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
@@ -129,9 +129,9 @@ app.post('/auth/signup', function(req, res){
     req.body.phone = req.body.phone.replace(/\D/g,'');
 
     db.createLocalUser([req.body.firstName, req.body.lastName, req.body.email, req.body.password, req.body.phone], function(err,success){
-      console.log(err);
+      //console.log(err);
       db.getLocalUser([req.body.email], function(err, existingUser) {
-        console.log(existingUser);
+        //console.log(existingUser);
           var token = createJWT(existingUser[0]);
           return res.send({ token: token });
         });
@@ -184,16 +184,16 @@ app.post('/auth/login', function(req, res) {
          return res.status(500).send({ message: profile.error.message });
        }
        if (req.header('Authorization')) {
-         console.log('AUTHORIZATION DDDDD',profile.id)
+         //console.log('AUTHORIZATION DDDDD',profile.id)
          db.getUser([profile.id] , function(err, existingUser) {
            if (existingUser[0]) {
              return res.status(409).send({ message: 'There is already a Facebook account that belongs to you' });
            }
            var token = req.header('Authorization').split(' ')[0];
 
-          //  console.log(token, config.TOKEN_SECRET);
+          //  //console.log(token, config.TOKEN_SECRET);
            var payload = jwt.decode(token, config.TOKEN_SECRET);
-           console.log(payload);
+           //console.log(payload);
           //  User.findById(payload.sub, function(err, user) {
           //    if (!user) {
           //      return res.status(400).send({ message: 'User not found' });
@@ -208,7 +208,7 @@ app.post('/auth/login', function(req, res) {
           //  });
          });
        } else {
-         console.log('LLLLLLLLŁ',profile)
+         //console.log('LLLLLLLLŁ',profile)
          // Step 3. Create a new user account or return an existing one.
          db.getUser([profile.id], function(err, existingUser) {
            if (existingUser[0]) {
@@ -285,7 +285,7 @@ cronTime: '* 1 * * *',
       db.getDueTasks(function (err,response){
         response.map(function(alert,index,array){
           db.createAlert([alert.property_maintenance_id,alert.property_id,alert.user_id,alert.next_date,alert.receive_text,alert.receive_email],function(err,success){
-            console.log('ERROR',err,'SUCCESS',success);
+            //console.log('ERROR',err,'SUCCESS',success);
           })
         })
       })
@@ -314,7 +314,7 @@ cronTime: '* 1 * * *',
               from: config.twilioNumber,
               body: 'A reminder to ' + alert.name
             },function(err, message){
-            //console.log(message);
+            ////console.log(message);
           });
         }
 
@@ -339,7 +339,7 @@ cronTime: '* 1 * * *',
 
             transporter.sendMail(mailOptions, function(error, info){
                 if(error){
-                    console.log('error');
+                    console.log('error email did not send');
                   }else{
                     console.log('eMail sent');
                   };
