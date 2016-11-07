@@ -3,3 +3,6 @@ node_modules
 config.json
 home_mgmt_key
 home_mgmt_key.pub
+all.js
+all.map.js
+main.css
