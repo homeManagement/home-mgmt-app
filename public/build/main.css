@@ -866,6 +866,56 @@ div.task-container {
 .task-btn-container {
   padding: 60px; }
 
+.create-task-container {
+  width: 100%; }
+
+.create-task-container {
+  position: relative;
+  background: white;
+  font-size: 45px;
+  padding: 30px; }
+  .create-task-container textarea {
+    width: 98%;
+    font-size: 20px;
+    border: 1px solid black;
+    overflow-y: auto;
+    height: 400px; }
+
+.create-task-container input:focus {
+  outline-color: white; }
+
+.create-task-container textarea:focus {
+  outline-color: #ef585d; }
+
+.create-task-form-input {
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 95%;
+  margin: 10px auto 10px auto; }
+
+.create-task-form-select-input {
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 25%;
+  margin: 10px auto 10px auto; }
+
+.create-task-form-checkbox-input {
+  height: 50px;
+  width: 95%;
+  margin: 10px auto 40px auto; }
+
+.create-task-form-add-button {
+  height: 70px;
+  width: 25%;
+  background: #ef585d;
+  color: white;
+  font-size: 32px;
+  text-align: center; }
+
 .content-properties {
   display: flex;
   flex-direction: column;
