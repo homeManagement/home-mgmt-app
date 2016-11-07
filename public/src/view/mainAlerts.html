@@ -8,20 +8,20 @@
   <div class="alerts-container">
     <div ng-class="{'redAlert' : task.alertid }" class="alert-specific-task" ng-repeat="task in propertyTasks  | orderBy: ['nextdate', 'duedate']">
       <div class="alert-task">
-        <div class="alert-top">
+        <div class="alert-top" ng-class="{'redAlert' : task.alertid }">
           <div class="alerts-task-title">
-            <div ng-if="!task.alertid">
+            <div ng-if="!task.alertid" >
             {{task.nextdate |date: shortDate}}
             </div>
-            <div ng-if="task.alertid">
+            <div ng-if="task.alertid" >
             {{task.duedate |date: shortDate}}
             </div>
             </div>
             <div class="checkbox-wrap">
               <input class="done-checkbox"type="checkbox" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
-            <div ng-if="task.alertid">
-              <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
             </div>
+            <div ng-if="task.alertid">
+              <input class="done-checkbox snooze" type="checkbox" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
             </div>
 
         </div>

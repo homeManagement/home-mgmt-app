@@ -73,177 +73,6 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate', 'ngTouch']).c
   });
 });
 
-angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
-
-angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService, $window, $state) {
-
-  $scope.propertyFromVisibility = true;
-  $scope.taskSelectionVisibility = false;
-  $scope.customTaskVisibility = false;
-
-  $scope.property = {
-    token: $window.localStorage.satellizer_token,
-    typeId: 1
-  };
-
-  $scope.send = function (property) {
-    mainService.createProperty(property).then(function (res) {
-      $scope.propertyId = res[0]["id"];
-      $scope.propertyFromVisibility = false;
-      $scope.taskSelectionVisibility = true;
-
-      mainService.getDefaultTasks($scope.propertyId).then(function (res) {
-        $scope.tasks = res;
-      });
-    });
-  };
-
-  $scope.createTasks = function (tasks) {
-    var selectedTask = tasks.filter(function (currentValue) {
-      currentValue.propertyId = $scope.propertyId;
-      return currentValue.selected !== false;
-    });
-    mainService.insertTasks(selectedTask).then(function (res) {
-      if (res.status === 201) {
-        console.log($scope.propertyId);
-        $state.go('mainAlerts', { propertyId: $scope.propertyId });
-      } else {
-        alert('server error try resubmit');
-      }
-    });
-  };
-});
-
-angular.module('mgmtApp').controller('homeCtrl', function ($scope, mainService) {
-
-  var cnt = 0,
-      texts = [];
-
-  // save the texts in an array for re-use
-  $(".textContent").each(function () {
-    texts[cnt++] = $(this).html();
-  });
-  function slide() {
-    if (cnt >= texts.length) cnt = 0;
-    $('#textMessage').html(texts[cnt++]);
-    $('#textMessage').fadeIn('slow').animate({ opacity: 1.0 }, 5000).fadeOut('slow', function () {
-      return slide();
-    });
-  }
-  slide();
-});
-
-angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService, $stateParams, $window) {
-  if ($stateParams.propertyId) {
-    $window.localStorage.propertyId = $stateParams.propertyId;
-    $scope.propertyId = $stateParams.propertyId;
-  } else if (!$stateParams.propertyId) {
-    $scope.propertyId = $window.localStorage.propertyId;
-  }
-
-  $scope.getPropertyTasks = function (propertyId) {
-    mainService.getPropertyTasks(propertyId).then(function (res) {
-      $scope.propertyTasks = res.filter(function (currentValue) {
-        return currentValue.inactive === false;
-      });
-    });
-  };
-
-  $scope.getPropertyTasks($scope.propertyId);
-
-  $scope.done = function (propertymaintenanceid, alertid) {
-    mainService.done(propertymaintenanceid, alertid).then(function (res) {
-      $scope.getPropertyTasks($scope.propertyId);
-    });
-  };
-  $scope.snooze = function (alertid) {
-    mainService.snooze(alertid).then(function (res) {
-      $scope.getPropertyTasks($scope.propertyId);
-    });
-  };
-});
-
-angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, $window, mainService, $swipe) {
-
-  $scope.propDeleteButtonVisibility = false;
-  $scope.propDeleteConfirmVisiblity = false;
-
-  $scope.getProperties = function (token) {
-    mainService.getProperties(token).then(function (res) {
-      $scope.properties = res;
-    });
-  };
-  $scope.getProperties($window.localStorage.satellizer_token);
-
-  $scope.deleteProperty = function (propertyId) {
-    mainService.deleteProperty(propertyId).then(function (res) {
-      $scope.properties = $scope.properties.filter(function (currentProp) {
-        return currentProp.id !== propertyId;
-      });
-    });
-  };
-});
-
-angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService, $window) {
-
-  $scope.getUserById = function (token) {
-    mainService.getUserById(token).then(function (res) {
-      $scope.user = res[0];
-    });
-  };
-  $scope.getUserById($window.localStorage.satellizer_token);
-
-  $scope.updateFirstName = function (newFirstName) {
-    mainService.updateFirstName($scope.user.id, newFirstName).then(function (res) {
-      $scope.user.firstname = newFirstName;
-      $scope.firstNameEdit = false;
-      $scope.newFirstName = "";
-    });
-  };
-  $scope.updateLastName = function (newLastName) {
-    mainService.updateLastName($scope.user.id, newLastName).then(function (res) {
-      $scope.user.last_name = newLastName;
-      $scope.lastNameEdit = false;
-      $scope.newLastName = "";
-    });
-  };
-  /////////////////////edit phone number to (xXx)xXX-XXXX/////////////
-  $scope.phoneNumberStyle = function (e) {
-
-    if ($scope.newPhone.length === 1) {
-      $scope.newPhone = '(' + $scope.newPhone;
-    }
-    if (!Number.isInteger(Number(e.key))) {
-      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
-    }
-    if ($scope.newPhone.length === 4) {
-      $scope.newPhone = $scope.newPhone + ')';
-    }
-    if ($scope.newPhone.length === 8) {
-      $scope.newPhone = $scope.newPhone + '-';
-    }
-    if ($scope.newPhone.length === 14) {
-      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
-    }
-  };
-
-  $scope.updatePhone = function (newPhone) {
-    newPhone = newPhone.replace(/\D/g, '');
-    mainService.updatePhone($scope.user.id, newPhone).then(function (res) {
-      $scope.user.phone_number = newPhone;
-      $scope.phoneEdit = false;
-      $scope.newPhone = "";
-    });
-  };
-
-  $scope.updatePassword = function (newPassword) {
-    mainService.updatePassword($scope.user.id, newPassword).then(function (res) {
-      $scope.user.password = newPassword;
-      $scope.newPassword = "";
-    });
-  };
-});
-
 angular.module('mgmtApp').directive('createTask', function (mainService, $window) {
 
   var controller = function controller(scope, element) {
@@ -690,6 +519,177 @@ angular.module('mgmtApp').directive('taskSelection', function () {
     controller: controller,
     templateUrl: '../src/view/template/taskSelection_template.html'
 
+  };
+});
+
+angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
+
+angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService, $window, $state) {
+
+  $scope.propertyFromVisibility = true;
+  $scope.taskSelectionVisibility = false;
+  $scope.customTaskVisibility = false;
+
+  $scope.property = {
+    token: $window.localStorage.satellizer_token,
+    typeId: 1
+  };
+
+  $scope.send = function (property) {
+    mainService.createProperty(property).then(function (res) {
+      $scope.propertyId = res[0]["id"];
+      $scope.propertyFromVisibility = false;
+      $scope.taskSelectionVisibility = true;
+
+      mainService.getDefaultTasks($scope.propertyId).then(function (res) {
+        $scope.tasks = res;
+      });
+    });
+  };
+
+  $scope.createTasks = function (tasks) {
+    var selectedTask = tasks.filter(function (currentValue) {
+      currentValue.propertyId = $scope.propertyId;
+      return currentValue.selected !== false;
+    });
+    mainService.insertTasks(selectedTask).then(function (res) {
+      if (res.status === 201) {
+        console.log($scope.propertyId);
+        $state.go('mainAlerts', { propertyId: $scope.propertyId });
+      } else {
+        alert('server error try resubmit');
+      }
+    });
+  };
+});
+
+angular.module('mgmtApp').controller('homeCtrl', function ($scope, mainService) {
+
+  var cnt = 0,
+      texts = [];
+
+  // save the texts in an array for re-use
+  $(".textContent").each(function () {
+    texts[cnt++] = $(this).html();
+  });
+  function slide() {
+    if (cnt >= texts.length) cnt = 0;
+    $('#textMessage').html(texts[cnt++]);
+    $('#textMessage').fadeIn('slow').animate({ opacity: 1.0 }, 5000).fadeOut('slow', function () {
+      return slide();
+    });
+  }
+  slide();
+});
+
+angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService, $stateParams, $window) {
+  if ($stateParams.propertyId) {
+    $window.localStorage.propertyId = $stateParams.propertyId;
+    $scope.propertyId = $stateParams.propertyId;
+  } else if (!$stateParams.propertyId) {
+    $scope.propertyId = $window.localStorage.propertyId;
+  }
+
+  $scope.getPropertyTasks = function (propertyId) {
+    mainService.getPropertyTasks(propertyId).then(function (res) {
+      $scope.propertyTasks = res.filter(function (currentValue) {
+        return currentValue.inactive === false;
+      });
+    });
+  };
+
+  $scope.getPropertyTasks($scope.propertyId);
+
+  $scope.done = function (propertymaintenanceid, alertid) {
+    mainService.done(propertymaintenanceid, alertid).then(function (res) {
+      $scope.getPropertyTasks($scope.propertyId);
+    });
+  };
+  $scope.snooze = function (alertid) {
+    mainService.snooze(alertid).then(function (res) {
+      $scope.getPropertyTasks($scope.propertyId);
+    });
+  };
+});
+
+angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, $window, mainService, $swipe) {
+
+  $scope.propDeleteButtonVisibility = false;
+  $scope.propDeleteConfirmVisiblity = false;
+
+  $scope.getProperties = function (token) {
+    mainService.getProperties(token).then(function (res) {
+      $scope.properties = res;
+    });
+  };
+  $scope.getProperties($window.localStorage.satellizer_token);
+
+  $scope.deleteProperty = function (propertyId) {
+    mainService.deleteProperty(propertyId).then(function (res) {
+      $scope.properties = $scope.properties.filter(function (currentProp) {
+        return currentProp.id !== propertyId;
+      });
+    });
+  };
+});
+
+angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService, $window) {
+
+  $scope.getUserById = function (token) {
+    mainService.getUserById(token).then(function (res) {
+      $scope.user = res[0];
+    });
+  };
+  $scope.getUserById($window.localStorage.satellizer_token);
+
+  $scope.updateFirstName = function (newFirstName) {
+    mainService.updateFirstName($scope.user.id, newFirstName).then(function (res) {
+      $scope.user.firstname = newFirstName;
+      $scope.firstNameEdit = false;
+      $scope.newFirstName = "";
+    });
+  };
+  $scope.updateLastName = function (newLastName) {
+    mainService.updateLastName($scope.user.id, newLastName).then(function (res) {
+      $scope.user.last_name = newLastName;
+      $scope.lastNameEdit = false;
+      $scope.newLastName = "";
+    });
+  };
+  /////////////////////edit phone number to (xXx)xXX-XXXX/////////////
+  $scope.phoneNumberStyle = function (e) {
+
+    if ($scope.newPhone.length === 1) {
+      $scope.newPhone = '(' + $scope.newPhone;
+    }
+    if (!Number.isInteger(Number(e.key))) {
+      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
+    }
+    if ($scope.newPhone.length === 4) {
+      $scope.newPhone = $scope.newPhone + ')';
+    }
+    if ($scope.newPhone.length === 8) {
+      $scope.newPhone = $scope.newPhone + '-';
+    }
+    if ($scope.newPhone.length === 14) {
+      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
+    }
+  };
+
+  $scope.updatePhone = function (newPhone) {
+    newPhone = newPhone.replace(/\D/g, '');
+    mainService.updatePhone($scope.user.id, newPhone).then(function (res) {
+      $scope.user.phone_number = newPhone;
+      $scope.phoneEdit = false;
+      $scope.newPhone = "";
+    });
+  };
+
+  $scope.updatePassword = function (newPassword) {
+    mainService.updatePassword($scope.user.id, newPassword).then(function (res) {
+      $scope.user.password = newPassword;
+      $scope.newPassword = "";
+    });
   };
 });
 

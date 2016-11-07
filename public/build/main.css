@@ -1017,9 +1017,6 @@ div.task-container {
 .img-size {
   max-width: 5vh; }
 
-.redAlert {
-  background-color: #ff5a5f; }
-
 .alerts-container {
   margin-top: 80px; }
 
@@ -1091,3 +1088,9 @@ div.task-container {
 
 .checkbox-wrap {
   padding-right: 60px; }
+
+.snooze {
+  margin-right: 60px; }
+
+.redAlert {
+  background-color: #ff5a5f; }
