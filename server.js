@@ -279,7 +279,7 @@ app.put('/users/password/:id', propertyCtrl.updatePassword);
   */
  var createAlerts = new cronJob({
 
-cronTime: '* 1 * * *',
+cronTime: '0 1 * * *',
 
    onTick: function() {
       db.getDueTasks(function (err,response){
