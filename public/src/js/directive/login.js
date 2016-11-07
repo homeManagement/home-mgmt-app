@@ -5,7 +5,7 @@ var controller = function($scope, $window, $state, $auth){
     // localStorage.clear();
     $auth.authenticate(provider)
     .then(function(response){
-      console.log(response.data);
+      // console.log(response.data);
       $state.go('properties')
     })
     .catch(function(response) {

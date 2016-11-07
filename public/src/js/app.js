@@ -78,10 +78,18 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate', 'ngTouch'])
      $rootScope.$on('$stateChangeStart', function(e, to) {
       //  console.log('$auth.isAuthenticated',$auth.isAuthenticated());
       //  console.log('$window.localStorage',$window.localStorage);
-       if (!to.restricted) return;
+       if (!to.restricted) {
+         return;
+       }
 
-       if ($auth.isAuthenticated()) return;
-       else $state.go('home');
+       if ($auth.isAuthenticated()){
+         return;
+       }
+       else {
+         e.preventDefault();
+         $state.transitionTo('login');
+         $state.go('login');
+       }
 
 
      });

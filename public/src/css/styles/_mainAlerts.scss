@@ -86,11 +86,17 @@
   width: 100%;
   padding: 30px;
   background: rgba(255,255,255,1);
-    font-size: $fontSize3;
+  font-size: $fontSize3;
 }
 .done-checkbox{
   height: 60px;
   width: 60px;
+}
+.done-button {
+  padding: 10px;
+  font-size: $fontSize3;
+  color: white;
+  background-color: $redBackground;
 }
 .checkbox-wrap{
   padding-right: 60px;

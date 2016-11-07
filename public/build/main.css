@@ -1136,6 +1136,12 @@ div.task-container {
   height: 60px;
   width: 60px; }
 
+.done-button {
+  padding: 10px;
+  font-size: 32px;
+  color: white;
+  background-color: #ef585d; }
+
 .checkbox-wrap {
   padding-right: 60px; }
 
