@@ -67,179 +67,182 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate', 'ngTouch']).c
   $rootScope.$on('$stateChangeStart', function (e, to) {
     //  console.log('$auth.isAuthenticated',$auth.isAuthenticated());
     //  console.log('$window.localStorage',$window.localStorage);
-    if (!to.restricted) return;
+    if (!to.restricted) {
+      return;
+    }
 
-    if ($auth.isAuthenticated()) return;else $state.go('home');
+    if ($auth.isAuthenticated()) {
+      return;
+    } else {
+      e.preventDefault();
+      $state.transitionTo('login');
+      $state.go('login');
+    }
   });
 });
 
-angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
+angular.module('mgmtApp').service('mainService', function ($http) {
 
-angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService, $window, $state) {
-
-  $scope.propertyFromVisibility = true;
-  $scope.taskSelectionVisibility = false;
-  $scope.customTaskVisibility = false;
-
-  $scope.property = {
-    token: $window.localStorage.satellizer_token,
-    typeId: 1
+  //////////////////////////
+  this.getProperties = function (token) {
+    return $http({
+      method: 'GET',
+      url: '/properties/' + token
+    }).then(function (res) {
+      return res.data;
+    });
   };
-
-  $scope.send = function (property) {
-    mainService.createProperty(property).then(function (res) {
-      $scope.propertyId = res[0]["id"];
-      $scope.propertyFromVisibility = false;
-      $scope.taskSelectionVisibility = true;
-
-      mainService.getDefaultTasks($scope.propertyId).then(function (res) {
-        $scope.tasks = res;
-      });
+  this.createProperty = function (property) {
+    return $http({
+      method: 'POST',
+      url: '/properties',
+      data: property
+    }).then(function (res) {
+      return res.data;
     });
   };
 
-  $scope.createTasks = function (tasks) {
-    var selectedTask = tasks.filter(function (currentValue) {
-      currentValue.propertyId = $scope.propertyId;
-      return currentValue.selected !== false;
-    });
-    mainService.insertTasks(selectedTask).then(function (res) {
-      if (res.status === 201) {
-        console.log($scope.propertyId);
-        $state.go('mainAlerts', { propertyId: $scope.propertyId });
-      } else {
-        alert('server error try resubmit');
-      }
-    });
-  };
-});
-
-angular.module('mgmtApp').controller('homeCtrl', function ($scope, mainService) {
-
-  var cnt = 0,
-      texts = [];
-
-  // save the texts in an array for re-use
-  $(".textContent").each(function () {
-    texts[cnt++] = $(this).html();
-  });
-  function slide() {
-    if (cnt >= texts.length) cnt = 0;
-    $('#textMessage').html(texts[cnt++]);
-    $('#textMessage').fadeIn('slow').animate({ opacity: 1.0 }, 5000).fadeOut('slow', function () {
-      return slide();
-    });
-  }
-  slide();
-});
-
-angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService, $stateParams, $window) {
-  if ($stateParams.propertyId) {
-    $window.localStorage.propertyId = $stateParams.propertyId;
-    $scope.propertyId = $stateParams.propertyId;
-  } else if (!$stateParams.propertyId) {
-    $scope.propertyId = $window.localStorage.propertyId;
-  }
-
-  $scope.getPropertyTasks = function (propertyId) {
-    mainService.getPropertyTasks(propertyId).then(function (res) {
-      $scope.propertyTasks = res.filter(function (currentValue) {
-        return currentValue.inactive === false;
-      });
+  this.getDefaultTasks = function (propertyId) {
+    return $http({
+      method: 'GET',
+      url: '/defaulttasks/' + propertyId
+    }).then(function (res) {
+      return res.data;
     });
   };
 
-  $scope.getPropertyTasks($scope.propertyId);
-
-  $scope.done = function (propertymaintenanceid, alertid) {
-    mainService.done(propertymaintenanceid, alertid).then(function (res) {
-      $scope.getPropertyTasks($scope.propertyId);
-    });
-  };
-  $scope.snooze = function (alertid) {
-    mainService.snooze(alertid).then(function (res) {
-      $scope.getPropertyTasks($scope.propertyId);
-    });
-  };
-});
-
-angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, $window, mainService, $swipe) {
-
-  $scope.propDeleteButtonVisibility = false;
-  $scope.propDeleteConfirmVisiblity = false;
-
-  $scope.getProperties = function (token) {
-    mainService.getProperties(token).then(function (res) {
-      $scope.properties = res;
-    });
-  };
-  $scope.getProperties($window.localStorage.satellizer_token);
-
-  $scope.deleteProperty = function (propertyId) {
-    mainService.deleteProperty(propertyId).then(function (res) {
-      $scope.properties = $scope.properties.filter(function (currentProp) {
-        return currentProp.id !== propertyId;
-      });
-    });
-  };
-});
-
-angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService, $window) {
-
-  $scope.getUserById = function (token) {
-    mainService.getUserById(token).then(function (res) {
-      $scope.user = res[0];
-    });
-  };
-  $scope.getUserById($window.localStorage.satellizer_token);
-
-  $scope.updateFirstName = function (newFirstName) {
-    mainService.updateFirstName($scope.user.id, newFirstName).then(function (res) {
-      $scope.user.firstname = newFirstName;
-      $scope.firstNameEdit = false;
-      $scope.newFirstName = "";
-    });
-  };
-  $scope.updateLastName = function (newLastName) {
-    mainService.updateLastName($scope.user.id, newLastName).then(function (res) {
-      $scope.user.last_name = newLastName;
-      $scope.lastNameEdit = false;
-      $scope.newLastName = "";
-    });
-  };
-  /////////////////////edit phone number to (xXx)xXX-XXXX/////////////
-  $scope.phoneNumberStyle = function (e) {
-
-    if ($scope.newPhone.length === 1) {
-      $scope.newPhone = '(' + $scope.newPhone;
-    }
-    if (!Number.isInteger(Number(e.key))) {
-      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
-    }
-    if ($scope.newPhone.length === 4) {
-      $scope.newPhone = $scope.newPhone + ')';
-    }
-    if ($scope.newPhone.length === 8) {
-      $scope.newPhone = $scope.newPhone + '-';
-    }
-    if ($scope.newPhone.length === 14) {
-      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
-    }
-  };
-
-  $scope.updatePhone = function (newPhone) {
-    newPhone = newPhone.replace(/\D/g, '');
-    mainService.updatePhone($scope.user.id, newPhone).then(function (res) {
-      $scope.user.phone_number = newPhone;
-      $scope.phoneEdit = false;
-      $scope.newPhone = "";
+  this.insertTasks = function (tasks) {
+    return $http({
+      method: 'POST',
+      url: '/maintenancetasks',
+      data: tasks
+    }).then(function (res) {
+      return res;
     });
   };
 
-  $scope.updatePassword = function (newPassword) {
-    mainService.updatePassword($scope.user.id, newPassword).then(function (res) {
-      $scope.user.password = newPassword;
-      $scope.newPassword = "";
+  this.updatePropertySettings = function (propertyId, property_settings) {
+    return $http({
+      method: 'PUT',
+      url: '/propertySettings/' + propertyId,
+      data: property_settings
+    }).then(function (res) {
+      return res;
+    });
+  };
+
+  this.getPropertySettings = function (propertyId) {
+    return $http({
+      method: 'GET',
+      url: '/propertySettings/' + propertyId
+    }).then(function (res) {
+      return res.data;
+    });
+  };
+
+  this.getPropertyTasks = function (propertyId) {
+    return $http({
+      method: 'GET',
+      url: '/maintenancetasks/' + propertyId
+    }).then(function (res) {
+      return res.data;
+    });
+  };
+
+  this.createCustomTask = function (task) {
+    return $http({
+      method: 'POST',
+      url: '/createCustomTask',
+      data: task
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.done = function (propertymaintenanceid, alertid) {
+    return $http({
+      method: 'PUT',
+      url: '/maintenancetasks/' + propertymaintenanceid,
+      data: { alertid: alertid }
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.snooze = function (alertid) {
+    return $http({
+      method: 'PUT',
+      url: '/alerts/' + alertid
+      // data: {alertid: alertid}
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.deleteProperty = function (propertyId) {
+    return $http({
+      method: 'DELETE',
+      url: '/property/' + propertyId
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.getUserById = function (token) {
+    return $http({
+      method: 'GET',
+      url: '/users/' + token
+    }).then(function (res) {
+      return res.data;
+    });
+  };
+  this.updateFirstName = function (id, newFirstName) {
+    return $http({
+      method: 'PUT',
+      url: '/users/firstName/' + id,
+      data: { newFirstName: newFirstName }
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.editTask = function (propertymaintenanceid, task) {
+    return $http({
+      method: 'PUT',
+      url: '/tasksettings/' + propertymaintenanceid,
+      data: task
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.updateLastName = function (id, newLastName) {
+    return $http({
+      method: 'PUT',
+      url: '/users/lastName/' + id,
+      data: { newLastName: newLastName }
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.updatePhone = function (id, newPhone) {
+    return $http({
+      method: 'PUT',
+      url: '/users/phone/' + id,
+      data: { newPhone: newPhone }
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.updatePassword = function (id, newPassword) {
+    return $http({
+      method: 'PUT',
+      url: '/users/password/' + id,
+      data: { newPassword: newPassword }
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.deleteTask = function (propertymaintenanceid) {
+    return $http({
+      method: 'DELETE',
+      url: '/maintenancetask/' + propertymaintenanceid
+    }).then(function (res) {
+      return res;
     });
   };
 });
@@ -470,6 +473,16 @@ angular.module('mgmtApp').directive('headerDirective', function () {
       $scope.menuShowing = !$scope.menuShowing;
       // console.log($scope.menuShowing);
     };
+    $scope.closeMenu = function () {
+      var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+      if ($scope.menuShowing) {
+        $('div.menu').addClass('animated slideOutUp').one(animationEnd, function () {
+          $(this).prev().find('#nav-icon3').removeClass('open');
+          $(this).removeClass('animated slideOutUp');
+        });
+      }
+      $scope.menuShowing = false;
+    };
 
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams, options) {
       //  console.log($state.current.name);
@@ -520,7 +533,7 @@ angular.module('mgmtApp').directive('loginDirective', function () {
     $scope.authenticate = function (provider) {
       // localStorage.clear();
       $auth.authenticate(provider).then(function (response) {
-        console.log(response.data);
+        // console.log(response.data);
         $state.go('properties');
       }).catch(function (response) {
         console.log(response.data);
@@ -592,7 +605,6 @@ angular.module('mgmtApp').directive('propertySettings', function ($stateParams) 
       };
     });
 
-    console.log($scope.propertyId);
     $scope.update = function () {
       $scope.property_settings = {
         text: $scope.propertyCheckBox.value1,
@@ -693,168 +705,173 @@ angular.module('mgmtApp').directive('taskSelection', function () {
   };
 });
 
-angular.module('mgmtApp').service('mainService', function ($http) {
+angular.module('mgmtApp').controller('contactCtrl', function ($scope, mainService) {});
 
-  //////////////////////////
-  this.getProperties = function (token) {
-    return $http({
-      method: 'GET',
-      url: '/properties/' + token
-    }).then(function (res) {
-      return res.data;
-    });
-  };
-  this.createProperty = function (property) {
-    return $http({
-      method: 'POST',
-      url: '/properties',
-      data: property
-    }).then(function (res) {
-      return res.data;
-    });
+angular.module('mgmtApp').controller('createPropertyCtrl', function ($scope, mainService, $window, $state) {
+
+  $scope.propertyFromVisibility = true;
+  $scope.taskSelectionVisibility = false;
+  $scope.customTaskVisibility = false;
+
+  $scope.property = {
+    token: $window.localStorage.satellizer_token,
+    typeId: 1
   };
 
-  this.getDefaultTasks = function (propertyId) {
-    return $http({
-      method: 'GET',
-      url: '/defaulttasks/' + propertyId
-    }).then(function (res) {
-      return res.data;
+  $scope.send = function (property) {
+    mainService.createProperty(property).then(function (res) {
+      $scope.propertyId = res[0]["id"];
+      $scope.propertyFromVisibility = false;
+      $scope.taskSelectionVisibility = true;
+
+      mainService.getDefaultTasks($scope.propertyId).then(function (res) {
+        $scope.tasks = res;
+      });
     });
   };
 
-  this.insertTasks = function (tasks) {
-    return $http({
-      method: 'POST',
-      url: '/maintenancetasks',
-      data: tasks
-    }).then(function (res) {
-      return res;
+  $scope.createTasks = function (tasks) {
+    var selectedTask = tasks.filter(function (currentValue) {
+      currentValue.propertyId = $scope.propertyId;
+      return currentValue.selected !== false;
+    });
+    mainService.insertTasks(selectedTask).then(function (res) {
+      if (res.status === 201) {
+        console.log($scope.propertyId);
+        $state.go('mainAlerts', { propertyId: $scope.propertyId });
+      } else {
+        alert('server error try resubmit');
+      }
+    });
+  };
+});
+
+angular.module('mgmtApp').controller('homeCtrl', function ($scope, mainService) {
+
+  var cnt = 0,
+      texts = [];
+
+  // save the texts in an array for re-use
+  $(".textContent").each(function () {
+    texts[cnt++] = $(this).html();
+  });
+  function slide() {
+    if (cnt >= texts.length) cnt = 0;
+    $('#textMessage').html(texts[cnt++]);
+    $('#textMessage').fadeIn('slow').animate({ opacity: 1.0 }, 5000).fadeOut('slow', function () {
+      return slide();
+    });
+  }
+  slide();
+});
+
+angular.module('mgmtApp').controller('mainAlertsCtrl', function ($scope, mainService, $stateParams, $window) {
+  if ($stateParams.propertyId) {
+    $window.localStorage.propertyId = $stateParams.propertyId;
+    $scope.propertyId = $stateParams.propertyId;
+  } else if (!$stateParams.propertyId) {
+    $scope.propertyId = $window.localStorage.propertyId;
+  }
+
+  $scope.getPropertyTasks = function (propertyId) {
+    mainService.getPropertyTasks(propertyId).then(function (res) {
+      $scope.propertyTasks = res.filter(function (currentValue) {
+        return currentValue.inactive === false;
+      });
     });
   };
 
-  this.updatePropertySettings = function (propertyId, property_settings) {
-    return $http({
-      method: 'PUT',
-      url: '/propertySettings/' + propertyId,
-      data: property_settings
-    }).then(function (res) {
-      return res;
+  $scope.getPropertyTasks($scope.propertyId);
+
+  $scope.done = function (propertymaintenanceid, alertid) {
+    mainService.done(propertymaintenanceid, alertid).then(function (res) {
+      $scope.getPropertyTasks($scope.propertyId);
+    });
+  };
+  $scope.snooze = function (alertid) {
+    mainService.snooze(alertid).then(function (res) {
+      $scope.getPropertyTasks($scope.propertyId);
+    });
+  };
+});
+
+angular.module('mgmtApp').controller('propertiesCtrl', function ($scope, $window, mainService, $swipe) {
+
+  $scope.propDeleteButtonVisibility = false;
+  $scope.propDeleteConfirmVisiblity = false;
+
+  $scope.getProperties = function (token) {
+    mainService.getProperties(token).then(function (res) {
+      $scope.properties = res;
+    });
+  };
+  $scope.getProperties($window.localStorage.satellizer_token);
+
+  $scope.deleteProperty = function (propertyId) {
+    mainService.deleteProperty(propertyId).then(function (res) {
+      $scope.properties = $scope.properties.filter(function (currentProp) {
+        return currentProp.id !== propertyId;
+      });
+    });
+  };
+});
+
+angular.module('mgmtApp').controller('userSettingsCtrl', function ($scope, mainService, $window) {
+
+  $scope.getUserById = function (token) {
+    mainService.getUserById(token).then(function (res) {
+      $scope.user = res[0];
+    });
+  };
+  $scope.getUserById($window.localStorage.satellizer_token);
+
+  $scope.updateFirstName = function (newFirstName) {
+    mainService.updateFirstName($scope.user.id, newFirstName).then(function (res) {
+      $scope.user.firstname = newFirstName;
+      $scope.firstNameEdit = false;
+      $scope.newFirstName = "";
+    });
+  };
+  $scope.updateLastName = function (newLastName) {
+    mainService.updateLastName($scope.user.id, newLastName).then(function (res) {
+      $scope.user.last_name = newLastName;
+      $scope.lastNameEdit = false;
+      $scope.newLastName = "";
+    });
+  };
+  /////////////////////edit phone number to (xXx)xXX-XXXX/////////////
+  $scope.phoneNumberStyle = function (e) {
+
+    if ($scope.newPhone.length === 1) {
+      $scope.newPhone = '(' + $scope.newPhone;
+    }
+    if (!Number.isInteger(Number(e.key))) {
+      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
+    }
+    if ($scope.newPhone.length === 4) {
+      $scope.newPhone = $scope.newPhone + ')';
+    }
+    if ($scope.newPhone.length === 8) {
+      $scope.newPhone = $scope.newPhone + '-';
+    }
+    if ($scope.newPhone.length === 14) {
+      $scope.newPhone = $scope.newPhone.split('').splice(0, $scope.newPhone.length - 1).join('');
+    }
+  };
+
+  $scope.updatePhone = function (newPhone) {
+    newPhone = newPhone.replace(/\D/g, '');
+    mainService.updatePhone($scope.user.id, newPhone).then(function (res) {
+      $scope.user.phone_number = newPhone;
+      $scope.phoneEdit = false;
+      $scope.newPhone = "";
     });
   };
 
-  this.getPropertySettings = function (propertyId) {
-    return $http({
-      method: 'GET',
-      url: '/propertySettings/' + propertyId
-    }).then(function (res) {
-      return res.data;
-    });
-  };
-
-  this.getPropertyTasks = function (propertyId) {
-    return $http({
-      method: 'GET',
-      url: '/maintenancetasks/' + propertyId
-    }).then(function (res) {
-      return res.data;
-    });
-  };
-
-  this.createCustomTask = function (task) {
-    return $http({
-      method: 'POST',
-      url: '/createCustomTask',
-      data: task
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.done = function (propertymaintenanceid, alertid) {
-    return $http({
-      method: 'PUT',
-      url: '/maintenancetasks/' + propertymaintenanceid,
-      data: { alertid: alertid }
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.snooze = function (alertid) {
-    return $http({
-      method: 'PUT',
-      url: '/alerts/' + alertid
-      // data: {alertid: alertid}
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.deleteProperty = function (propertyId) {
-    return $http({
-      method: 'DELETE',
-      url: '/property/' + propertyId
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.getUserById = function (token) {
-    return $http({
-      method: 'GET',
-      url: '/users/' + token
-    }).then(function (res) {
-      return res.data;
-    });
-  };
-  this.updateFirstName = function (id, newFirstName) {
-    return $http({
-      method: 'PUT',
-      url: '/users/firstName/' + id,
-      data: { newFirstName: newFirstName }
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.editTask = function (propertymaintenanceid, task) {
-    return $http({
-      method: 'PUT',
-      url: '/tasksettings/' + propertymaintenanceid,
-      data: task
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.updateLastName = function (id, newLastName) {
-    return $http({
-      method: 'PUT',
-      url: '/users/lastName/' + id,
-      data: { newLastName: newLastName }
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.updatePhone = function (id, newPhone) {
-    return $http({
-      method: 'PUT',
-      url: '/users/phone/' + id,
-      data: { newPhone: newPhone }
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.updatePassword = function (id, newPassword) {
-    return $http({
-      method: 'PUT',
-      url: '/users/password/' + id,
-      data: { newPassword: newPassword }
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.deleteTask = function (propertymaintenanceid) {
-    return $http({
-      method: 'DELETE',
-      url: '/maintenancetask/' + propertymaintenanceid
-    }).then(function (res) {
-      return res;
+  $scope.updatePassword = function (newPassword) {
+    mainService.updatePassword($scope.user.id, newPassword).then(function (res) {
+      $scope.user.password = newPassword;
+      $scope.newPassword = "";
     });
   };
 });

@@ -15,9 +15,6 @@ mainService.getPropertySettings($scope.propertyId).then(function(res){
 
 })
 
-
-
-console.log($scope.propertyId);
 $scope.update = function(){
   $scope.property_settings = {
     text: $scope.propertyCheckBox.value1,

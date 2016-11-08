@@ -35,14 +35,24 @@ angular.module('mgmtApp')
         $scope.menuShowing = !$scope.menuShowing;
         // console.log($scope.menuShowing);
       }
+      $scope.closeMenu = function() {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        if ($scope.menuShowing) {
+          $('div.menu').addClass('animated slideOutUp').one(animationEnd, function () {
+            $(this).prev().find('#nav-icon3').removeClass('open')
+            $(this).removeClass('animated slideOutUp')
 
+        });
+        }
+        $scope.menuShowing = false;
+      }
 
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, options){
         //  console.log($state.current.name);
           switch($state.current.name) {
               case 'home':
-                  $scope.viewname = 'Home Management';
+                  $scope.viewname = '';
                   break;
               case 'properties':
                   $scope.viewname = 'Your Properties';

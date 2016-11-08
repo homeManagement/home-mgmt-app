@@ -1,25 +1,25 @@
 <div class="create-task-container">
   <form class="create-task-form" name="customTaskForm">
-    Maintenance Name:
-    <input type="text" ng-model="task.name">
-    Start Date:
-    <input type="date" ng-model="task.lastDate">
-    Interval:
-    <select ng-model="task.season">
+    Maintenance Name:<br>
+    <input type="text" ng-model="task.name" class="create-task-form-input"><br>
+    Start Date:<br>
+    <input type="date" ng-model="task.lastDate" class="create-task-form-input"><br>
+    Interval:<br>
+    <select ng-model="task.season" class="create-task-form-select-input">
       <option value="Monthly">Monthly</option>
       <option value="Quarterly">Quarterly</option>
       <option value="Biannually">Biannually</option>
       <option value="Annually">Annually</option>
       <option value="Custom">Custom</option>
-    </select>
+    </select><br>
     <span class="custom-interval"  ng-show="task.season === 'Custom'">
-      Days inbetween:
-      <input type="number" ng-model="task.dayInterval">
+      Days inbetween:<br>
+      <input type="number" ng-model="task.dayInterval" class="create-task-form-input"><br>
     </span>
-    Outdoor:
-    <input type="checkbox" ng-model="task.outdoor">
-    Notes:
-    <textarea ng-model="task.notes" rows="8" cols="40"></textarea>
-    <input type="button" value="add" ng-click="createTask(propertyId,task)">
+    Outdoor:<br>
+    <input type="checkbox" ng-model="task.outdoor" class="create-task-form-checkbox-input"><br>
+    Notes:<br>
+    <textarea ng-model="task.notes" rows="8" cols="40"></textarea><br>
+    <input type="button" value="add" ng-click="createTask(propertyId,task)" class="create-task-form-add-button">
   </form>
 </div>

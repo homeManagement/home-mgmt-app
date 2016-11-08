@@ -1,15 +1,28 @@
-<section class="main-container">
-
-<div class="createPropertyInputs">
-<form class="" action="" method="post">
-  <ul> Create New Property <br>
-    <li><br>Property Name <br>
-      <input class="input" ng-model="property.name" type="text" name="name" value=""></li> <br>
-
-    <li>ZipCode <br>
-      <input class="input" ng-model="property.zipcode" type="number" name="name" value=""></li> <br>
-  </ul>
-  <input   ng-click="send(property)" type="button" name="name" value="next">
-</form>
+<section class="main-container createPropertyInputs-container">
+  <div class="createPropertyInputs">
+    <form class="" action="" method="post">
+      <div class="createPropertyInputs-title">
+        Property Name:
+        <div class="createPropertyInputs-input">
+          <input class="input" ng-model="property.name" type="text" name="name" value=""></li>
+        </div>
+      </div>
+      <div class="createPropertyInputs-title">
+        ZipCode:
+        <div class="createPropertyInputs-input">
+          <input class="input" ng-model="property.zipcode" type="number" name="name" value=""></li>
+        </div>
+      </div>
+        <!--Type
+          <select ng-model="property.typeId" name="type_id">
+            <option value="1">Anything</option>
+            <option value="2">House</option>
+            <option value="3">Apartment</option>
+          </select>
+         -->
+         <div class="createPropertyInputs-submit">
+           <input ng-click="send(property)" type="button" name="name" value="next">
+         </div>
+      </form>
+  </div>
 </section>
-</div>

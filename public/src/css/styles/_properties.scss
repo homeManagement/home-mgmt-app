@@ -71,7 +71,15 @@ $propBoxWidth: 100%;
 .prop-delete-confirm-button {
   cursor: pointer;
   color: white;
-  font-size: 30px;
+  font-size: $fontSize3;
+  padding: 30px;
+}
+
+.delete-confirm {
+  background-color: red;
+}
+.delete-cancel {
+  background-color: #2D8CFF;
 }
 
 .newProp{

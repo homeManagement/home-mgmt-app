@@ -10,7 +10,10 @@
       <div class="user-settings-edit-container">
         First Name: {{user.firstname}}
           <svg class="edit-arrow" ng-click="firstNameEdit = !firstNameEdit" type="button" name="name" value=""height="30" width="60">
-            <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+            <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" ng-hide="firstNameEdit" style="fill:#B8B1B1" />
+          </svg>
+          <svg height="30" width="60" ng-click="firstNameEdit = !firstNameEdit" ng-show="firstNameEdit">
+            <polyline points="0,30 30,0 60,30 54,30 30,6 6,30" style="fill:#B8B1B1" />
           </svg>
       </div>
       <div class="edit-dropdown" ng-show="firstNameEdit">
@@ -22,8 +25,11 @@
     <div class="edit-box">
       <div class="user-settings-edit-container">
         Last Name:  {{user.last_name}}
-          <svg class="edit-arrow" ng-click="lastNameEdit = !lastNameEdit" type="button" name="name" value=""height="30" width="60">
+          <svg class="edit-arrow" ng-click="lastNameEdit = !lastNameEdit" ng-hide="lastNameEdit" type="button" name="name" value=""height="30" width="60">
             <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+          </svg>
+          <svg height="30" width="60" ng-click="lastNameEdit = !lastNameEdit" ng-show="lastNameEdit">
+            <polyline points="0,30 30,0 60,30 54,30 30,6 6,30" style="fill:#B8B1B1" />
           </svg>
         </div>
         <div class="edit-dropdown" ng-show="lastNameEdit">
@@ -35,8 +41,11 @@
     <div class="edit-box">
     <div class="user-settings-edit-container">
       Telephone: {{user.phone_number}}
-      <svg class="edit-arrow" ng-click="phoneEdit = !phoneEdit" type="button" name="name" value=""height="30" width="60">
+      <svg class="edit-arrow" ng-click="phoneEdit = !phoneEdit" ng-hide="phoneEdit" type="button" name="name" value=""height="30" width="60">
         <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+      </svg>
+      <svg height="30" width="60" ng-click="phoneEdit = !phoneEdit" ng-show="phoneEdit">
+        <polyline points="0,30 30,0 60,30 54,30 30,6 6,30" style="fill:#B8B1B1" />
       </svg>
     </div>
       <div class="edit-dropdown" ng-show="phoneEdit">
@@ -48,8 +57,11 @@
   <div ng-if="user.password" class="edit-box">
   <div class="user-settings-edit-container">
     Password: {{user.password}}
-    <svg class="edit-arrow" ng-click="passwordEdit = !passwordEdit" type="button" name="name" value=""height="30" width="60">
+    <svg class="edit-arrow" ng-click="passwordEdit = !passwordEdit" ng-hide="passwordEdit" type="button" name="name" value=""height="30" width="60">
       <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+    </svg>
+    <svg height="30" width="60" ng-click="passwordEdit = !passwordEdit" ng-show="passwordEdit">
+      <polyline points="0,30 30,0 60,30 54,30 30,6 6,30" style="fill:#B8B1B1" />
     </svg>
   </div>
     <div class="edit-dropdown" ng-show="passwordEdit">

@@ -16,10 +16,6 @@
 .img-size{
   max-width: 5vh;
 }
-.redAlert {
-  background-color: #ff5a5f;
-}
-
 .alerts-container {
   margin-top: 80px;
 }
@@ -90,12 +86,24 @@
   width: 100%;
   padding: 30px;
   background: rgba(255,255,255,1);
-    font-size: $fontSize3;
+  font-size: $fontSize3;
 }
 .done-checkbox{
   height: 60px;
   width: 60px;
 }
+.done-button {
+  padding: 10px;
+  font-size: $fontSize3;
+  color: white;
+  background-color: $redBackground;
+}
 .checkbox-wrap{
   padding-right: 60px;
+}
+.snooze{
+  margin-right: 60px;
+}
+.redAlert {
+  background-color: #ff5a5f;
 }

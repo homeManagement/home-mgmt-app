@@ -1,0 +1,120 @@
+div.task-container{
+  display: flex;
+  justify-content: flex-start;
+  font-size: $fontSize4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.select-text-banner{
+  font-size: $fontSize4;
+  font-style: italic;
+  margin: 42px;
+  padding-top: 20px;
+}
+
+.task-selection-container{
+  background-color: #fff;
+  margin-top: 10vh;
+  font-family: $body-font;
+}
+
+.task-selection-checkbox{
+  width: 60px;
+  height: 60px;
+}
+
+.custom-task-btn {
+  background: white;
+  font-size: 32px;
+  height: 50px;
+  font-size: 32px;
+  color: white;
+  background: #ef585d;
+  width: 28%;
+  height: 90px;
+  text-align: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+
+}
+
+.selectTaskInputs-submit input{
+  height: 70px;
+  width: 20%;
+  background: #2D8CFF;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  padding-top: 0px;
+}
+
+.selectTaskInputs-submit{
+  padding-top: 17px;
+}
+
+.task-btn-container{
+  padding: 60px;
+}
+
+.create-task-container {
+  width: 100%;
+}
+
+.create-task-container {
+  position: relative;
+  background: rgba(255,255,255,1);
+  font-size: $fontSize4;
+  padding: 30px;
+
+  textarea {
+    width: 98%;
+    font-size: $fontSize2;
+    border: 1px solid rgba(0,0,0,1);
+    overflow-y: auto;
+    height: $fontSize2*20;
+  }
+}
+
+.create-task-container input:focus {
+  outline-color: white;
+}
+.create-task-container textarea:focus {
+  outline-color: $redBackground;
+}
+
+.create-task-form-input {
+  height: $boxHeight2;
+  font-size: $fontSize3;
+  color: white;
+  background: $redBackground;
+  width: 95%;
+  margin:10px auto 10px auto;
+}
+
+.create-task-form-select-input {
+  height: $boxHeight2;
+  font-size: $fontSize3;
+  color: white;
+  background: $redBackground;
+  width: 25%;
+  margin:10px auto 10px auto;
+}
+
+.create-task-form-checkbox-input {
+  height: $boxHeight2;
+  width: 95%;
+  margin:10px auto 40px auto;
+}
+
+.create-task-form-add-button {
+  height: $boxHeight3;
+  width: 25%;
+  background: $redBackground;
+  color: white;
+  font-size: $fontSize3;
+  text-align: center;
+}

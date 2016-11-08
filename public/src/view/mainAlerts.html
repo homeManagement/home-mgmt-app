@@ -8,20 +8,20 @@
   <div class="alerts-container">
     <div ng-class="{'redAlert' : task.alertid }" class="alert-specific-task" ng-repeat="task in propertyTasks  | orderBy: ['nextdate', 'duedate']">
       <div class="alert-task">
-        <div class="alert-top">
+        <div class="alert-top" ng-class="{'redAlert' : task.alertid }">
           <div class="alerts-task-title">
-            <div ng-if="!task.alertid">
+            <div ng-if="!task.alertid" >
             {{task.nextdate |date: shortDate}}
             </div>
-            <div ng-if="task.alertid">
+            <div ng-if="task.alertid" >
             {{task.duedate |date: shortDate}}
             </div>
             </div>
             <div class="checkbox-wrap">
-              <input class="done-checkbox"type="checkbox" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
-            <div ng-if="task.alertid">
-              <input type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+              <input class="done-button" type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
             </div>
+            <div ng-if="task.alertid">
+              <input class="done-checkbox snooze" type="checkbox" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
             </div>
 
         </div>
@@ -32,8 +32,11 @@
             </div>
           </div>
           <div class="alert-right-arrow" ng-click="notesVisibility = !notesVisibility">
-            <svg height="30" width="60">
+            <svg height="30" width="60" ng-hide="notesVisibility">
               <polyline points="0,0 30,30 60,0 54,0 30,24 6,0" style="fill:#B8B1B1" />
+            </svg>
+            <svg height="30" width="60" ng-show="notesVisibility">
+              <polyline points="0,30 30,0 60,30 54,30 30,6 6,30" style="fill:#B8B1B1" />
             </svg>
           </div>
         </div>

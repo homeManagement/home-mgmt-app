@@ -4,7 +4,6 @@ var controller = function($scope, $auth, $window, $state){
   $scope.logout = function(){
     $auth.logout();
     $state.go('home');
-    
   }
 }
 
