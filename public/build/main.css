@@ -1069,11 +1069,6 @@ div.task-container {
 .img-size {
   max-width: 5vh; }
 
-
-.redAlert {
-  background-color: #ff5a5f; }
-
-
 .alerts-container {
   margin-top: 80px; }
 
@@ -1139,10 +1134,6 @@ div.task-container {
   background: white;
   font-size: 32px; }
 
-.done-checkbox {
-  height: 60px;
-  width: 60px; }
-
 .done-button {
   padding: 10px;
   font-size: 32px;
@@ -1150,10 +1141,17 @@ div.task-container {
   background-color: #ef585d; }
 
 .checkbox-wrap {
-  padding-right: 60px; }
+  padding-right: 30px; }
 
 .snooze {
-  margin-right: 60px; }
+  margin-right: 15px;
+  padding: 10px;
+  font-size: 32px;
+  color: white;
+  background-color: #b20000; }
 
 .redAlert {
   background-color: #ff5a5f; }
+
+.done-darkred {
+  background-color: #b20000; }
