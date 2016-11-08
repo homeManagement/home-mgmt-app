@@ -4,5 +4,5 @@ config.json
 home_mgmt_key
 home_mgmt_key.pub
 all.js
-all.map.js
+all.js.map
 main.css

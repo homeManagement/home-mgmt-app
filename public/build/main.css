@@ -1038,7 +1038,9 @@ div.task-container {
 
 .submit-button {
   display: inline-block;
-  font-size: 38px; }
+  font-size: 38px;
+  text-decoration: none;
+  background: white; }
 
 .edit-input {
   display: inline-block;
@@ -1066,6 +1068,11 @@ div.task-container {
 
 .img-size {
   max-width: 5vh; }
+
+
+.redAlert {
+  background-color: #ff5a5f; }
+
 
 .alerts-container {
   margin-top: 80px; }
