@@ -88,8 +88,6 @@ a {
   // align-items: center;
   padding-top: 167px;
   align-content: space-between;
-  // background-color: rgba(193,186,234,0.9);
-  // background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
   position: fixed;
   top: 10vh;
   font-family: $body-font;
@@ -97,6 +95,8 @@ a {
   width: 100%;
   font-size: 3.8rem;
   background-color: rgba(255,255,255,1);
+  // background-color: rgba(193,186,234,0.9);
+  // background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
   z-index: 138;
 }
 
