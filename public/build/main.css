@@ -1038,7 +1038,9 @@ div.task-container {
 
 .submit-button {
   display: inline-block;
-  font-size: 38px; }
+  font-size: 38px;
+  text-decoration: none;
+  background: white; }
 
 .edit-input {
   display: inline-block;
