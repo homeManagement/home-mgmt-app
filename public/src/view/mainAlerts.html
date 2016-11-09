@@ -18,10 +18,10 @@
             </div>
             </div>
             <div class="checkbox-wrap">
-              <input class="done-button" type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
+              <input class="done-button" ng-class="{'done-darkred' : task.alertid }"type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
             </div>
             <div ng-if="task.alertid">
-              <input class="done-checkbox snooze" type="checkbox" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+              <input class="snooze" type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
             </div>
 
         </div>
