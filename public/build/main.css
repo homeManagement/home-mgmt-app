@@ -321,7 +321,8 @@ a {
     font-size: 59px;
     display: flex;
     flex-direction: column;
-    justify-content: center; }
+    justify-content: center;
+    margin-right: 30px; }
     .header-container .logo-box .logo-img {
       max-width: 100%; }
 
@@ -915,6 +916,74 @@ div.task-container {
   color: white;
   font-size: 32px;
   text-align: center; }
+
+.about-app-container {
+  background-color: #fff;
+  height: 30vh; }
+
+.about-h2 {
+  font-size: 59px;
+  text-align: center;
+  padding-top: 30px; }
+
+.about-p {
+  font-size: 45px;
+  text-align: center;
+  padding-top: 30px; }
+
+.about-technology-container {
+  height: 30vh;
+  background-color: #fff; }
+
+.about-team-container {
+  height: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.about-team-container img {
+  border-radius: 50%;
+  width: 75%;
+  height: auto;
+  padding-top: 40px; }
+
+.view-name {
+  display: none; }
+
+.team-member-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.team-member-container h2 {
+  font-size: 45px;
+  text-align: center; }
+
+.team-member-container p {
+  font-size: 32px;
+  text-align: center; }
+
+.team-member-container svg {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 20px 20px 0 20px; }
+
+.svg-container {
+  display: flex; }
+
+.repo-link {
+  text-decoration: underline; }
+
+.backgroundImg {
+  background-position: center center;
+  background-image: url("../../../build/assets/grey_sky_house.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.marginBottom {
+  margin-bottom: 315px; }
 
 .content-properties {
   display: flex;
