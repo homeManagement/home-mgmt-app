@@ -18,12 +18,21 @@
             </div>
             </div>
             <div class="checkbox-wrap">
-              <input class="done-button" ng-class="{'done-darkred' : task.alertid }"type="button" ng-click="done(task.propertymaintenanceid, task.alertid)" name="name" value="DONE">
+              <input class="done-button" ng-class="{'done-darkred' : task.alertid }"type="button" ng-click="propDeleteConfirmVisiblity = !propDeleteConfirmVisiblity"; name="name" value="DONE">
             </div>
             <div ng-if="task.alertid">
-              <input class="snooze" type="button" ng-click="snooze(task.alertid)" name="name" value="SNOOZE">
+              <input class="snooze" type="button" ng-click="propSnoozeConfirmVisiblity = !propSnoozeConfirmVisiblity"; name="name" value="SNOOZE">
             </div>
 
+        </div>
+
+        <div class="prop-delete-confirm-container" ng-show="propDeleteConfirmVisiblity">
+          <input type="button" name="DELETE" value="DONE" class="delete-confirm prop-delete-confirm-button"  ng-click="done(task.propertymaintenanceid, task.alertid)">
+          <input type="button" name="CANCEL" value="CANCEL" class="delete-cancel prop-delete-confirm-button" ng-click="propDeleteConfirmVisiblity = !propDeleteConfirmVisiblity">
+        </div>
+        <div class="prop-delete-confirm-container" ng-show="propSnoozeConfirmVisiblity">
+          <input type="button" name="SNOOZE" value="DONE" class="delete-confirm prop-delete-confirm-button"  ng-click="snooze(task.alertid)">
+          <input type="button" name="CANCEL" value="CANCEL" class="delete-cancel prop-delete-confirm-button" ng-click="propDeleteConfirmVisiblity = !propDeleteConfirmVisiblity">
         </div>
         <div class="alert-bottom">
           <div class="alert-left-name">

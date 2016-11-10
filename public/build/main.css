@@ -321,7 +321,8 @@ a {
     font-size: 59px;
     display: flex;
     flex-direction: column;
-    justify-content: center; }
+    justify-content: center;
+    margin-right: 30px; }
     .header-container .logo-box .logo-img {
       max-width: 100%; }
 
@@ -974,6 +975,15 @@ div.task-container {
 
 .repo-link {
   text-decoration: underline; }
+
+.backgroundImg {
+  background-position: center center;
+  background-image: url("../../../build/assets/grey_sky_house.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.marginBottom {
+  margin-bottom: 315px; }
 
 .content-properties {
   display: flex;
