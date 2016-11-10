@@ -34,9 +34,9 @@ angular.module('mgmtApp', ['ui.router', 'satellizer', 'ngAnimate', 'ngTouch']).c
     restricted: true,
     params: { propertyId: null }
   }).state('contact', {
-    url: "/contact",
+    url: "/about",
     controller: 'contactCtrl',
-    templateUrl: '../src/view/contact.html',
+    templateUrl: '../src/view/about.html',
     restricted: false
   }).state('login', {
     url: "/login",
