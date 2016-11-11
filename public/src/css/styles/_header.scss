@@ -99,9 +99,9 @@ a {
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
-  background-color: rgba(255,255,255,1);
-  // background-color: rgba(193,186,234,0.9);
-  // background: linear-gradient(rgba(193, 186, 234, .97), rgba(197, 56, 59, .97) );
+  background-image: url("../../../build/assets/tamil_temp.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   z-index: 138;
 }
 
@@ -216,7 +216,7 @@ a {
 
 .logout-btn {
   font-family: $body-font;
-  background: white;
+  background: none;
   font-size: 3.8rem;
   padding-top: 55px;
 }
