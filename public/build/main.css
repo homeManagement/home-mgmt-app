@@ -337,7 +337,9 @@ a {
   height: 90vh;
   width: 100%;
   font-size: 3.8rem;
-  background-color: white;
+  background-image: url("../../../build/assets/tamil_temp.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   z-index: 138; }
 
 .fade.ng-enter {
@@ -426,7 +428,7 @@ a {
 
 .logout-btn {
   font-family: "Raleway", sans-serif;
-  background: white;
+  background: none;
   font-size: 3.8rem;
   padding-top: 55px; }
 
