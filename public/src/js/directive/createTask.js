@@ -32,7 +32,8 @@ var controller = function(scope, element){
 
     mainService.createCustomTask(task).then(function(res){
 
-      element.after('<div class="custom-task"><span>'+scope.task.name+'</span><span>'+scope.task.lastDate+'</span><span>'+scope.task.season+'</span><span>'+scope.task.dayInterval+'</span><span>'+scope.task.outdoor+'</span><span>'+scope.task.notes+'</span></div>')
+      element.after('<div class="custom-task"><div class="custom-task-title">'+scope.task.name+'</div>')
+      //+'</div><span>'+scope.task.lastDate+'</span><span>'+scope.task.season+'</span><span>'+scope.task.dayInterval+'</span><span>'+scope.task.outdoor+'</span><span>'+scope.task.notes+'</span>
 
       scope.task = {
         name: null,
