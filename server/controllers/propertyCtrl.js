@@ -53,7 +53,6 @@ module.exports = {
   },
 
   updatePropertySettings: function(req, res){
-    console.log(req.params);
     db.updatePropertySettings([req.body.text, req.body.email, req.body.weather, req.params.propertyId], function(){
       res.status(200).json('success');
     })
@@ -81,7 +80,6 @@ module.exports = {
   },
 
   snooze: function(req, res) {
-    console.log(req.params.alertid);
     db.snoozeAlert([req.params.alertid], function(err, success) {
       res.status(200).json(success);
     })
