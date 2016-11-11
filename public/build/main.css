@@ -919,6 +919,11 @@ div.task-container {
   font-size: 32px;
   text-align: center; }
 
+.custom-task {
+  width: 100%;
+  border-bottom: 1px solid #d3d2d3;
+  font-size: 45px; }
+
 .about-app-container {
   background-color: #fff;
   height: 30vh; }

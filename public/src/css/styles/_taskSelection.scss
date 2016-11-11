@@ -118,3 +118,9 @@ div.task-container{
   font-size: $fontSize3;
   text-align: center;
 }
+
+.custom-task {
+  width: 100%;
+  border-bottom: 1px solid $background;
+  font-size: $fontSize4;
+}
