@@ -26,9 +26,9 @@ $propBoxWidth: 100%;
 .prop-primary-box {
   width: 100%;
   height: $propBoxHeight;
-  position: absolute;
-  top: 0;
-  left: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,7 @@ $propBoxWidth: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: $propBoxHeight;
+  height: 100%;
   width: 100%;
   background-color: rgba(0,0,0,.8);
   display: flex;
@@ -84,7 +84,7 @@ $propBoxWidth: 100%;
   cursor: pointer;
   color: white;
   font-size: $fontSize3;
-  padding: 30px;
+  padding: 1rem;
 }
 
 .delete-confirm {
