@@ -305,7 +305,7 @@ a {
     height: 100%; }
     .header-container .view-name-box .view-name {
       position: relative;
-      font-size: 3.8rem;
+      font-size: 2rem;
       text-align: center;
       letter-spacing: 1.4px;
       font-family: "Raleway", sans-serif;
@@ -322,21 +322,24 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 30px; }
+    text-align: center; }
     .header-container .logo-box .logo-img {
       max-width: 100%; }
+
+.logo-box-text-holder {
+  font-size: 1.3rem; }
 
 .menu {
   display: flex;
   justify-content: center;
-  padding-top: 167px;
+  padding-top: 50px;
   align-content: space-between;
   position: fixed;
   top: 10vh;
   font-family: "Raleway", sans-serif;
   height: 90vh;
   width: 100%;
-  font-size: 3.8rem;
+  font-size: 2rem;
   background-image: url("../../../build/assets/tamil_temp.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -429,8 +432,8 @@ a {
 .logout-btn {
   font-family: "Raleway", sans-serif;
   background: none;
-  font-size: 3.8rem;
-  padding-top: 55px; }
+  font-size: 2rem;
+  padding-top: 30px; }
 
 .login-container-container {
   background-position: center center;
