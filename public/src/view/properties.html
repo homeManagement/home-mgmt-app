@@ -3,15 +3,17 @@
 
   <div class="prop" ng-repeat="prop in properties" ng-swipe-left="propDeleteButtonVisibility = true" ng-swipe-right="propDeleteButtonVisibility = false">
     <div class="prop-primary-box" ui-sref="mainAlerts({propertyId: prop.id})">
-      <span>{{prop.name}}</span>
-      <span class="left-bracket">
-        <svg width="30" height="60"  ng-hide="editFormVisibility">
-          <polyline points="30,0 0,30 30,60 30,54 6,30 30,6" style="fill:#B8B1B1" />
-        </svg>
-      </span>
+      <div class="prop-primary-box-centerer">
+        <div>{{prop.name}}</div>
+        <div class="left-bracket">
+          <svg width="30" height="60" ng-hide="editFormVisibility">
+            <polyline points="30,0 0,30 30,60 30,54 6,30 30,6" style="fill:#B8B1B1" />
+          </svg>
+        </div>
+      </div>
     </div>
     <div class="prop-delete-button" ng-show="propDeleteButtonVisibility" ng-click="propDeleteConfirmVisiblity = !propDeleteConfirmVisiblity; propDeleteButtonVisibility = !propDeleteButtonVisibility">
-      <svg width="60px" height="60px">
+      <svg width="100%" height="100%">
         <line x1="10" y1="10" x2="50" y2="50" stroke="white" stroke-width="10" />
         <line x1="10" y1="50" x2="50" y2="10" stroke="white" stroke-width="10" />
       </svg>

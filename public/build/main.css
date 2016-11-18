@@ -287,6 +287,8 @@ a {
     height: 100%;
     overflow: hidden; }
     .header-container .menu-btn-box .menu-btn {
+      width: 80%;
+      height: auto;
       position: relative;
       font-size: 2.7rem;
       text-align: center;
@@ -365,7 +367,7 @@ a {
 
 /* Icon 1 */
 #nav-icon3 {
-  width: 60px;
+  width: 100%;
   height: 45px;
   position: relative;
   margin: 50px auto;
@@ -637,20 +639,20 @@ input:checked + .slider:before {
 
 #textMessage {
   height: 60vh;
-  padding-top: 3rem;
-  padding-left: 6rem;
-  padding-right: 6rem;
-  padding-bottom: 3rem;
-  font-size: 6rem;
+  padding-top: 2rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  padding-bottom: 2rem;
+  font-size: 2rem;
   line-height: 110%; }
   #textMessage h4 {
-    font-size: 4rem;
+    font-size: 1.5rem;
     padding-top: 1rem;
     letter-spacing: 2px;
     line-height: 110%; }
   #textMessage h1 {
-    font-size: 8rem;
-    letter-spacing: 9px;
+    font-size: 2.5rem;
+    letter-spacing: 5px;
     line-height: 120%; }
 
 .home-banner-image {
@@ -1005,7 +1007,7 @@ div.task-container {
 
 .prop {
   position: relative;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-bottom: 40px;
   height: 10vh;
@@ -1017,18 +1019,29 @@ div.task-container {
   justify-content: center; }
 
 .prop-primary-box {
+  width: 100%;
+  height: 10vh;
   position: absolute;
   top: 0;
   left: 0;
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem 0 1rem; }
+
+.prop-primary-box-centerer {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 39px; }
+  align-items: center; }
+
+.left-bracket {
+  width: auto;
+  height: auto;
+  color: #d3d2d3; }
 
 .prop-delete-button {
   position: absolute;
@@ -1075,9 +1088,6 @@ div.task-container {
 
 .float-right {
   float: right; }
-
-.left-bracket {
-  color: #d3d2d3; }
 
 .user-settings-container {
   height: 100%; }
