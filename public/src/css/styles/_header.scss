@@ -13,10 +13,6 @@ a {
   border-bottom: 2px solid #dce0e0;
   background-color: white;
 
-
-
-
-
   .menu-btn-box {
     //position: absolute;
     display: flex;
@@ -30,6 +26,8 @@ a {
     // background-color: lightgrey;
 
       .menu-btn {
+        width: 80%;
+        height: auto;
         position: relative;
         font-size: 2.7rem;
         text-align: center;
@@ -56,7 +54,7 @@ a {
     // flex-grow: 3;
     .view-name {
       position: relative;
-      font-size: 3.8rem;
+      font-size: 2rem;
       text-align: center;
       letter-spacing: 1.4px;
       font-family: $body-font;
@@ -78,7 +76,7 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-right: 30px;
+    text-align: center;
     // background: $main;
     // flex-grow: 1
       .logo-img {
@@ -87,18 +85,21 @@ a {
       }
   }
 }
+.logo-box-text-holder {
+  font-size: 1.3rem;
+}
 .menu {
   display: flex;
   justify-content: center;
   // align-items: center;
-  padding-top: 167px;
+  padding-top: 50px;
   align-content: space-between;
   position: fixed;
   top: 10vh;
   font-family: $body-font;
   height: 90vh;
   width: 100%;
-  font-size: 3.8rem;
+  font-size: 2rem;
   background-image: url("../../../build/assets/tamil_temp.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -140,7 +141,7 @@ a {
 /* Icon 1 */
 
 #nav-icon3 {
-  width: 60px;
+  width: 100%;
   height: 45px;
   position: relative;
   margin: 50px auto;
@@ -217,6 +218,6 @@ a {
 .logout-btn {
   font-family: $body-font;
   background: none;
-  font-size: 3.8rem;
-  padding-top: 55px;
+  font-size: 2rem;
+  padding-top: 30px;
 }

@@ -8,12 +8,11 @@ $propBoxWidth: 100%;
   padding-top: 50px;
   background-size: cover;
   background-position: center center;
+}
 
-
-  }
 .prop {
   position: relative;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-bottom: 40px;
   height: $propBoxHeight;
@@ -25,18 +24,31 @@ $propBoxWidth: 100%;
   justify-content: center;
 }
 .prop-primary-box {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: $propBoxHeight;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: $propBoxHeight;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
   z-index: 1;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem 0 1rem;
+}
+
+.prop-primary-box-centerer {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 39px;
+  align-items: center;
+}
+
+.left-bracket {
+  width: auto;
+  height: auto;
+  color: $background;
 }
 
 .prop-delete-button {
@@ -58,7 +70,7 @@ $propBoxWidth: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  height: $propBoxHeight;
+  height: 100%;
   width: 100%;
   background-color: rgba(0,0,0,.8);
   display: flex;
@@ -72,7 +84,7 @@ $propBoxWidth: 100%;
   cursor: pointer;
   color: white;
   font-size: $fontSize3;
-  padding: 30px;
+  padding: 1rem;
 }
 
 .delete-confirm {
@@ -89,8 +101,4 @@ $propBoxWidth: 100%;
 
 .float-right {
   float: right;
-}
-
-.left-bracket {
-  color: $background;
 }
