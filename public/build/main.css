@@ -848,40 +848,42 @@ div.task-container {
 
 .task-selection-container {
   background-color: #fff;
-  margin-top: 10vh;
   font-family: "Raleway", sans-serif; }
 
+.task-selection-checkbox-container {
+  width: 10%; }
+
 .task-selection-checkbox {
-  width: 1rem;
-  height: 1rem; }
+  height: 1.5rem;
+  width: 1.5rem; }
+
+.task-name {
+  width: 90%;
+  font-size: 1rem; }
 
 .custom-task-btn {
   background: white;
-  font-size: 32px;
-  height: 50px;
-  font-size: 32px;
+  font-size: 1.5rem;
   color: white;
   background: #ef585d;
-  width: 28%;
-  height: 90px;
   text-align: center;
   padding-bottom: 15px;
-  padding-top: 15px; }
+  padding-top: 15px;
+  width: 80%;
+  margin: auto; }
 
 .selectTaskInputs-submit input {
-  height: 70px;
-  width: 20%;
   background: #2D8CFF;
   color: white;
-  font-size: 32px;
+  font-size: 1.5rem;
   text-align: center;
-  padding-top: 0px; }
+  padding-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+  margin: auto; }
 
 .selectTaskInputs-submit {
   padding-top: 17px; }
-
-.task-btn-container {
-  padding: 60px; }
 
 .create-task-container {
   width: 100%; }
@@ -1113,10 +1115,9 @@ div.task-container {
   justify-content: space-between;
   background-color: #fff;
   border: 2px solid #dce0e0;
-  margin-top: 15px;
-  padding: 30px;
-  font-size: 59px;
-  height: 9vh; }
+  margin-top: 2rem;
+  font-size: 2rem;
+  padding: .5rem; }
 
 .edit-arrow {
   display: flex;
@@ -1125,26 +1126,33 @@ div.task-container {
   font-size: 38px; }
 
 .edit-dropdown {
-  display: block;
+  display: flex;
   background-color: #fff;
   border: 2px solid #dce0e0;
-  font-size: 38px;
-  height: 9vh; }
+  font-size: 1.5rem;
+  flex-direction: row;
+  justify-content: space-between; }
 
 .submit-button {
+  height: 3rem;
   display: inline-block;
-  font-size: 38px;
+  font-size: 1rem;
   text-decoration: none;
-  background: white; }
+  background: #2D8CFF;
+  color: white;
+  padding: .5rem; }
 
 .edit-input {
   display: inline-block;
-  width: 80%;
-  font-size: 59px;
-  height: 98%; }
+  font-size: 1.5rem;
+  width: 70%; }
 
 .edit-box {
   margin-bottom: 80px; }
+
+.edit-arrow {
+  width: 1.5rem;
+  height: 1.5rem; }
 
 .extra-margin {
   margin-top: 12vh; }

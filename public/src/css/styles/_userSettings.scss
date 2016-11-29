@@ -19,39 +19,48 @@
   justify-content: space-between;
   background-color: #fff;
   border: 2px solid #dce0e0;
-  margin-top: 15px;
-  padding: 30px;
-  font-size: 59px;
-  height: 9vh;
+  margin-top: 2rem;
+  font-size: $fontSize5;
+  padding: .5rem;
 }
+
 .edit-arrow {
   display: flex;
   align-self: center;
   text-decoration: none;
   font-size: 38px;
 }
+
 .edit-dropdown {
-  display: block;
+  display: flex;
   background-color: #fff;
   border: 2px solid #dce0e0;
-  font-size: 38px;
-  height: 9vh;
+  font-size: $fontSize4;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
-}
 .submit-button {
-display: inline-block;
-font-size: 38px;
-text-decoration: none;
-background: white;
-// background: #2D8CFF ;
-//  color: white;
+  height: $boxHeight3;
+  display: inline-block;
+  font-size: $fontSize3;
+  text-decoration: none;
+  background: #2D8CFF ;
+  color: white;
+  padding: .5rem;
 }
+
 .edit-input {
   display: inline-block;
-  width: 80%;
-  font-size: 59px;
-  height:98%;
+  font-size: $fontSize4;
+  width: 70%;
 }
+
 .edit-box {
   margin-bottom: 80px;
+}
+
+.edit-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
 }
