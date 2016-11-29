@@ -1,5 +1,5 @@
 .edit-tasks-container {
-  margin-top: 80px;
+  margin-top: 2rem;
 }
 .specific-task {
   width: 100%;
@@ -15,7 +15,7 @@
 
 .task-top-info {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   margin-bottom: 5px;
   background: rgba(255,255,255,1);
 }
@@ -27,7 +27,7 @@
 
 .task-bottom-info {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: rgba(255,255,255,1);
   display: flex;
   flex-direction: row;
@@ -47,22 +47,20 @@
   flex-direction: column;
   justify-content:flex-start;
   text-align: left;
-  margin-right: 90px;
+  margin-right: 1rem;
 }
 
 .task-date-title {
   font-size: $fontSize3;
 }
 .task-date-info {
-  font-size: $fontSize4;
+  font-size: $fontSize3;
 }
 
 .task-right-info {
-  width: 20%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  width: 10%;
+  height: 100%;
+  margin-left: 1rem;
 }
 
 
@@ -71,14 +69,14 @@
   position: relative;
   background: rgba(255,255,255,1);
   font-size: $fontSize4;
-  padding: 30px;
+  padding: 1rem;
 
   textarea {
     width: 98%;
-    font-size: $fontSize2;
+    font-size: $fontSize3;
     border: 1px solid rgba(0,0,0,1);
     overflow-y: auto;
-    height: $fontSize2*20;
+    height: $fontSize3*20;
   }
 }
 .task-update-form input:focus {
@@ -120,13 +118,13 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 1rem;
 }
 
 .edit-task-form-checkbox-input {
-  height: $boxHeight2;
+  height: $boxHeight1;
   width: 95%;
-  margin:10px auto 40px auto;
+  margin:.25rem auto .5rem auto;
 }
 
 .edit-task-form-delete-button {
@@ -137,8 +135,8 @@
   font-size: $fontSize3;
   text-align: center;
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .edit-task-form-submit-button {

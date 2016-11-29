@@ -320,7 +320,7 @@ a {
     height: 100%;
     overflow: hidden;
     color: #ef585d;
-    font-size: 59px;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -367,7 +367,7 @@ a {
 
 /* Icon 1 */
 #nav-icon3 {
-  width: 100%;
+  width: 3rem;
   height: 45px;
   position: relative;
   margin: 50px auto;
@@ -447,30 +447,31 @@ a {
   text-align: center;
   height: 90vh;
   display: flex;
-  justify-content: center;
-  align-items: center; }
+  justify-content: flex-start;
+  padding-top: 1.5rem; }
 
 .panel-body {
   display: flex;
-  justify-content: center;
-  padding-bottom: 386px; }
+  justify-content: center; }
 
 .credential {
-  border: 1px solid grey;
-  font-size: 16px;
+  width: 80%;
+  min-height: 3rem;
+  margin: 0 auto 1rem auto;
   display: flex; }
 
 .input-lg {
-  font-family: "Raleway", sans-serif;
+  width: 100%;
   font-size: 1.7rem;
-  text-align: center;
-  width: 613px; }
+  border: 1px solid grey;
+  font-family: "Raleway", sans-serif;
+  text-align: center; }
 
 .submit-btn {
-  width: 613px;
-  height: 121px;
-  margin: 31px;
-  border: 1px solid grey;
+  width: 80%;
+  min-height: 3rem;
+  margin: auto;
+  font-family: "Raleway", sans-serif;
   font-size: 1.7rem;
   color: white; }
 
@@ -479,15 +480,12 @@ a {
   border: 1px solid #DA4146; }
 
 .fb-signin {
-  text-align: center;
-  padding: 42px;
   border-color: #3B5998;
-  background-color: #3B5998;
-  color: #fff; }
+  background-color: #3B5998; }
 
 .signup-or-separator {
   height: 29px;
-  margin: 5px 0;
+  margin: 1rem 0;
   text-align: center;
   background: none; }
 
@@ -522,6 +520,12 @@ a {
 h6.text {
   font-size: 21px; }
 
+.signup-form-container {
+  width: 100%; }
+
+.property-settings-container {
+  margin-bottom: 2rem; }
+
 .setting-description {
   display: flex;
   flex-direction: column;
@@ -530,17 +534,20 @@ h6.text {
 .propertyToggles {
   display: block;
   text-align: center;
-  margin-top: 53px;
+  margin-top: 1rem;
   font-family: "Raleway", sans-serif;
   width: 100%;
-  font-size: 59px;
-  padding-top: 28px; }
+  font-size: 2rem;
+  padding-top: 1rem; }
+
+.deprication-note {
+  font-size: 1rem; }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 164px;
-  height: 96px; }
+  width: 5rem;
+  height: 3rem; }
 
 .switch input {
   display: none; }
@@ -559,11 +566,10 @@ h6.text {
 .slider:before {
   position: absolute;
   content: "";
-  height: 84px;
-  width: 84px;
-  left: 6px;
-  right: 2px;
-  bottom: 6px;
+  height: 2.75rem;
+  width: 2.75rem;
+  left: .1rem;
+  bottom: .1rem;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s; }
@@ -575,9 +581,9 @@ input:focus + .slider {
   box-shadow: 0 0 1px #ef585d; }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(68px);
-  -ms-transform: translateX(68px);
-  transform: translateX(68px); }
+  -webkit-transform: translateX(2rem);
+  -ms-transform: translateX(2rem);
+  transform: translateX(2rem); }
 
 /* Rounded sliders */
 .slider.round {
@@ -603,7 +609,7 @@ input:checked + .slider:before {
 
 .createPropertyInputs-title {
   font-family: "Raleway", sans-serif;
-  font-size: 59px;
+  font-size: 2rem;
   padding: 30px;
   background: white;
   margin-bottom: 5px; }
@@ -666,7 +672,7 @@ div.textContent {
   display: none; }
 
 .edit-tasks-container {
-  margin-top: 80px; }
+  margin-top: 2rem; }
 
 .specific-task {
   width: 100%;
@@ -680,16 +686,16 @@ div.textContent {
 
 .task-top-info {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   margin-bottom: 5px;
   background: white; }
 
 .task-title {
-  font-size: 59px; }
+  font-size: 2rem; }
 
 .task-bottom-info {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   display: flex;
   flex-direction: row;
@@ -707,32 +713,30 @@ div.textContent {
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
-  margin-right: 90px; }
+  margin-right: 1rem; }
 
 .task-date-title {
   font-size: 1rem; }
 
 .task-date-info {
-  font-size: 45px; }
+  font-size: 1rem; }
 
 .task-right-info {
-  width: 20%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center; }
+  width: 10%;
+  height: 100%;
+  margin-left: 1rem; }
 
 .task-update-form {
   position: relative;
   background: white;
-  font-size: 45px;
-  padding: 30px; }
+  font-size: 1.5rem;
+  padding: 1rem; }
   .task-update-form textarea {
     width: 98%;
-    font-size: 20px;
+    font-size: 1rem;
     border: 1px solid black;
     overflow-y: auto;
-    height: 400px; }
+    height: 20rem; }
 
 .task-update-form input:focus {
   outline-color: white; }
@@ -768,12 +772,12 @@ div.textContent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 30px; }
+  margin-bottom: 1rem; }
 
 .edit-task-form-checkbox-input {
-  height: 50px;
+  height: 30px;
   width: 95%;
-  margin: 10px auto 40px auto; }
+  margin: .25rem auto .5rem auto; }
 
 .edit-task-form-delete-button {
   height: 70px;
@@ -783,8 +787,8 @@ div.textContent {
   font-size: 1rem;
   text-align: center;
   position: absolute;
-  bottom: 30px;
-  right: 30px; }
+  bottom: 1rem;
+  right: 1rem; }
 
 .edit-task-form-submit-button {
   height: 70px;
@@ -814,7 +818,7 @@ div.textContent {
 .add-new-task-toggler {
   width: 100%;
   background: white;
-  font-size: 59px;
+  font-size: 2rem;
   text-align: center;
   padding: 30px;
   margin-bottom: 5px; }
@@ -825,14 +829,14 @@ div.textContent {
 div.task-container {
   display: flex;
   justify-content: flex-start;
-  font-size: 45px;
+  font-size: 1.5rem;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
   padding-right: 10px; }
 
 .select-text-banner {
-  font-size: 45px;
+  font-size: 1.5rem;
   font-style: italic;
   margin: 42px;
   padding-top: 20px; }
@@ -880,14 +884,14 @@ div.task-container {
 .create-task-container {
   position: relative;
   background: white;
-  font-size: 45px;
+  font-size: 1.5rem;
   padding: 30px; }
   .create-task-container textarea {
     width: 98%;
-    font-size: 20px;
+    font-size: 0.5rem;
     border: 1px solid black;
     overflow-y: auto;
-    height: 400px; }
+    height: 10rem; }
 
 .create-task-container input:focus {
   outline-color: white; }
@@ -927,19 +931,19 @@ div.task-container {
 .custom-task {
   width: 100%;
   border-bottom: 1px solid #d3d2d3;
-  font-size: 45px; }
+  font-size: 1.5rem; }
 
 .about-app-container {
   background-color: #fff;
   height: 30vh; }
 
 .about-h2 {
-  font-size: 59px;
+  font-size: 2rem;
   text-align: center;
   padding-top: 30px; }
 
 .about-p {
-  font-size: 45px;
+  font-size: 1.5rem;
   text-align: center;
   padding-top: 30px; }
 
@@ -969,7 +973,7 @@ div.task-container {
   align-items: center; }
 
 .team-member-container h2 {
-  font-size: 45px;
+  font-size: 1.5rem;
   text-align: center; }
 
 .team-member-container p {
@@ -1036,7 +1040,7 @@ div.task-container {
   align-items: center; }
 
 .left-bracket {
-  width: auto;
+  width: 1rem;
   height: auto;
   color: #d3d2d3; }
 
@@ -1143,20 +1147,18 @@ div.task-container {
 .property-linkbox {
   width: 100%;
   background-color: white;
-  margin-bottom: 2vh;
-  font-size: 59px;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
-  padding-right: 75px;
-  padding: 30px 75px 30px 30px; }
+  padding: .5rem 0 .5rem .5rem; }
 
 .img-size {
   max-width: 5vh; }
 
 .alerts-container {
-  margin-top: 80px; }
+  margin-top: 3rem; }
 
 .alert-specific-task {
   width: 100%;
@@ -1170,7 +1172,7 @@ div.task-container {
 
 .alert-top {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   display: flex;
   flex-direction: row;
@@ -1178,13 +1180,13 @@ div.task-container {
   margin-bottom: 5px; }
 
 .alerts-task-title {
-  font-size: 59px;
+  font-size: 2rem;
   display: flex;
   justify-content: space-between; }
 
 .alert-bottom {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   display: flex;
   flex-direction: row;
@@ -1196,18 +1198,19 @@ div.task-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  font-size: 45px; }
+  font-size: 1.5rem; }
 
 .alert-right-arrow {
-  width: 20%;
-  display: flex;
+  width: 10%;
+  height: 100%;
   flex-direction: row;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  margin-left: 1rem; }
 
 .notes-popUp {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   display: flex;
   flex-direction: row;
@@ -1216,7 +1219,7 @@ div.task-container {
 
 .alert-notes {
   width: 100%;
-  padding: 30px;
+  padding: 0 1rem 1rem 1rem;
   background: white;
   font-size: 1rem; }
 
@@ -1225,9 +1228,6 @@ div.task-container {
   font-size: 1rem;
   color: white;
   background-color: #ef585d; }
-
-.checkbox-wrap {
-  padding-right: 30px; }
 
 .snooze {
   margin-right: 15px;

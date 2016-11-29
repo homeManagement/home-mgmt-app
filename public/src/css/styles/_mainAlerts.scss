@@ -4,20 +4,18 @@
 .property-linkbox {
   width: 100%;
   background-color: white;
-  margin-bottom: 2vh;
+  margin-bottom: 1.5rem;
   font-size: $fontSize5;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 30px;
-  padding-right: 75px;
-  padding: 30px 75px 30px 30px;
+  padding: .5rem 0 .5rem .5rem;
 }
 .img-size{
   max-width: 5vh;
 }
 .alerts-container {
-  margin-top: 80px;
+  margin-top: 3rem;
 }
 .alert-specific-task {
   width: 100%;
@@ -33,7 +31,7 @@
 
 .alert-top {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: rgba(255,255,255,1);
   display: flex;
   flex-direction: row;
@@ -50,7 +48,7 @@
 
 .alert-bottom {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: rgba(255,255,255,1);
   display: flex;
   flex-direction: row;
@@ -66,15 +64,16 @@
   font-size: $fontSize4;
 }
 .alert-right-arrow {
-  width: 20%;
-  display: flex;
+  width: 10%;
+  height: 100%;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-left: 1rem;
 }
 .notes-popUp{
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: rgba(255,255,255,1);
   display: flex;
   flex-direction: row;
@@ -84,7 +83,7 @@
 }
 .alert-notes{
   width: 100%;
-  padding: 30px;
+  padding: 0 1rem 1rem 1rem;
   background: rgba(255,255,255,1);
   font-size: $fontSize3;
 }
@@ -94,9 +93,9 @@
   color: white;
   background-color: $redBackground;
 }
-.checkbox-wrap{
-  padding-right: 30px;
-}
+// .checkbox-wrap{
+//   padding-right: 30px;
+// }
 .snooze{
   margin-right: 15px;
   padding: 10px;
