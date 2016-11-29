@@ -1,4 +1,4 @@
-div.task-container{
+div.task-container {
   display: flex;
   justify-content: flex-start;
   font-size: $fontSize4;
@@ -9,47 +9,53 @@ div.task-container{
 
 }
 
-.select-text-banner{
+.select-text-banner {
   font-size: $fontSize4;
   font-style: italic;
   margin: 42px;
   padding-top: 20px;
 }
 
-.task-selection-container{
+.task-selection-container {
   background-color: #fff;
-  margin-top: 10vh;
   font-family: $body-font;
 }
 
-.task-selection-checkbox{
-  width: 1rem;
-  height: 1rem;
+.task-selection-checkbox-container{
+  width: 10%;
+}
+
+.task-selection-checkbox {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.task-name {
+  width: 90%;
+  font-size: $fontSize3;
 }
 
 .custom-task-btn {
   background: white;
-  font-size: 32px;
-  height: 50px;
-  font-size: 32px;
+  font-size: $fontSize4;
   color: white;
   background: #ef585d;
-  width: 28%;
-  height: 90px;
   text-align: center;
   padding-bottom: 15px;
   padding-top: 15px;
-
+  width: 80%;
+  margin: auto;
 }
 
 .selectTaskInputs-submit input{
-  height: 70px;
-  width: 20%;
   background: #2D8CFF;
   color: white;
-  font-size: 32px;
+  font-size: $fontSize4;
   text-align: center;
-  padding-top: 0px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  width: 100%;
+  margin: auto;
 }
 
 .selectTaskInputs-submit{
@@ -57,7 +63,7 @@ div.task-container{
 }
 
 .task-btn-container{
-  padding: 60px;
+
 }
 
 .create-task-container {

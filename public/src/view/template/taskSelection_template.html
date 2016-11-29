@@ -6,12 +6,13 @@
     <div class="" ng-repeat="task in tasks">
       <!-- {"id":1,"name":"Gease door and windows hinges.","type_id":1,"day_interval":365,"last_date":null,"season":"Spring","outdoor":false} -->
       <div class="task-container">
-        <input type="checkbox"
-               name="name"
-               value={{task.id}}
-               ng-model="task.selected"
-               class="task-selection-checkbox"
-               style="width: 60px; height:60px;">
+        <div class="task-selection-checkbox-container">
+          <input type="checkbox"
+                 name="name"
+                 value={{task.id}}
+                 ng-model="task.selected"
+                 class="task-selection-checkbox">
+        </div>
         <div class="task-name">
           {{task.name}}
         </div>
