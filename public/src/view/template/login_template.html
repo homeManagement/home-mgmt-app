@@ -23,18 +23,18 @@
                        <div ng-message="server">{{errorMessage.password}}</div>
                      </div>
                    </div>
-                   <button type="submit" class="submit-btn login-btn" ng-disabled="loginForm.$invalid">Log in</button>
+                   <button type="submit" class="submit-btn login-btn pointer-hand" ng-disabled="loginForm.$invalid">Log in</button>
                    <br/>
                    <p class="text-center text-muted">
                      <div class="signup-or-separator">
-                       <h6 class="text">or</h6>
+                       <h6 class="text pointer-default">or</h6>
                        <!-- <hr> -->
                      </div>
-                     <button class="fb-signin submit-btn" ng-click="authenticate('facebook')">
+                     <button class="fb-signin submit-btn pointer-hand" ng-click="authenticate('facebook')">
                         Log in with Facebook
                      </button>
                      <div class="show-signup">
-                       <div class="pull-left">Don't have an account yet?</div> <div class="pull-right" ui-sref="signup">Sign up</div>
+                       <div class="pull-left">Don't have an account yet?</div> <div class="pull-right pointer-hand" ui-sref="signup">Sign up</div>
                      </div>
                    </p>
                  </form>
