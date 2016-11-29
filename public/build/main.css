@@ -374,9 +374,8 @@ a {
 /* Icon 1 */
 #nav-icon3 {
   width: 3rem;
-  height: 45px;
+  height: 3rem;
   position: relative;
-  margin: 50px auto;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -390,10 +389,10 @@ a {
 #nav-icon3 span {
   display: block;
   position: absolute;
-  height: 9px;
+  height: .3rem;
   width: 100%;
   background: #ef585d;
-  border-radius: 9px;
+  border-radius: .4rem;
   opacity: 1;
   left: 0;
   -webkit-transform: rotate(0deg);
@@ -407,16 +406,16 @@ a {
 
 /* Icon 3 */
 #nav-icon3 span:nth-child(1) {
-  top: 0px; }
+  top: .5rem; }
 
 #nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
-  top: 18px; }
+  top: 1.25rem; }
 
 #nav-icon3 span:nth-child(4) {
-  top: 36px; }
+  top: 2rem; }
 
 #nav-icon3.open span:nth-child(1) {
-  top: 18px;
+  top: 1rem;
   width: 0%;
   left: 50%; }
 
@@ -433,7 +432,7 @@ a {
   transform: rotate(-45deg); }
 
 #nav-icon3.open span:nth-child(4) {
-  top: 18px;
+  top: 1rem;
   width: 0%;
   left: 50%; }
 
@@ -616,17 +615,17 @@ input:checked + .slider:before {
 .createPropertyInputs-title {
   font-family: "Raleway", sans-serif;
   font-size: 2rem;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   margin-bottom: 5px; }
 
 .createPropertyInputs-input {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   font-size: 1rem; }
   .createPropertyInputs-input input {
-    height: 50px;
+    height: 2rem;
     font-size: 1rem;
     color: white;
     background: #ef585d;
@@ -634,12 +633,12 @@ input:checked + .slider:before {
 
 .createPropertyInputs-submit {
   width: 100%;
-  padding: 30px;
+  padding: 1rem;
   background: white;
   text-align: right; }
 
 .createPropertyInputs-submit input {
-  height: 70px;
+  height: 3rem;
   width: 25%;
   background: #2D8CFF;
   color: white;
@@ -751,7 +750,7 @@ div.textContent {
   outline-color: #ef585d; }
 
 .edit-task-form-input {
-  height: 50px;
+  height: 2rem;
   font-size: 1rem;
   color: white;
   background: #ef585d;
@@ -759,7 +758,7 @@ div.textContent {
   margin: 10px auto 10px auto; }
 
 .edit-task-form-select-input {
-  height: 50px;
+  height: 2rem;
   font-size: 1rem;
   color: white;
   background: #ef585d;
@@ -767,7 +766,7 @@ div.textContent {
   margin: 10px auto 10px auto; }
 
 .edit-task-form-number-input {
-  height: 50px;
+  height: 2rem;
   font-size: 1rem;
   color: white;
   background: #ef585d;
@@ -781,12 +780,12 @@ div.textContent {
   margin-bottom: 1rem; }
 
 .edit-task-form-checkbox-input {
-  height: 30px;
+  height: 1rem;
   width: 95%;
   margin: .25rem auto .5rem auto; }
 
 .edit-task-form-delete-button {
-  height: 70px;
+  height: 3rem;
   width: 25%;
   background: red;
   color: white;
@@ -797,7 +796,7 @@ div.textContent {
   right: 1rem; }
 
 .edit-task-form-submit-button {
-  height: 70px;
+  height: 3rem;
   width: 25%;
   background: #2D8CFF;
   color: white;
@@ -836,10 +835,10 @@ div.task-container {
   display: flex;
   justify-content: flex-start;
   font-size: 1.5rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px; }
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+  padding-left: .3rem;
+  padding-right: .3rem; }
 
 .select-text-banner {
   font-size: 1.5rem;
@@ -853,8 +852,8 @@ div.task-container {
   font-family: "Raleway", sans-serif; }
 
 .task-selection-checkbox {
-  width: 60px;
-  height: 60px; }
+  width: 1rem;
+  height: 1rem; }
 
 .custom-task-btn {
   background: white;
@@ -906,7 +905,7 @@ div.task-container {
   outline-color: #ef585d; }
 
 .create-task-form-input {
-  height: 50px;
+  height: 2rem;
   font-size: 1rem;
   color: white;
   background: #ef585d;
@@ -914,7 +913,7 @@ div.task-container {
   margin: 10px auto 10px auto; }
 
 .create-task-form-select-input {
-  height: 50px;
+  height: 2rem;
   font-size: 1rem;
   color: white;
   background: #ef585d;
@@ -922,12 +921,12 @@ div.task-container {
   margin: 10px auto 10px auto; }
 
 .create-task-form-checkbox-input {
-  height: 50px;
+  height: 2rem;
   width: 95%;
   margin: 10px auto 40px auto; }
 
 .create-task-form-add-button {
-  height: 70px;
+  height: 3rem;
   width: 25%;
   background: #ef585d;
   color: white;
