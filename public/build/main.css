@@ -215,6 +215,12 @@ button, input[type="button"], input[type="submit"] {
 body {
   background-color: #d3d2d3; }
 
+.pointer-hand {
+  cursor: pointer; }
+
+.pointer-default {
+  cursor: default; }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -447,7 +453,7 @@ a {
   text-align: center;
   height: 90vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   padding-top: 1.5rem; }
 
 .panel-body {
