@@ -1,3 +1,7 @@
+.property-settings-container {
+  margin-bottom: 2rem;
+}
+
 .setting-description {
   display: flex;
   flex-direction: column;
@@ -7,18 +11,22 @@
 .propertyToggles {
   display: block;
   text-align: center;
-  margin-top: 53px;
+  margin-top: 1rem;
   font-family: $body-font;
   width: 100%;
   font-size: $fontSize5;
-  padding-top: 28px;
+  padding-top: 1rem;
+}
+
+.deprication-note {
+  font-size: $fontSize3;
 }
 
 .switch {
   position: relative;
   display: inline-block;
-  width: 164px;
-  height: 96px;
+  width: 5rem;
+  height: 3rem;
 }
 
 .switch input {display:none;}
@@ -38,11 +46,10 @@
 .slider:before {
   position: absolute;
   content: "";
-  height: 84px;
-  width: 84px;
-  left: 6px;
-  right: 2px;
-  bottom: 6px;
+  height: 2.75rem;
+  width: 2.75rem;
+  left: .1rem;
+  bottom: .1rem;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -57,9 +64,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(68px);
-  -ms-transform: translateX(68px);
-  transform: translateX(68px);
+  -webkit-transform: translateX(2rem);
+  -ms-transform: translateX(2rem);
+  transform: translateX(2rem);
 }
 
 /* Rounded sliders */

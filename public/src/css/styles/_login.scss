@@ -9,35 +9,36 @@
   text-align: center;
   height: 90vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-
+  justify-content: flex-start;
+  padding-top: 1.5rem;
 }
 
 .panel-body{
   display: flex;
   justify-content: center;
-  padding-bottom: 386px;
+  // padding-bottom: 386px;
 }
 
 .credential {
-  border: 1px solid grey;
-  font-size: 16px;
+  width: 80%;
+  min-height: 3rem;
+  margin: 0 auto 1rem auto;
   display: flex;
 }
 
 .input-lg {
-  font-family: $body-font;
+  width: 100%;
   font-size: 1.7rem;
+  border: 1px solid grey;
+  font-family: $body-font;
   text-align: center;
-  width: 613px;
 }
 
 .submit-btn{
-  width: 613px;
-  height: 121px;
-  margin: 31px;
-  border: 1px solid grey;
+  width: 80%;
+  min-height: 3rem;
+  margin: auto;
+  font-family: $body-font;
   font-size: 1.7rem;
   color: white;
 }
@@ -48,17 +49,14 @@
 }
 
 .fb-signin{
-  text-align: center;
-  padding: 42px;
   border-color: #3B5998;
   background-color: #3B5998;
-  color: #fff;
 }
 
 .signup-or-separator {
   // position: relative;
   height: 29px;
-  margin: 5px 0;
+  margin: 1rem 0;
   text-align: center;
   background: none;
 }
@@ -101,4 +99,8 @@
 
 h6.text{
   font-size: 21px;
+}
+
+.signup-form-container {
+  width: 100%;
 }

@@ -4,7 +4,7 @@
                <div class="panel-body">
                  <form name="loginForm" ng-submit="emailLogin()" novalidate>
                    <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.email.$invalid && loginForm.email.$dirty }">
-                     <div class="credential submit-btn">
+                     <div class="credential">
                        <input server-error class="form-control input-lg" type="text" name="email" ng-model="email" placeholder="Email" required autofocus>
                      </div>
                      <span class="ion-at form-control-feedback"></span>
@@ -14,7 +14,7 @@
                      </div>
                    </div>
                    <div class="form-group has-feedback" ng-class="{ 'has-error': loginForm.password.$invalid && loginForm.password.$dirty }">
-                     <div class="credential submit-btn">
+                     <div class="credential">
                        <input server-error class="form-control input-lg" type="password" name="password" ng-model="password" placeholder="Password" required>
                      </div>
                      <span class="ion-key form-control-feedback"></span>
@@ -30,9 +30,9 @@
                        <h6 class="text">or</h6>
                        <!-- <hr> -->
                      </div>
-                     <div class="fb-signin submit-btn" ng-click="authenticate('facebook')">
+                     <button class="fb-signin submit-btn" ng-click="authenticate('facebook')">
                         Log in with Facebook
-                     </div>
+                     </button>
                      <div class="show-signup">
                        <div class="pull-left">Don't have an account yet?</div> <div class="pull-right" ui-sref="signup">Sign up</div>
                      </div>
