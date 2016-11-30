@@ -220,3 +220,43 @@ a {
   font-size: 2rem;
   padding-top: 30px;
 }
+
+
+.header-container .logo-box {
+  padding-right: 0px;
+}
+
+@media screen and (max-width: 480px) {
+  #nav-icon3 {
+      width: 1.5rem;
+      height: 1.5rem;
+      position: relative;
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      -webkit-transition: .5s ease-in-out;
+      -moz-transition: .5s ease-in-out;
+      -o-transition: .5s ease-in-out;
+      transition: .5s ease-in-out;
+      cursor: pointer;
+  }
+  #nav-icon3 span:nth-child(1) {
+    top: .5rem;
+  }
+
+  #nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) {
+    top: 1rem;
+  }
+
+  #nav-icon3 span:nth-child(4) {
+    top: 1.5rem;
+  }
+  .menu-btn-box {
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+  .header-container .logo-box {
+    padding-right: 161px;
+  }
+}
