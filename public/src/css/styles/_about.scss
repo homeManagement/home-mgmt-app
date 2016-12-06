@@ -1,6 +1,21 @@
 .about-app-container {
   background-color: #fff;
-  height: 30vh;
+  height: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.about-technology-image-container {
+  width: 100%;
+}
+
+.about-technology-image-images {
+  width: 90%;
+  margin: auto;
+}
+
+.about-technology-image-images img {
+  width:  31%;
 }
 
 .about-h2{
@@ -16,7 +31,6 @@
 }
 
 .about-technology-container{
-  height: 30vh;
   background-color: #fff;
 }
 
