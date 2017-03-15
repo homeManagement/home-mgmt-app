@@ -1,5 +1,5 @@
 node_modules
 .DS_Store
-config.json
+
 home_mgmt_key
 home_mgmt_key.pub
